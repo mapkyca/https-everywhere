@@ -1,0 +1,11 @@
+<!--
+
+-->
+<ruleset name="Minds.com (Partial)">
+
+	<target host="*.minds.com" />
+
+	<rule from="^http://(www\.)?minds\.com/"
+		to="https://www.minds.com/" />
+
+</ruleset>
