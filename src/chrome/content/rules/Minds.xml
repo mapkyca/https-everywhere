@@ -3,9 +3,12 @@
 -->
 <ruleset name="Minds.com (Partial)">
 
+	<target host="minds.com" />
 	<target host="*.minds.com" />
 
-	<rule from="^http://(www\.)?minds\.com/"
-		to="https://www.minds.com/" />
+	<rule from="^http://minds\.com/"
+		to="https://minds.com/" />
+	<rule from="^http://([^/:@]*)\.minds\.com/"
+		to="https://$1.minds.com/" />
 
 </ruleset>
