@@ -1,0 +1,5 @@
+<ruleset name="Analytics.minds.org">
+  <target host="analytics.minds.org" />
+
+  <rule from="^http://analytics\.minds\.org/" to="https://analytics.minds.org/" />
+</ruleset>
