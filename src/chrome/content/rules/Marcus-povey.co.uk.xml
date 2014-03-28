@@ -1,0 +1,6 @@
+<ruleset name="Marcus-povey.co.uk (personal)">
+  <target host="marcus-povey.co.uk" />
+  <target host="www.marcus-povey.co.uk" />
+
+  <rule from="^http://(www\.)?marcus-povey\.co\.uk/" to="https://www.marcus-povey.co.uk/" />
+</ruleset>
