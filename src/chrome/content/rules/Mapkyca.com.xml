@@ -2,5 +2,5 @@
   <target host="mapkyca.com" />
   <target host="www.mapkyca.com" />
 
-  <rule from="^http://(www\.)?mapkyca\.com/" to="https://www.mapkyca.com/" />
+  <rule from="^http://(www\.)?mapkyca\.com/" to="https://mapkyca.com/" />
 </ruleset>
