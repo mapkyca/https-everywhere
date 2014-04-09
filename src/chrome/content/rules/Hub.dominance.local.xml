@@ -1,0 +1,7 @@
+<ruleset name="Hub.dominance.local">
+  <target host="hub.dominance.local" />
+  <target host="hub" />
+
+  <rule from="^http://hub\.dominance\.local/" to="https://hub.dominance.local/" />
+  <rule from="^http://hub/" to="https://hub.dominance.local/" />
+</ruleset>
