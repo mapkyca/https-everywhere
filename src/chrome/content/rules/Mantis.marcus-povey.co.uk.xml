@@ -1,0 +1,5 @@
+<ruleset name="Mantis.marcus-povey.co.uk">
+  <target host="mantis.marcus-povey.co.uk" />
+
+  <rule from="^http://mantis\.marcus-povey\.co\.uk/" to="https://mantis.marcus-povey.co.uk/" />
+</ruleset>
