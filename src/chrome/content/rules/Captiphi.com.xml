@@ -1,0 +1,6 @@
+<ruleset name="Captiphi.com">
+  <target host="captiphi.com" />
+  <target host="www.captiphi.com" />
+
+  <rule from="^http://(www\.)?captiphi\.com/" to="https://captiphi.com/" />
+</ruleset>
