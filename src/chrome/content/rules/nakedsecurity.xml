@@ -1,4 +1,0 @@
-<ruleset name="NakedSecurity">
-	<target host="nakedsecurity.sophos.com"/>
-	<rule from="^http://nakedsecurity\.sophos\.com/" to="https://nakedsecurity.sophos.com/"/>
-</ruleset>
