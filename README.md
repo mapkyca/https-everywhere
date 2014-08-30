@@ -1,4 +1,4 @@
-HTTPS Everywhere
+HTTPS Everywhere [![Build Status](https://travis-ci.org/EFForg/https-everywhere.svg?branch=master)](https://travis-ci.org/EFForg/https-everywhere)
 ================
 
 Source Tree
@@ -29,7 +29,7 @@ Installing Dependencies in Mac OS X
 -----------------------------------
 
 We recommend Mac users install dependencies using Homebrew:
-http://mxcl.github.io/homebrew/
+http://brew.sh/
 
 Once you have Homebrew and Xcode installed, run this to install HTTPS Everywhere dependencies.
 
@@ -86,6 +86,11 @@ To build the Chrome version go to the git repository root and run:
 After building the extension the xpi files (for Firefox) and crx files (for Chrome) get created in the pkg directory. You can open those files within your browser to install the browser extension.
 
 To construct ruleset file in Windows use `./utils/merge-rulesets.js`
+
+Running Extension Tests
+-------------
+
+See [this README](https-everywhere-tests/README.md).
 
 Ruleset Tests
 -------------
