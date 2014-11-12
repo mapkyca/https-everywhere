@@ -1,5 +1,5 @@
-#!/bin/bash
-set -o errexit -o pipefail
+#!/bin/sh
+set -o errexit
 APP_NAME=https-everywhere
 
 # builds a .xpi from the git repository, placing the .xpi in the root
@@ -119,7 +119,7 @@ if [ "$1" != "--fast" ] ; then
 
   if [ -x ./utils/compare-locales.sh ] >&2
   then
-    if ./utils/compare-locales.sh >&2
+    if sh ./utils/compare-locales.sh >&2
     then
       echo Validation of included locales completed. >&2
     else

@@ -4,7 +4,10 @@
 
 	Nonfunctional subdomains:
 
+		- archive09 *
 		- blogs
+
+	*  403
 
 -->
 <ruleset name="Linux.com" platform="mixedcontent">
@@ -14,6 +17,10 @@
 	<!--	* for cross-domain cookies.	-->
 	<target host="*.store.linux.com" />
 
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^www\.linux\.com$" name="^([0-9a-f]{32}|linuxcom_v2_tpl)$" /-->
 
 	<securecookie host="^.*\.linux\.com$" name=".*" />
 

@@ -3,6 +3,8 @@
 
 		- Images from $self ¹
 
+		- favicon on ^ from $self ¹
+
 		- Ads/web bugs, on:
 
 			- ^ from:
@@ -11,9 +13,8 @@
 				- widgets.outbrain.com ¹
 				- meta.talkingpointsmemo.com ³
 				- b.scorecardresearch.com ¹
-				- platform.twitter.com ¹
 
-			- m from partner.googleadservices.com ¹
+			- mobile from partner.googleadservices.com ¹
 
 
 	¹ Secured by us
@@ -27,7 +28,7 @@
 	<target host="*.thehill.com" />
 
 
-	<rule from="^http://(m\.|www\.)?thehill\.com/"
+	<rule from="^http://(mobile\.|www\.)?thehill\.com/"
 		to="https://$1thehill.com/" />
 
 </ruleset>

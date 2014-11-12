@@ -4,8 +4,10 @@
 		- 2mdn.net.xml
 		- Admeld.xml
 		- ChannelIntelligence.com.xml
+		- Chromium.org.xml
 		- Doubleclick.net.xml
 		- FeedBurner.xml
+		- Go_Lang.org.xml
 		- Google.org.xml
 		- GoogleAPIs.xml
 		- Google_App_Engine.xml
@@ -14,19 +16,22 @@
 		- Ingress.xml
 		- Meebo.xml
 		- Orkut.xml
+		- Polymer-Project.org.xml
 		- Postini.xml
 		- WebM_Project.org.xml
 
 
 	Nonfunctional domains:
 
-		- feedproxy.google.com			(404, valid cert)
 		- partnerpage.google.com *
+		- picasa.google.com *
+		- www.picasa.google.com ²
 		- safebrowsing.clients.google.com	(404, mismatched)
 		- (www.)googlesyndicatedsearch.com	(404; mismatched, CN: google.com)
 		- buttons.googlesyndication.com *
 
 	* 404, valid cert
+	² 404; mismatched, CN: www.google.com
 
 
 	Nonfunctional google.com paths:
@@ -44,6 +49,8 @@
 
 		- www.goo.gl		(404; mismatched, CN: *.google.com)
 
+		- www.news.google.ca ²
+
 		- google.com subdomains:
 
 			- books		(googlebooks/, images/, & intl/ 404, but works when rewritten to www)
@@ -58,6 +65,7 @@
 		- scholar.google.cctld **
 		- *-opensocial.googleusercontent.com ***
 
+	² Mismatched, CN: google.com
 	**** $ 404s
 	* 404, valid cert
 	** Redirects to http, valid cert
@@ -89,6 +97,7 @@
 		- google.com subdomains:
 
 			- accounts
+			- admin
 			- adwords
 			- apis
 			- appengine
@@ -97,6 +106,7 @@
 			- checkout
 			- chrome
 			- clients[12]
+			- cloud
 			- code
 			- *.corp
 			- developers
@@ -104,14 +114,17 @@
 			- docs
 			- docs\d
 			- \d.docs
+			- domains
 			- drive
 			- earth		(→ www)
 			- encrypted
 			- encrypted-tbn[123]
 			- feedburner
+			- feedproxy
 			- fiber
 			- finance
 			- glass
+			- goto
 			- groups
 			- health
 			- helpouts
@@ -149,6 +162,7 @@
 			- tbn2			(→ encrypted-tbn2)
 			- tools
 			- trends		(→ www)
+			- wallet
 
 		- partner.googleadservices.com
 		- (www.)googlecode.com
@@ -227,7 +241,11 @@
 		<exclusion pattern="http://[^@:\./]+-opensocial\.googleusercontent\.com" />
 
 
-	<!--	Can we secure any of these wildcard cookies safely?
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.google\.com$" name="^(APISID|HSID|NID|PREF|SID)$" /-->
+	<!--
+		Can we secure any of these wildcard cookies safely?
 									-->
 	<!--securecookie host="^\.google\.com$" name="^(hl|I4SUserLocale|NID|PREF|S)$" /-->
 	<!--securecookie host="^\.google\.[\w.]{2,6}$" name="^(hl|I4SUserLocale|NID|PREF|S|S_awfe)$" /-->
@@ -270,12 +288,12 @@
 
 	<!--	Paths that work on all in google.*
 							-->
-	<rule from="^http://(?:www\.)?google\.((?:com?\.)?\w{2,3})/(accounts|adplanner|ads|adsense|adwords|analytics|bookmarks|chrome|contacts|coop|cse|css|culturalinstitute|doodles|earth|favicon\.ico|finance|get|goodtoknow|googleblogs|grants|green|hostednews|images|intl|js|landing|logos|mapmaker|newproducts|news|nexus|patents|policies|prdhp|profiles|products|reader|s2|settings|shopping|support|tisp|tools|transparencyreport|trends|urchin|webmasters)(?=$|[?/])"
+	<rule from="^http://(?:www\.)?google\.((?:com?\.)?\w{2,3})/(accounts|adplanner|ads|adsense|adwords|analytics|bookmarks|chrome|chromecast|contacts|coop|cse|css|culturalinstitute|doodles|earth|favicon\.ico|finance|get|goodtoknow|googleblogs|grants|green|hangouts|hostednews|images|intl|js|landing|logos|mapmaker|newproducts|news|nexus|patents|policies|prdhp|profiles|products|reader|s2|script|settings|shopping|support|tisp|tools|transparencyreport|trends|urchin|webmasters)(?=$|[?/])"
 		 to="https://www.google.$1/$2" />
 
 	<!--	Paths that 404 on .ccltd, but work on .com:
 								-->
-	<rule from="^http://(?:www\.)?google\.(?:com?\.)?\w{2,3}/(?=calendar|dictionary|doubleclick|help|ideas|pacman|postini|powermeter|url)"
+	<rule from="^http://(?:www\.)?google\.(?:com?\.)?\w{2,3}/(?=calendar|dictionary|doubleclick|help|ideas|pacman|postini|powermeter|url|webdesigner)"
 		 to="https://www.google.com/" />
 
 	<rule from="^http://(?:www\.)?google\.(?:com?\.)?\w{2,3}/custom"
@@ -283,7 +301,7 @@
 
 	<!--	Paths that only exist/work on .com
 							-->
-	<rule from="^http://(?:www\.)?google\.com/(\+|appsstatus|books|buzz|extern_js|glass|googlebooks|ig|insights|moderator|phone|safebrowsing|videotargetting|webfonts)(?=$|[?/])"
+	<rule from="^http://(?:www\.)?google\.com/(\+|appsstatus|books|buzz|chat|chromeos|extern_js|glass|googlebooks|ig|insights|moderator|phone|safebrowsing|videotargetting|webfonts)(?=$|[?/])"
 		to="https://www.google.com/$1" />
 
 	<!--	Subdomains that work on all in google.*
@@ -293,7 +311,7 @@
 
 	<!--	Subdomains that only exist/work on .com
 							-->
-	<rule from="^http://(apis|appengine|books|calendar|cbks0|chat|checkout|chrome|clients[12]|code|[\w-]+\.corp|developers|dl|docs\d?|\d\.docs|drive|encrypted|encrypted-tbn[123]|feedburner|fiber|fonts|gg|glass||health|helpouts|history|(?:hosted)?talkgadget|investor|lh\d|(?:chatenabled\.)?mail|pack|pki|play|plus(?:\.sandbox)?|plusone|productforums|profiles|safebrowsing-cache|cert-test\.sandbox|sb-ssl|script|security|services|servicessites|sites|spreadsheets\d?|support|talk|tools)\.google\.com/"
+	<rule from="^http://(admin|apis|appengine|books|calendar|cast|cbks0|chat|checkout|chrome|clients[12]|cloud|code|[\w-]+\.corp|developers|dl|docs\d?|\d\.docs|drive|encrypted|encrypted-tbn[123]|feedburner|feedproxy|fiber|fonts|gg|glass||goto|health|helpouts|history|(?:hosted)?talkgadget|investor|lh\d|(?:chatenabled\.)?mail|pack|pki|play|plus(?:\.sandbox)?|plusone|productforums|profiles|safebrowsing-cache|cert-test\.sandbox|sb-ssl|script|security|services|servicessites|sites|spreadsheets\d?|support|talk|tools|wallet)\.google\.com/"
 		to="https://$1.google.com/" />
 
 	<exclusion pattern="^http://clients[0-9]\.google\.com/ocsp"/>

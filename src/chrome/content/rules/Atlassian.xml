@@ -1,7 +1,9 @@
 <!--
 	Other Atlassian rulesets:
 
+		- Atlassian.net.xml
 		- BitBucket.xml
+		- HipChat.com.xml
 
 
 	CDN buckets:
@@ -13,6 +15,13 @@
 			- downloads
 
 
+	Problematic subdomains:
+
+		- status *
+
+	* StatusPage.io
+
+
 	Mixed content:
 
 		- Web bugs on confluence from ace *
@@ -20,34 +29,28 @@
 	* Secured by us
 
 -->
-<ruleset name="Atlassian">
+<ruleset name="Atlassian (partial)">
 
 	<target host="atlassian.com" />
 	<target host="*.atlassian.com" />
-	<target host="*.extranet.atlassian.com" />
+		<exclusion pattern="http://click\.mailer\.atlassian\.com/" />
+		<!--
+			Added by Atlassian:
+						-->
+		<exclusion pattern="^http://.+\.(?:ams|dyn\.syd|inf|internal|sf)\.atlassian\.com/" />
 	<target host="atlassian.wpengine.netdna-cdn.com" />
 
 
-  <!-- excluding downloads. and disabling the securecookie clause in response to 
-       https://trac.torproject.org/projects/tor/ticket/7206
-       with further research this might be improvable -->
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^\.atlassian\.com$" name="^__atl_path$" /-->
+	<!--securecookie host="^answers\.atlassian\.com$" name="^JSESSIONID$" /-->
 
-	<!-- 
-      <securecookie host="^(.*\.)?atlassian\.com$" name=".*" /> 
-
-
-	UPDATE: looks like downloads is properly configured now.
-								-->
-  <!--exclusion pattern="http://downloads\.atlassian\.com/" /-->
-
-	<exclusion pattern="http://click\.mailer\.atlassian\.com/" />
-
-	<securecookie host="^(?:ace|answers|aug|confluence|developer|jira|marketplace|my)\.atlassian\.com$" name=".+" />
+	<securecookie host="^(?:ace|answers|aug|confluence|developer|id|jira|marketplace|my|openid|support)\.atlassian\.com$" name=".+" />
 
 
-	<!--	!www 404s	-->
-	<rule from="^http://(?:www\.)?atlassian\.com/"
-		to="https://www.atlassian.com/"/>
+	<rule from="^http://status\.atlassian\.com/"
+		to="https://atlassian.statuspage.io/" />
 
 	<!--	Matches:
 
@@ -61,6 +64,7 @@
 			- downloads
 			- extranet
 			- bamboo.extranet
+			- id
 			- jira
 			- marketplace
 			- my
@@ -68,10 +72,9 @@
 			- studio
 			- summit
 			- support
-
-		There doesn't appear to be any unsupported domains.	-->
-	<rule from="^http://([\w\.]+)\.atlassian\.com/"
-		to="https://$1.atlassian.com/" />
+					-->
+	<rule from="^http://([\w.]+\.)?atlassian\.com/"
+		to="https://$1atlassian.com/" />
 
 	<!--	Cert: *.userzoom.com
 		/$ 403s, rest 404s.	-->

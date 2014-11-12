@@ -8,6 +8,7 @@
 		- Cabinet_Office.xml
 		- Cadw.xml
 		- Companies_House.xml
+		- Cyberstreetwise.xml
 		- Directgov.xml
 		- Gambling_Commission.xml
 		- Independent.gov.uk.xml
@@ -42,6 +43,12 @@
 		- (www.)official-documents.gov.uk
 		- (www.)oft.gov.uk
 		- (www.)publications.parliament.uk
+		- parliament.uk *
+		- services.parliament.uk **
+		- www.parliament.uk **
+
+	* Interrupted
+	** Refused
 
 -->
 <ruleset name="GOV.UK">
@@ -57,7 +64,7 @@
         <securecookie host="^centralcontent-stage\.fco\.gov\.uk$" name=".+" />
 
 
-	<rule from="^http://((?:online|www)\.(?:businesslink|direct)\.|assets\.digital\.cabinet-office\.|centralcontent-stage\.fco\.|www\.)?gov\.uk/"
+	<rule from="^http://((?:\w+\.)?blog\.|(?:online|www)\.(?:businesslink|direct)\.|assets\.digital\.cabinet-office\.|centralcontent-stage\.fco\.|www\.)?gov\.uk/"
 		to="https://$1gov.uk/" />
 
 	<rule from="^https?://(businesslink|direct)\.gov\.uk/"
