@@ -17,6 +17,7 @@
 		- Mozilla_Webmaker.xml
 		- Open_Badges.xml
 		- Public_Suffix.org.xml
+		- TogetherJS.com.xml
 
 
 	CDN buckets:
@@ -59,6 +60,7 @@
 			- view.e ¹
 			- graphs ³
 			- krakenbenchmark ³
+			- mig ³
 			- releases ³
 			- sfx-images ³		(banners)
 			- start ¹
@@ -152,6 +154,7 @@
 
 				- activations
 				- addons
+				- air
 				- developer
 				- download		(→ ftp.mozilla.org)
 				- download-installer
@@ -256,6 +259,7 @@
 			- loop.telemetry
 
 			- telemetry-dash
+			- treeherder
 			- videos
 			- wiki
 
@@ -314,7 +318,7 @@
 
 				https://mail1.eff.org/pipermail/https-everywhere-rules/2013-June/001635.html
 													-->
-		<exclusion pattern="^http://(?:bonsai|browserquest|trychooser\.pub\.build|dxr|(?:(?!image)\w)+\.e|graphs|krakenbenchmark|releases|sfx-images|start|w(?:ebsite|ww)-archive)\.mozilla\.org/" />
+		<exclusion pattern="^http://(?:bonsai|browserquest|trychooser\.pub\.build|dxr|(?!image)\w+\.e|graphs|krakenbenchmark|mig|releases|sfx-images|start|w(?:ebsite|ww)-archive)\.mozilla\.org/" />
 	<target host="mdn.mozillademos.org" />
 	<target host="mozillaignite.com" />
 	<target host="*.mozillaignite.com" />

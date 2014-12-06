@@ -1,5 +1,4 @@
-// LOG LEVELS ---
-
+// LOG LEVELS
 let VERB=1;
 let DBUG=2;
 let INFO=3;
@@ -18,15 +17,10 @@ let https_everywhere_blacklist = {};
 // domains for which there is at least one blacklisted URL
 let https_blacklist_domains = {};
 
-//
 const CI = Components.interfaces;
 const CC = Components.classes;
-const CU = Components.utils;
-const CR = Components.results;
 const Ci = Components.interfaces;
-const Cc = Components.classes;
 const Cu = Components.utils;
-const Cr = Components.results;
 
 Cu.import("resource://gre/modules/Services.jsm");
 Cu.import("resource://gre/modules/FileUtils.jsm");
@@ -286,7 +280,7 @@ HTTPSEverywhere.prototype = {
   getExpando: function(browser, key) {
     let obj = this.expandoMap.get(browser);
     if (!obj) {
-      this.log(NOTE, "No expando for " + browser.currentURI);
+      this.log(NOTE, "No expando for " + browser.currentURI.spec);
       return null;
     }
     return obj[key];
@@ -315,8 +309,16 @@ HTTPSEverywhere.prototype = {
     }
   },
 
+  // Given an nsIChannel (essentially, a container for an HTTP or similar
+  // resource request), try to find the relevant tab if there is one.
+  // Specifically, find the XUL <browser> element for that tab. Note
+  // there are multiple meanings for the word 'browser' in Firefox, described at:
+  // https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser
+  // We're looking for this one:
+  // https://developer.mozilla.org/en-US/docs/Mozilla/Tech/XUL/browser
+  // Also note some requests, like Safe Browsing requests, will have no
+  // associated tab.
   getBrowserForChannel: function(channel) {
-    // Obtain a browser element from a channel
     let loadContext;
     try {
       loadContext = channel.notificationCallbacks.getInterface(CI.nsILoadContext);
@@ -325,17 +327,49 @@ HTTPSEverywhere.prototype = {
         loadContext = channel.loadGroup.notificationCallbacks
           .getInterface(CI.nsILoadContext);
       } catch(e) {
-        this.log(NOTE, "no loadgroup notificationCallbacks for "
-                 + channel.URI.spec + e);
+        // Lots of requests have no notificationCallbacks, mostly background
+        // ones like OCSP checks or smart browsing fetches.
+        this.log(DBUG, "no loadGroup notificationCallbacks for "
+                 + channel.URI.spec + ": " + e);
         return null;
       }
     }
-    if (!loadContext) {
-      this.log(NOTE, "No loadContext for: " + channel.URI.spec);
+    // On e10s (multiprocess, aka electrolysis) Firefox,
+    // loadContext.topFrameElement gives us a reference to the XUL <browser>
+    // element we need. However, on non-e10s Firefox, topFrameElement is null.
+    if (loadContext && loadContext.topFrameElement) {
+      return loadContext.topFrameElement;
+    } else if (loadContext) {
+      // For non-e10s Firefox, get the XUL <browser> element using this rather
+      // magical / opaque code cribbed from
+      // https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Tabbed_browser#Getting_the_browser_that_fires_the_http-on-modify-request_notification_(example_code_updated_for_loadContext)
+
+      // this is the HTML DOM window of the page that just loaded
+      var contentWindow = loadContext.associatedWindow;
+      // aDOMWindow this is the firefox window holding the tab
+      var aDOMWindow = contentWindow.top.QueryInterface(Ci.nsIInterfaceRequestor)
+        .getInterface(Ci.nsIWebNavigation)
+        .QueryInterface(Ci.nsIDocShellTreeItem)
+        .rootTreeItem
+        .QueryInterface(Ci.nsIInterfaceRequestor)
+        .getInterface(Ci.nsIDOMWindow);
+      // this is the gBrowser object of the firefox window this tab is in
+      var gBrowser = aDOMWindow.gBrowser;
+      // this is the clickable tab xul element, the one found in the tab strip
+      // of the firefox window, aTab.linkedBrowser is same as browser var above
+      var aTab = gBrowser._getTabForContentWindow(contentWindow.top);
+      // this is the browser within the tab
+      if (aTab) {
+        var browser = aTab.linkedBrowser;
+        return browser;
+      } else {
+        this.log(NOTE, "getBrowserForChannel: aTab was null.");
+      }
+    } else {
+      this.log(NOTE, "getBrowserForChannel: No loadContext for: " +
+        channel.URI.spec);
       return null;
     }
-    let browser = loadContext.topFrameElement;
-    return browser;
   },
 
   // the lists get made when the urlbar is loading something new, but they
@@ -797,8 +831,15 @@ function https_everywhereLog(level, str) {
     threshold = WARN;
   }
   if (level >= threshold) {
-    dump("HTTPS Everywhere: "+str+"\n");
-    econsole.logStringMessage("HTTPS Everywhere: " +str);
+    var levelName = ["", "VERB", "DBUG", "INFO", "NOTE", "WARN"][level];
+    var prefix = "HTTPS Everywhere " + levelName + ": ";
+    // dump() prints to browser stdout. That's sometimes undesireable,
+    // so only do it when a pref is set (running from test.sh enables
+    // this pref).
+    if (prefs.getBoolPref("log_to_stdout")) {
+      dump(prefix + str + "\n");
+    }
+    econsole.logStringMessage(prefix + str);
   }
 }
 

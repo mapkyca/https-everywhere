@@ -9,7 +9,6 @@ arch-stuff.org
 articulate.com
 *.bcvs.ch
 bcvs.ch
-beautifuldecay.com
 beryl-themes.org
 *.bethsoft.com
 bethsoft.com
@@ -20,6 +19,7 @@ box-look.org
 casaar.com
 cccure.training
 cli-apps.org
+consumerreports.org
 clients1.google.*
 clients1.google.co.*
 clients1.google.com.*
@@ -38,6 +38,7 @@ clients5.google.com.*
 clients6.google.*
 clients6.google.co.*
 clients6.google.com.*
+consumerreports.org
 controllermax.com
 cpaste.org
 creativeskills.be
@@ -162,6 +163,7 @@ popsci.com
 popularmechanics.com
 qt-apps.org
 qualaris.com
+reason.com
 redbullmobile.at
 reddpics.com
 rosettacode.org
@@ -185,10 +187,10 @@ thedilbertstore.com
 thefederalistpapers.org
 *.thewire.com
 thinkprogress.org
+thompsonhotels.com
 threatmetrix.com
 *.time.com
 togevi.com
-traction-digital.com
 tradepub.com
 tripwire.com
 trustthevote.org
@@ -197,7 +199,6 @@ ubuntu-art.org
 ul.ie
 upic.me
 usni.org
-variety.com
 vidup.me
 *.vk.com
 vk.com
@@ -219,7 +220,6 @@ www.google.com.*
 www.gymglish.*
 www.hostingcatalog.com
 www.privatbanka.sk
-www.pumo.com.tw
 www.squarefree.com
 www.vkontakte.ru
 xda-developers.com

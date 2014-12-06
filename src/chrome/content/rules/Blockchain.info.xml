@@ -1,12 +1,7 @@
 <!--
-	blog is handled in WordPress-blogs.xml.
+	Other Blockchain.info rulesets:
 
-
-	Problematic subdomains:
-
-		- blog *
-
-	* Wordpress
+		- Blockchainbdgpzk.onion.xml
 
 
 	Observed cookie domains:

@@ -25,6 +25,7 @@
 		- Microsoft-Atlas.xml
 		- Microsoft_Online_Services.xml
 		- Microsoft_Store.xml
+		- Modern.IE.xml
 		- Moreinterop.com.xml
 		- MSDN.xml
 		- Msecnd.net.xml
@@ -87,6 +88,7 @@
 			- samples.msdn		(refused)
 			- visualstudiogallery.msdn	(redirects to http, valid cert)
 			- mymfe			(reset)
+			- news			(Redirects to http)
 			- officeimages
 			- privacy		(times out)
 			- academic.research ***

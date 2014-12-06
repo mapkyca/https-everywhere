@@ -34,7 +34,12 @@
 		- lytics **
 		- oli ³
 		- online ³
+		- ppl **
 		- rph ³
+		- scpdweb ⁶
+		- dune.scs **
+		- www.scs **
+		- sedcl **
 		- babar-hn.slac		(rx_record_too_long)
 		- home.slac
 		- srp			(reused serial)
@@ -45,6 +50,7 @@
 		- store			($ redirects to http; at least some paths 404)
 		- theory		(shows Fedora test page, self-signed)
 		- transportation ⁹
+		- vis			(Shows graphics)
 		- www-sul ᵇ
 
 	² Shows hannahousetours
@@ -65,8 +71,10 @@
 		- biosciences ⁴
 		- brannerlibrary ⁵
 		- bgm *
+		- cmgm3			(Insecure renegotiation)
 		- cme ⁴
 		- computing **
+		- csl			(Expired, self-signed)
 		- dor ⁸
 		- email **
 		- ess **
@@ -77,8 +85,11 @@
 		- itmetrics **
 		- itwinterclosure **
 		- maps *
+		- medblogs ³
+		- medicalgiving		(iModules)
 		- netreg ⁹
 		- postdocs ⁴
+		- scopeblog ³
 		- search **
 		- security ᵃ
 		- slac			(cert only matches www.slac)
@@ -87,10 +98,10 @@
 		- stanfordmedicine ⁴
 		- studentservicescenter **
 		- thestanfordchallenge	(works, mismatched, CN: ood-web1.stanford.edu)
+		- trachea ⁴
 		- vsc ⁴
 		- winkleby ⁴
 		- www-cs-students	(mismatched, CN: xenon.stanford.edu)
-		- www-ee		(mismatched, CN: ee.stanford.edu)
 
 
 	³ Mixed css
@@ -107,9 +118,10 @@
 
 		- plato *
 		- arts **
+		- medblogs **
 		- scpd ³
+		- scopeblog **
 		- soe	(→ engineering, [^/?]+ 404s)
-		- stanfordcareers **
 		- www-cs-students ²	(→ xenon)
 		- xenon ²
 
@@ -157,6 +169,7 @@
 		- crypto
 		- (www.)cs	( www → ^)
 		- cepa
+		- cmgm3
 		- ctr
 		- cyberlaw
 		- dashboard
@@ -168,6 +181,8 @@
 		- earthsci
 		- ebola
 		- ed
+		- ee
+		- ee-www
 		- ehsappprd1
 		- engineering
 		- epgy
@@ -187,6 +202,7 @@
 		- giving
 		- givinghistory
 		- givingtostanford
+		- graphics
 		- (www.)gsb
 		- alumni.gsb
 		- gse			(→ ed)
@@ -225,9 +241,12 @@
 		- makeagift
 		- makeapledge
 		- makeapledgepayment
+		- mast
 		- math
 		- maven
 		- (www.)med
+		- medmeeting
+		- medwiki
 		- monitoring
 		- museum
 		- music
@@ -245,6 +264,7 @@
 		- opacs
 		- opacsprd
 		- openflow
+		- openknowledge
 		- orderit
 		- osep
 		- owamail
@@ -311,6 +331,7 @@
 		- teachingcommons
 		- tickets
 		- titleix
+		- trachea		(→ med)
 		- ucomm
 		- uhr
 		- uit
@@ -323,7 +344,7 @@
 		- weblogin
 		- worklife
 		- www-aws
-		- www-ee		(→ ee)
+		- www-ee
 		- youthorchestra
 
 
@@ -337,11 +358,10 @@
 		- .itservices
 		- .lbre
 		- .oit ²
-		- .stanfordcareers **
+		- .stanfordcareers *
 
 	* Not secured by us <= accounting for possible use on unsecured domains
 	² Secured by server
-	** Not secured by us <= incomplete coverage
 
 
 	Mixed content:
@@ -353,8 +373,9 @@
 			- admission from $self *
 			- admission from www *
 			- biosciences from $self *
-			- stanfordcareers from $self *
 			- admission, giving, precollegiate, stanfordcareers from fonts.googleapis.com *
+			- scopeblog from $self *
+			- scopeblog from med *
 
 		- Images, on:
 
@@ -375,7 +396,7 @@
 		<!--
 			Avoid false/broken MCB:
 						-->
-		<exclusion pattern="^http://arts\.stanford\.edu/+(?!wp-content/|wp-includes/)" />
+		<exclusion pattern="^http://(?:arts|medblogs|scopeblog)\.stanford\.edu/+(?!wp-content/|wp-includes/)" />
 		<exclusion pattern="^http://admission\.stanford\.edu/+(?!assets/|css/|images/|img/|libs/)" />
 		<exclusion pattern="^http://plato\.stanford\.edu/+(?!css/|symbols/)" />
 		<!--
@@ -385,7 +406,7 @@
 		<!--
 			Exceptions:
 					-->
-		<exclusion pattern="^http://scpd\.stanford\.edu/+(?!upload/)" />
+		<exclusion pattern="^http://scpd\.stanford\.edu/+(?!favicon\.ico|restricted/|upload/)" />
 		<!--
 			Personal dirs 404
 					-->
@@ -401,20 +422,20 @@
 	<!--securecookie host="^\.stanford\.edu$" name="^(COOKIE_DEVICE_CLASS|SS_MID|pgn_new_browser|pgn_user2)$" /-->
 	<!--securecookie host="^(alumni|alumni-gsb|givinghistory|honorrolls|makeagift|makeapledge|makeapledgepayment|pgnet)?\.stanford\.edu$" name="^TS[\da-f]{8}$" /-->
 	<!--securecookie host="^doresearch\.stanford\.edu$" name="^(SimpleSAMLSessionID|simplesamlphp_auth_returnto)$" /-->
-	<!--securecookie host="^(\.answers|\.bewell|\.bgm|\.engineering|\.facultyaffairs|\.facultyaffairs-humsci|\.hsdo|\.law|\.lbre|\.lib|\.maps|\.ohsx|\.porterdrive|\.stanfordcareers)?\.stanford\.edu$" name="^SESS[\da-f]{32}$" /-->
+	<!--securecookie host="^(\.answers|\.bewell|\.bgm|\.engineering|\.facultyaffairs|\.facultyaffairs-humsci|\.hsdo|\.law|\.lbre|\.lib|\.maps|\.ohsx|\.openknowledge|\.porterdrive|\.stanfordcareers)?\.stanford\.edu$" name="^SESS[\da-f]{32}$" /-->
 	<!--securecookie host="^epgy\.stanford\.edu$" name="^[\da-f]{32}$" /-->
-	<!--securecookie host="^(hannahousetours|anderson)\.stanford\.edu$" name="^PHPSESSID$" /-->
-	<!--securecookie host="^(explorecourses|lane|profiles|scpd)\.stanford\.edu$" name="^JSESSIONID$" /-->
+	<!--securecookie host="^(hannahousetours|anderson|lane)\.stanford\.edu$" name="^PHPSESSID$" /-->
+	<!--securecookie host="^(cap|explorecourses|lane|med|profiles|scpd)\.stanford\.edu$" name="^JSESSIONID$" /-->
 	<!--securecookie host="^blogs\.law\.stanford\.edu$" name="^bid$" /-->
 	<!--securecookie host="^library\.stanford\.edu$" name="^BIGipServer~SULAIR~libweb_https$" /-->
 	<!--securecookie host="^mvideos\.stanford\.edu$" name="^(ASP\.NET_SessionId|\.ASPXAUTH)$" /-->
 
-	<securecookie host="^(?:adminguide|alumni|alumni-gsb|anderson|\.answers|\.bewell|ehsappprd1|epgy|explorecourses|\.facultyaffairs|givinghistory|hannahousetours|\.itservices|(?:blogs)?\.law|\.lbre|library|makeagift|makeapledge|maven|mvideos|openflow|parents|pgnet|\.porterdrive|profiles|\.sdlf|\.siepr|(?:\.news|www6)\.slac\|\.stanfordcareers|stanfordwho|weblogin|webauth1).stanford\.edu$" name=".+" />
+	<securecookie host="^(?:adminguide|alumni|alumni-gsb|anderson|\.answers|\.bewell|cap|ehsappprd1|epgy|explorecourses|\.facultyaffairs|givinghistory|hannahousetours|\.itservices|lane|(?:blogs)?\.law|\.lbre|library|makeagift|makeapledge|maven|cap|mvideos|openflow|parents|pgnet|\.porterdrive|profiles|\.sdlf|\.siepr|(?:\.news|www6)\.slac\|\.stanfordcareers|stanfordwho|weblogin|webauth1).stanford\.edu$" name=".+" />
 
 	<rule from="^https?://(?:www\.)?(slac\.)?stanford\.edu/"
 		to="https://www.$1stanford.edu/" />
 
-	<rule from="^http://(accessories|accounts|acomp|acp|adminguide|admission|ai|alumni|alumni-gsb|anderson|annualreport|answers|apps|arts?|artsinstitute|as|asdashboard|assu-web|asweb|atxpo|axess|benefits|bewell|beyondthebubble|businessaffairs|cancer|cap|ccrma|cepa|crowd|crypto|ctr|cyberlaw|dashboard|dataclass|docxpress|doresearch|earth|earthsci|ebola|ed|ehsappprd1|engineering|epgy|eprotocol|events|explorecourses|faculty(?:affairs|affairs-humsci|development|handbook)|forum|founders|gadgets|giving(?:history|tostanford)?|(?:alumni\.|www\.)?gsb|gus-humsci|hannahousetours|harass|helpcenter|helpsu|honorrolls|hsdo|humansubjects|icenter|idp|italerts|itservices|itunes|janestanford|labanimals|lane|lane-preprod|(?:blogs\.|cch\.|www\.)?law|lbre(?:-apps|hr|-internal)?|lib|library|lists|live|mailman|majors|makeagift|makeapledge|makeapledgepayment|math|maven|(?:www\.)?med|monitoring|museum|music|mvideos|mygsb|news|notalone|npl|ogc|ohsx?|oia|oncore|opacs|opacsprd|openflow|orderit|osep|owamail|pangea|parents|parentsweekend|pgnet|police|porterdrive|precollegiate|president|profiles|provost|publicaffairs|refunds|registrar|remedyweb|rescomp|researchcompliance|roadside-mba|safety|axess\.sahr|sciencecircle|scienceconference|scro|scpd|sdlf|securecomputing|sera|sheg|siepr|signalblog|sites|(?:bbr-wiki|news|oraweb|plato|webauth1|www[26]|www-conf|www-group|www-public)\.slac|spcs|stanford(?:careers|events|who|you)|studentaffairs|summer(?:college|collegeacademy|humanities|institutes)|sunetid|suse|swp|teachingcommons|tickets|titleix|ucomm|uhr|uit|undergrad|visit|vpol|waivers|wasc|web|weblogin|worklife|www-aws|xenon|youthorchestra)\.stanford\.edu/"
+	<rule from="^http://(accessories|accounts|acomp|acp|adminguide|admission|ai|alumni|alumni-gsb|anderson|annualreport|answers|apps|arts?|artsinstitute|as|asdashboard|assu-web|asweb|atxpo|axess|benefits|bewell|beyondthebubble|businessaffairs|cancer|cap|ccrma|cepa|cmgm3|crowd|crypto|ctr|cyberlaw|dashboard|dataclass|docxpress|doresearch|earth|earthsci|ebola|ed|ee|ee-www|ehsappprd1|engineering|epgy|eprotocol|events|explorecourses|faculty(?:affairs|affairs-humsci|development|handbook)|forum|founders|gadgets|giving(?:history|tostanford)?|graphics|(?:alumni\.|www\.)?gsb|gus-humsci|hannahousetours|harass|helpcenter|helpsu|honorrolls|hsdo|humansubjects|icenter|idp|italerts|itservices|itunes|janestanford|labanimals|lane|lane-preprod|(?:blogs\.|cch\.|www\.)?law|lbre(?:-apps|hr|-internal)?|lib|library|lists|live|mailman|majors|makeagift|makeapledge|makeapledgepayment|mast|math|maven|(?:www\.)?med|medblogs|medmeeting|medwiki|monitoring|museum|music|mvideos|mygsb|news|notalone|npl|ogc|ohsx?|oia|oncore|opacs|opacsprd|openflow|openknowledge|orderit|osep|owamail|pangea|parents|parentsweekend|pgnet|police|porterdrive|precollegiate|president|profiles|provost|publicaffairs|refunds|registrar|remedyweb|rescomp|researchcompliance|roadside-mba|safety|axess\.sahr|sciencecircle|scienceconference|scopeblog|scro|scpd|sdlf|securecomputing|sera|sheg|siepr|signalblog|sites|(?:bbr-wiki|news|oraweb|plato|webauth1|www[26]|www-conf|www-group|www-public)\.slac|spcs|stanford(?:careers|events|who|you)|studentaffairs|summer(?:college|collegeacademy|humanities|institutes)|sunetid|suse|swp|teachingcommons|tickets|titleix|ucomm|uhr|uit|undergrad|visit|vpol|waivers|wasc|web|weblogin|worklife|www-aws|www-ee|xenon|youthorchestra)\.stanford\.edu/"
 		to="https://$1.stanford.edu/" />
 
 	<!--	Redirects like so:
@@ -437,9 +458,6 @@
 					-->
 	<rule from="^http://dor\.stanford\.edu/"
 		to="https://doresearch.stanford.edu/" />
-
-	<rule from="^https?://(?:www-)?ee\.stanford\.edu/"
-		to="https://ee.stanford.edu/" />
 
 	<!--	Redirects like so:
 					-->
@@ -492,6 +510,14 @@
 
 	<rule from="^http://studentservicescenter\.stanford\.edu/"
 		to="https://www.stanford.edu/group/studentservicescenter/" />
+
+	<!--	Redirect drops args:
+					-->
+	<rule from="^http://trachea\.stanford\.edu/+(?:$|\?.*)"
+		to="https://med.stanford.edu/ohns/education/residency/portal/" />
+
+	<rule from="^http://trachea\.stanford\.edu/"
+		to="https://med.stanford.edu/" />
 
 	<rule from="^http://www-cs-students\.stanford\.edu/"
 		to="https://xenon.stanford.edu/" />

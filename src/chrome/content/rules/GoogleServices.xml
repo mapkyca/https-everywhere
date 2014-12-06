@@ -3,7 +3,9 @@
 
 		- 2mdn.net.xml
 		- Admeld.xml
+		- Android.xml
 		- ChannelIntelligence.com.xml
+		- Chrome_Status.com.xml
 		- Chromium.org.xml
 		- Doubleclick.net.xml
 		- FeedBurner.xml
@@ -19,6 +21,7 @@
 		- Polymer-Project.org.xml
 		- Postini.xml
 		- WebM_Project.org.xml
+		- With_Google.com.xml
 
 
 	Nonfunctional domains:
@@ -39,7 +42,6 @@
 		- analytics	(redirects to http)
 		- imgres
 		- gadgets *
-		- hangouts	(404)
 		- u/		(404)
 
 	* Redirects to http
@@ -192,7 +194,7 @@
 	<target host="groups.google.*" />
 	<target host="it.google.*" />
 	<target host="news.google.*" />
-		<exclusion pattern="^http://(?:news\.)?google\.com/(?:archivesearch|newspapers)" />
+		<exclusion pattern="^http://(?:news\.)?google\.com?(\.[a-z][a-z])?/(?:archivesearch|newspapers)" />
 	<target host="picasaweb.google.*" />
 	<target host="scholar.google.*" />
 	<target host="www.google.*" />
@@ -293,7 +295,7 @@
 
 	<!--	Paths that 404 on .ccltd, but work on .com:
 								-->
-	<rule from="^http://(?:www\.)?google\.(?:com?\.)?\w{2,3}/(?=calendar|dictionary|doubleclick|help|ideas|pacman|postini|powermeter|url|webdesigner)"
+	<rule from="^http://(?:www\.)?google\.(?:com?\.)?\w{2,3}/(?=calendar|dictionary|doubleclick|foobar|help|ideas|pacman|postini|powermeter|url|webdesigner)"
 		 to="https://www.google.com/" />
 
 	<rule from="^http://(?:www\.)?google\.(?:com?\.)?\w{2,3}/custom"
