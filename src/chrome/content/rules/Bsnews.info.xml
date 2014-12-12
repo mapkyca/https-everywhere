@@ -1,0 +1,6 @@
+<ruleset name="Bsnews.info">
+  <target host="bsnews.info" />
+  <target host="www.bsnews.info" />
+
+  <rule from="^http://(www\.)?bsnews\.info/" to="https://bsnews.info/" />
+</ruleset>
