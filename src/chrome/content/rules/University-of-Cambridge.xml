@@ -1,4 +1,6 @@
 <!--
+	University of Cambridge
+
 	For problematic rules, see Cam.ac.uk-problematic.xml.
 
 
@@ -9,11 +11,12 @@
 
 	Nonfunctional subdomains:
 
-		- (www.) ¹
 		- www.environment.admin ²
 		- news.admin ³
 		- my.alumni ⁴
 		- www.mbone.cl ⁵
+		- ucsnews.csx ᵃ
+		- www.fitzmuseum ⁴
 		- ceid.educ ⁶
 
 		- www.eng ⁷
@@ -23,17 +26,26 @@
 		- www-sigproc.eng ⁴
 		- www-womeninengineering.eng ⁸
 
+		- www.graduate ¹
+		- www.internationalstudents ¹
 		- www.lib ⁹
 		- search.lib ⁴
 		- admin.map ᵃ
 		- preview.map ᵃ
-		- www.sports
+		- www.misd ¹
+		- www.inference.phy ⁴
+		- www.europe.polis ⁸
+		- www.psychometrics ⁸
+		- www.sport ᵃ
+		- www.sports ᵃ
+		- www.vhi.st-edmunds ⁸
+		- www.st-edmunds	(Shows default page)
 		- talks ᵃ
 		- www.ucs ⁸
+		- news.uis ᵃ
 		- www.zoo ⁴
 
-	¹ Redirects to http, valid cert
-	² Reset; mismatched, CN: www.cam.ac.uk
+	² Reset
 	³ Shows www.admin; mismatched, CN: www.admin.cam.ac.uk
 	⁴ Dropped
 	⁵ Shows CentOS test page, valid cert
@@ -46,6 +58,7 @@
 
 	Problematic subdomains:
 
+		- ^ *
 		- www.epe.admin ¹
 		- alumni ²
 		- damtp ²
@@ -54,6 +67,7 @@
 		- www.philanthropy ¹
 		- www.study ¹
 
+	* Reset
 	¹ Works; mismatched, CN: www.admin.cam.ac.uk
 	² Cert only matches www.foo
 	³ https breaks styling; expired, self-signed
@@ -66,7 +80,10 @@
 
 	Fully covered subdomains:
 
+		- (www.)?		(^ → www)
+
 		- hrsystems.admin
+		- iceintranet.admin
 		- sales.admin
 		- webservices.admin
 		- www.admin
@@ -82,12 +99,17 @@
 		- www-new.educ
 
 		- www.ice
+		- old-webmail.hermes
+		- webmail.hermes
+		- lists
 		- map
 		- www2.mrc-lmb
 		- raven
 		- shib.raven
 		- search
 		- api.search
+		- print-server.st-edmunds...:9192
+		- wiki
 		- www.wolfson
 
 
@@ -117,6 +139,7 @@
 			- www3.eng from www.eng ¹
 			- www.study from $self ⁴
 
+		- favicon on wiki from www ³
 		- favicon on www3.eng from www.eng ¹
 
 	¹ Unsecurable <= test page
@@ -125,8 +148,9 @@
 	⁴ Not secured by us <= mismatched
 
 -->
-<ruleset name="University of Cambridge (partial)">
+<ruleset name="Cam.ac.uk (partial)">
 
+	<target host="cam.ac.uk" />
 	<target host="*.cam.ac.uk" />
 		<!--
 			Redirect to http:
@@ -145,11 +169,11 @@
 	<securecookie host="^(?:(?:hrsystems|webservices)\.admin|www\.a(?:dmin|lumni)|www\.educ|sysdata\.cl|www\.ice)\.cam\.ac\.uk$" name=".+" />
 
 
-	<rule from="^http://((?:hrsystems|sales|webservices|www)\.admin|www\.campaign|sysdata\.cl|(?:jotter|thinkingtogether|www|www-new)\.educ|www\.ice|map|www2\.mrc-lmb|(?:shib\.)?raven|search|api\.search|www\.(?:admin|cl|wolfson))\.cam\.ac\.uk/"
-		to="https://$1.cam.ac.uk/" />
+	<rule from="^http://((?:hrsystems|iceintranet|sales|webservices|www)\.admin|www\.campaign|sysdata\.cl|(?:jotter|thinkingtogether|www|www-new)\.educ|www\.ice|(?:old-)?webmail\.hermes|lists|map|www2\.mrc-lmb|(?:shib\.)?raven|search|api\.search|print-server\.st-edmunds|wiki|www\.(?:admin|cl|wolfson))\.cam\.ac\.uk(:9192)?/"
+		to="https://$1.cam.ac.uk$2/" />
 
-	<rule from="^http://(?:www\.)?alumni\.cam\.ac\.uk/"
-		to="https://www.alumni.cam.ac.uk/" />
+	<rule from="^http://(?:www\.)?(alumni\.)?cam\.ac\.uk/"
+		to="https://www.$1cam.ac.uk/" />
 
 	<rule from="^http://(?:www\.)?damtp\.cam\.ac\.uk/global/"
 		to="https://www.damtp.cam.ac.uk/global/" />

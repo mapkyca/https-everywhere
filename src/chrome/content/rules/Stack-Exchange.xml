@@ -31,6 +31,7 @@
 		- cdn-chat.sstatic.com
         	- *.stackexchange.com
 		- teststackoverflow.com
+		- *.blogoverflow.com
 
 
 	www.teststackoverflow.com doesn't exist.
@@ -80,6 +81,7 @@
 		- meta.superuser.com
 		- stackapps.com
 		- openid.stackauth.com
+		- *.blogoverflow.com (Dec., 2014)
 
 
 	Insecure cookies are set for the following domains:
@@ -105,7 +107,7 @@
 
 			Breaks OpenID login:
 						-->
-        	<exclusion pattern="^http://(?:\w+\.)?(?:stackexchange|stackoverflow)\.com/users/authenticate/" />
+		<exclusion pattern="^http://(?:\w+\.)?stack(?:exchange|overflow)\.com/users/authenticate/" />
 	<target host="stackoverflow.com" />
 	<target host="*.stackoverflow.com" />
 		<!--
@@ -134,6 +136,9 @@
 
 	<rule from="^http://(?:www\.)?blogoverflow\.com/$"
 		to="https://stackexchange.com/blogs" />
+	
+	<rule from="^http://([^\/]+)\.blogoverflow\.com/"
+		to="https://$1.blogoverflow.com/" />
 
 	<rule from="^http://(?:(or\.)?cdn\.)?sstatic\.net/"
 		to="https://$1cdn.sstatic.net/" />
@@ -144,7 +149,7 @@
 	<rule from="^http://(?:www\.)?stackapps\.com/"
 		to="https://stackapps.com/" />
 
-	<rule from="^http://(\w+\.)?stackexchange\.com/"
+	<rule from="^http://((?:\w+|meta\.\w+|discuss\.area51)\.)?stackexchange\.com/"
 		to="https://$1stackexchange.com/" />
 
 	<rule from="^http://((?:blog|www|meta|careers)\.)?stackoverflow\.com/"
@@ -156,7 +161,15 @@
 	<rule from="^http://(www\.|meta\.)?superuser\.com/"
 		to="https://$1superuser.com/" />
 
+	<rule from="^http://(\w\w)\.stackoverflow\.com/"
+		to="https://$1.stackoverflow.com/" />
+
+	<rule from="^http://meta\.(\w\w)\.stackoverflow\.com/"
+		to="https://meta.$1.stackoverflow.com/" />
+
+	<rule from="^http://discuss\.area51\.stackexchange\.com/"
+		to="https://discuss.area51.stackexchange.com/" />
+
 	<rule from="^http://teststackoverflow\.com/"
 		to="https://teststackoverflow.com/" />
-
 </ruleset>

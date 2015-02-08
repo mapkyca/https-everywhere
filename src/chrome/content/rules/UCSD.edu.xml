@@ -64,6 +64,7 @@
 		- success ᵇ
 		- thezone ²
 		- ucsdnews ²
+		- webct ⁹
 		- www-chancellor ²
 		- www-chem ⁶
 		- www-tep ²
@@ -443,11 +444,11 @@
 <!-- Other things could stand to have securecookie, but these are the most important:
      a4 is used for login pages and some embedded scripts related to the login system. It doesn't yet flag its cookies as https-only.
      acs-webmail uses at least two cookies, only one of which is normally flagged https-only. -->
-   <securecookie host="^(.+\.)?a(4|cs-webmail)\.ucsd\.edu$" name=".*" />
+   <securecookie host="^(?:.+\.)?a(?:4|cs-webmail)\.ucsd\.edu$" name=".*" />
 
    <rule from="^http://a4\.ucsd\.edu/"
        to="https://a4.ucsd.edu/" />
-   <rule from="^http://(acs-)?webmail\.ucsd\.edu/"
+   <rule from="^http://(?:acs-)?webmail\.ucsd\.edu/"
        to="https://acs-webmail.ucsd.edu/" />
    <rule from="^http://altng\.ucsd\.edu/"
        to="https://altng.ucsd.edu/" />
@@ -478,7 +479,7 @@
        to="https://a.ucsd.edu/" />
    <rule from="^http://acms\.ucsd\.edu/"
        to="https://acms.ucsd.edu/" />
-   <rule from="^http://(www\.)?bookstore\.ucsd\.edu/"
+   <rule from="^http://(?:www\.)?bookstore\.ucsd\.edu/"
        to="https://bookstore.ucsd.edu/" />
    <rule from="^http://(www[-\.])?cs(e)?\.ucsd\.edu/"
        to="https://$1cs$2.ucsd.edu/" />
@@ -486,7 +487,7 @@
        to="https://$1ece.ucsd.edu/" />
    <rule from="^http://(www\.)?hdh\.ucsd\.edu/"
        to="https://$1hdh.ucsd.edu/" />
-   <rule from="^http://(www\.)?hds\.ucsd\.edu/"
+   <rule from="^http://(?:www\.)?hds\.ucsd\.edu/"
        to="https://hds.ucsd.edu/" />
    <rule from="^http://maeweb\.ucsd\.edu/"
        to="https://maeweb.ucsd.edu/" />
@@ -528,7 +529,7 @@
            to="https://www-act.ucsd.edu/cgi-bin/financiallink.pl" />
    <rule from="^http://marketplace\.ucsd\.edu/?$"
            to="https://www-act.ucsd.edu/marketplace-sso/signon" />
-   <rule from="^http://(www\.)?(my)?tritonlink\.ucsd\.edu/?$"
+   <rule from="^http://(?:www\.)?(?:my)?tritonlink\.ucsd\.edu/?$"
            to="https://act.ucsd.edu/myTritonlink20/display.htm" />
    <rule from="^http://uclearning\.ucsd\.edu/"
            to="https://a4.ucsd.edu/lms/" />
@@ -538,7 +539,7 @@
    <rule from="^http://(cri|desktop|resnet|software|sysstaff)\.ucsd\.edu/"
            to="https://acms.ucsd.edu/units/$1/" />
 <!-- was https://acms.ucsd.edu/troublereport/, which is now a redirect; note that a.ucsd.edu is also officially part of ACMS -->
-   <rule from="^http://(www-)?acs\.ucsd\.edu/troublereport/?$"
+   <rule from="^http://(?:www-)?acs\.ucsd\.edu/troublereport/?$"
            to="https://a.ucsd.edu/troublereport/" />
    <rule from="^http://www-acs\.ucsd\.edu/?$"
            to="https://acms.ucsd.edu/index.html" />

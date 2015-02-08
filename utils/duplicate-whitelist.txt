@@ -4,6 +4,7 @@ addons.videolan.org
 adyadvantage.com
 affair-guide.com
 afp548.com
+aftenposten.no
 anunciou.com
 arch-stuff.org
 articulate.com
@@ -16,6 +17,7 @@ blockstream.com
 blogsmithmedia.com
 boneblast.com
 box-look.org
+bt.no
 casaar.com
 cccure.training
 cli-apps.org
@@ -55,6 +57,7 @@ df.eu
 dice.com
 drownedinsound.com
 e17-stuff.org
+*.ebaystatic.com
 ede-look.org
 elementaryos.org
 *.eloqua.com
@@ -77,6 +80,7 @@ freeporngif.com
 freethoughtblogs.com
 frugalware-art.org
 g33kinfo.com
+geek.com
 genivi.org
 gentoo-art.org
 getdigital-blog.de
@@ -101,6 +105,8 @@ hollywoodoutlaws.com
 hollywoodreporter.com
 hometheaterreview.com
 hope.net
+hostoople.com
+iab.org
 inc.com
 inductionsolutions.com
 infinet.com.au
@@ -133,6 +139,7 @@ mediciglobal.com
 megaglest.org
 *.meetupstatic.com
 midasgreentech.com
+mirrorbingo.com
 misadventureswithandi.com
 modelviewculture.com
 mos.org
@@ -143,6 +150,7 @@ nandos.com
 nelonen.fi
 *.netapp.com
 newrepublic.com
+npmawesome.com
 nydailynews.com
 nykeurope.com
 oag.com
@@ -157,6 +165,7 @@ osdv.org
 outbrain.com
 *.ovh.net
 passmark.com
+people.com
 pdu.edu
 plantappstore.com
 plantsolution.de
@@ -200,13 +209,16 @@ trustthevote.org
 ubermedia.com
 ubuntu-art.org
 ul.ie
+unm.edu
 upic.me
+usatoday.com
 usni.org
 vidup.me
 *.vk.com
 vk.com
 vkontakte.ru
 vlc-addons.org
+vpncompare.co.uk
 weebly.com
 wiki.hope.net
 wine-apps.org
@@ -233,3 +245,4 @@ youm7.com
 zataz.com
 zen.co.uk
 zone-h.org
+zylon.net

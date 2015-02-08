@@ -5,6 +5,7 @@
 	Other Mozilla rulesets:
 
 		- Allizom.org.xml
+		- Are_We_Slim_Yet.com.xml
 		- BrowserID.xml
 		- Bugzilla.xml
 		- Firefox.com.xml
@@ -12,9 +13,11 @@
 		- Lizard_Wrangler.com.xml
 		- Mozilla.com.tw.xml
 		- Mozilla.jp.xml
+		- Mozilla-Community.org.xml
 		- Mozilla_Labs.com.xml
 		- Mozilla_Persona.xml
 		- Mozilla_Webmaker.xml
+		- Mozillians.org.xml
 		- Open_Badges.xml
 		- Public_Suffix.org.xml
 		- TogetherJS.com.xml
@@ -50,6 +53,7 @@
 
 			- www.authstage ¹
 			- identity ²
+			- *.malware-error *
 			- www-trunk.stage ¹
 
 		- mozilla.org subdomains:
@@ -71,6 +75,7 @@
 
 	¹ Dropped
 	² Hosted on tumblr
+	* https://trac.torproject.org/projects/tor/ticket/14022
 	³ Refused
 
 
@@ -111,9 +116,10 @@
 		- drumbeat.org
 		- www.drumbeat.org
 
-		- mozilla.com subdomains:
+		- mozilla.com
 
-			- (www.)
+		- [\w.-]+.mozilla.com: *
+
 			- activations
 			- addons
 			- air
@@ -144,8 +150,9 @@
 			- snippets
 			- support
 			- v
+			- www
 
-		- mozilla.net subdomains:
+		- [\w.-]+.mozilla.net: *
 
 			- static-cdn.addons
 			- static-ssl-cdn.addons
@@ -169,9 +176,9 @@
 			- videos-cdn
 			- www			(→ www.mozilla.org)
 
-		- mozilla.org subdomains:
+		- mozilla.org
 
-			- (www.)
+		- [\w.-]+.mozilla.org: *
 
 			- activations
 
@@ -213,6 +220,7 @@
 			- foundationwiki
 			- ftp
 			- gameon
+			- gear
 			- gpg
 			- hacks
 			- hg
@@ -262,6 +270,7 @@
 			- treeherder
 			- videos
 			- wiki
+			- www
 
 		- mdn.mozillademos.org
 		- (www.)mozillaignite.org
@@ -270,6 +279,8 @@
 		- support.mozillamessaging.com
 		- (www.)webfwd.org
 
+	* Except where excluded below
+
 
 	These altnames don't exist:
 
@@ -277,12 +288,14 @@
 		- analysis.telemetry.mozilla.org
 
 
-	Cookie domains:
+	Insecure cookies are set for these domains:
 
-		- mail.mozilla.com
-		- mail.corp.phx1.mozilla.com
+		- .mozilla.org
 		- addons.mozilla.org
-		- reps.mozilla.org
+		- bugzilla.mozilla.org
+		- .sendto.mozilla.org
+		- support.mozilla.org
+		- telemetry.mozilla.org
 
 
 	Mixed content:
@@ -305,7 +318,7 @@
 	<target host="www.drumbeat.org" />
 	<target host="mozilla.com" />
 	<target host="*.mozilla.com" />
-		<exclusion pattern="^http://(?:www\.authstage|fxfeeds|identity|www-trunk\.stage|status)\.mozilla\.com/" />
+		<exclusion pattern="^http://(?:www\.authstage|fxfeeds|identity|.+\.malware-error|www-trunk\.stage|status)\.mozilla\.com/" />
 		<exclusion pattern="^http://(?:[\w\.-]+\.)?phish-report\.mozilla\.com/" />
 	<target host="*.mozilla.net" />
 		<exclusion pattern="^http://(?:cdn|hardhat)\.mozilla\.net/" />
@@ -338,6 +351,7 @@
 
 	<!--	Not secured by server:
 					-->
+	<!--securecookie host="^\.mozilla\.org$" name="^(optimizelyBuckets|optimizelyEndUserId|optimizelyPendingLogEvents|optimizelySegments)$" /-->
 	<!--securecookie host="^addons\.mozilla\.org$" name="^(apps/files/tabstops|multidb_pin_writes|recently-viewed-collections|search-appver|search-platform|visitor-seen_impala_first_visit)$" /-->
 	<!--securecookie host="^bugzilla\.mozilla\.org$" name="^(BUGLIST|LASTORDER)$" /-->
 	<!--securecookie host="^\.sendto\.mozilla\.org$" name="^X-CheckNode$" /-->
@@ -356,19 +370,19 @@
 
 	<!--	Redirects as so over http.
 						-->
-	<rule from="^https?://www\.mozilla\.net/"
+	<rule from="^http://www\.mozilla\.net/"
 		to="https://www.mozilla.org/" />
 
-	<rule from="^https?://download\.cdn\.mozilla\.net/"
+	<rule from="^http://download\.cdn\.mozilla\.net/"
 		to="https://ftp.mozilla.org/" />
 
-	<rule from="^https?://getpersonas-cdn\.mozilla\.net/"
+	<rule from="^http://getpersonas-cdn\.mozilla\.net/"
 		to="https://getpersonas.cdn.mozilla.net/" />
 
 	<rule from="^http://([\w.-]+)\.mozilla\.net/"
 		to="https://$1.mozilla.net/" />
 
-	<rule from="^https?://affiliates-cdn\.mozilla\.org/"
+	<rule from="^http://affiliates-cdn\.mozilla\.org/"
 		to="https://affiliates.mozilla.org/" />
 
 	<!--	Would these rules be safe?
@@ -378,7 +392,7 @@
 
 	<!--	Redirects like so over http.
 						-->
-	<rule from="^https?://talkback-public\.mozilla\.org/"
+	<rule from="^http://talkback-public\.mozilla\.org/"
 		to="https://crash-stats.mozilla.com/" />
 
 	<rule from="^http://([\w.-]+\.)?mozilla\.(com|org)/"
