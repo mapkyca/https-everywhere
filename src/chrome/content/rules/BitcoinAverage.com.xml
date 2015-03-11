@@ -1,10 +1,10 @@
 <ruleset name="BitcoinAverage.com">
 
 	<target host="bitcoinaverage.com" />
-	<target host="wwwbitcoinaverage.com" />
+	<target host="www.bitcoinaverage.com" />
 
 
-	<rule from="^http://(www\.)?bitcoinaverage\.com/"
-		to="https://$1bitcoinaverage.com/" />
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>

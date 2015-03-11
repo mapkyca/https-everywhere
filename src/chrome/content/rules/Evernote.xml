@@ -42,16 +42,23 @@
 <ruleset name="Evernote.com (partial)">
 
 	<target host="evernote.com" />
-	<target host="*.evernote.com" />
+	<target host="blog.evernote.com" />
+	<target host="dev.evernote.com" />
+	<target host="discussion.evernote.com" />
+	<target host="sandbox.evernote.com" />
+	<target host="shop.evernote.com" />
+	<target host="support.evernote.com" />
+	<target host="trunk.evernote.com" />
+	<target host="www.evernote.com" />
 
 
 	<securecookie host="^(?:.*\.)?evernote\.com$" name=".+" />
 
 
-	<rule from="^http://((?:blog|dev|discussion|sandbox|support|trunk|www)\.)?evernote\.com/"
-		to="https://$1evernote.com/" />
-
 	<rule from="^http://shop\.evernote\.com/"
 		to="https://evernote.myshopify.com/" />
+
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>

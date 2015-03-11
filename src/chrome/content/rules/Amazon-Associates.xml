@@ -1,4 +1,7 @@
 <!--
+Disabled by https-everywhere-checker because:
+Non-2xx HTTP code: http://astore.amazon.com/ (200) => https://astore.amazon.com/ (500)
+Fetch error: http://assoc-amazon.co.uk/ => https://www.assoc-amazon.co.uk/: (7, 'Failed to connect to assoc-amazon.co.uk port 80: Connection timed out')
 	For other Amazon coverage, see Amazon.xml.
 
 
@@ -43,17 +46,8 @@
 
 		- widgets.amazon.com
 
-		- wms.assoc-amazon.com
-
-		- assoc-amazon.com subdomains:
-
-			- rcm-na
-			- wms
-			- wms-na
-			- ws-na
-
 -->
-<ruleset name="Amazon Associates">
+<ruleset name="Amazon Associates" default_off='failed ruleset test'>
 
 	<target host="rcm-ca.amazon.ca" />
 	<target host="affiliate-program.amazon.com" />
@@ -74,7 +68,6 @@
 	<target host="www.assoc-amazon.*" />
 	<target host="assoc-amazon.co.uk" />
 	<target host="*.assoc-amazon.co.uk" />
-	<target host="*.assoc-amazon.com" />
 
 
 	<!--	Not secured by server:
@@ -104,16 +97,13 @@
 
 	<!--	.co.jp doesn't exist.
 					-->
-	<rule from="^http://wms\.assoc-amazon\.(ca|com|co\.uk|de|fr)/"
+	<rule from="^http://wms\.assoc-amazon\.(ca|co\.uk|de|fr)/"
 		to="https://wms.assoc-amazon.$1/" />
 
 	<!--	- Cert only matches www
 		- .co.jp doesn't exist
 					-->
-	<rule from="^http://(?:www\.)?assoc-amazon\.(ca|com|co\.uk|de|fr)/"
+	<rule from="^http://(?:www\.)?assoc-amazon\.(ca|co\.uk|de|fr)/"
 		to="https://www.assoc-amazon.$1/" />
-
-	<rule from="^http://(rcm-na|wms|wm?s-na)\.assoc-amazon\.com/"
-		to="https://$1.assoc-amazon.com/" />
 
 </ruleset>

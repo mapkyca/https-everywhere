@@ -1,10 +1,14 @@
-<ruleset name="madboa.com">
+<!--
+	(www.)?: Provides no cert chain
+
+-->
+<ruleset name="madboa.com" default_off='missing certificate chain'>
 
 	<target host="madboa.com" />
 	<target host="www.madboa.com" />
 
 
-	<rule from="^http://(www\.)?madboa\.com/"
-		to="https://$1madboa.com/" />
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>
