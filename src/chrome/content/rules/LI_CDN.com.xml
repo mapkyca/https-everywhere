@@ -1,3 +1,4 @@
+
 <!--
 	For other LinkedIn coverage, see LinkedIn.xml.
 
@@ -15,13 +16,11 @@
 		- dlc1-s *
 		- dlc2-s *
 
-	* Insecure renegotiation
+	* Mismatched
 
 
 	Fully covered subdomains:
 
-		- dlc1-s
-		- dlc2-s
 		- media
 		- snap
 		- static
@@ -29,8 +28,8 @@
 -->
 <ruleset name="LI CDN.com (partial)">
 
-	<target host="dlc1-s.licdn.com" />
-	<target host="dlc2-s.licdn.com" />
+	<!--target host="dlc1-s.licdn.com" /-->
+	<!--target host="dlc2-s.licdn.com" /-->
 	<target host="media.licdn.com" />
 	<target host="snap.licdn.com" />
 	<target host="static.licdn.com" />

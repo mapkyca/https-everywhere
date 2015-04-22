@@ -1,16 +1,15 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://go.microsoftonline.com/ => https://g.live.com/: (6, 'Could not resolve host: go.microsoftonline.com')
+
 	accountservices.microsoftonline-p.net: Dropped over http
 
 
 	For other Microsoft coverage, see Microsoft.xml.
 
-
-	Problematic domains:
-
-		- go.microsoftonline.com	(mismatched)
-
 -->
-<ruleset name="Microsoft Online Services (partial)">
+<ruleset name="Microsoft Online Services (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
@@ -23,10 +22,6 @@
 	<target host="secure.aadcdn.microsoftonline-p.net" />
 	<!--target host="accountservices.microsoftonline-p.net" /-->
 
-	<!--	Special cases:
-				-->
-	<target host="go.microsoftonline.com" />
-
 
 	<!--	Not secured by server:
 					-->
@@ -34,9 +29,6 @@
 
 	<securecookie host="^(?:\.?login|loginex|portal)\.microsoftonline\.com$" name=".+" />
 
-
-	<rule from="^http://go\.microsoftonline\.com/"
-		to="https://g.live.com/" />
 
 	<rule from="^http:"
 		to="https:" />

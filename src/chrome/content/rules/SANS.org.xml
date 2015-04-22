@@ -14,7 +14,8 @@
 		- cyber-defense
 		- digital-forensics
 		- isc
-		- it-audit
+		- isc1
+		- isc2
 		- sic
 		- pen-testing
 		- software-security
@@ -34,7 +35,8 @@
 	<target host="cyber-defense.sans.org" />
 	<target host="digital-forensics.sans.org" />
 	<target host="isc.sans.org" />
-	<target host="it-audit.sans.org" />
+	<target host="isc1.sans.org" />
+	<target host="isc2.sans.org" />
 	<target host="pen-testing.sans.org" />
 	<target host="sic.sans.org" />
 	<target host="software-security.sans.org" />

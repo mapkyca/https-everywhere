@@ -1,5 +1,13 @@
+
 <!--
 	For rules causing MCB, see UOL.com.br-falsemixed.xml.
+
+
+	Other UOL rulesets:
+
+		- ImgUOL.com.xml
+		- JsUOL.com.br.xml
+		- NotaNet.com.br.xml
 
 
 	!functional:
@@ -44,6 +52,7 @@
 		- tudodownloads ²
 		- verifica ¹
 		- xfire ²
+		- www1 ¹
 		- www3 ¹
 
 	¹ Dropped
@@ -70,7 +79,6 @@
 		- visitante.acesso
 		- cadastro
 		- pagseguro.captcha
-		- click			(→ clicklogger.rm.uol.com.br)
 		- denuncia
 		- go4gold
 		- thumb.mais
@@ -159,7 +167,7 @@
 
 	<!--	Special cases:
 				-->
-	<target host="click.uol.com.br" />
+	<!--target host="click.uol.com.br" /-->
 
 		<!--	Avoid broken MCB:
 						-->
@@ -190,8 +198,8 @@
 	<securecookie host="^\.pagseguro\.uol\.com\.br$" name="^(?:LAST_SERVER_HIT|TS\w+)$" />
 
 
-	<rule from="^http://click\.uol\.com\.br/"
-		to="https://clicklogger.rm.uol.com.br/" />
+	<!--rule from="^http://click\.uol\.com\.br/"
+		to="https://clicklogger.rm.uol.com.br/" /-->
 
 	<rule from="^http:"
 		to="https:" />

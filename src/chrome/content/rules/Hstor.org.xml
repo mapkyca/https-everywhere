@@ -1,5 +1,9 @@
+
 <!--
 	For other TM coverage, see TMtm.ru.xml.
+
+
+	alpha: Dropped over http
 
 
 	www doesn't exist.
@@ -8,7 +12,7 @@
 <ruleset name="hstor.org">
 
 	<target host="hstor.org" />
-	<target host="alpha.hstor.org" />
+	<!--target host="alpha.hstor.org" /-->
 	<target host="beta.hstor.org" />
 
 

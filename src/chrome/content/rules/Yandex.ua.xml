@@ -1,3 +1,4 @@
+
 <!--
 	For other Yandex coverage, see Yandex.xml.
 
@@ -65,6 +66,7 @@
 		- m.fotki
 		- gorod
 		- help
+		- islands
 		- kiks
 		- images
 		- legal
@@ -153,6 +155,7 @@
 	<target host="gorod.yandex.ua" />
 	<target host="help.yandex.ua" />
 	<target host="images.yandex.ua" />
+	<target host="islands.yandex.ua" />
 	<target host="kiks.yandex.ua" />
 	<target host="legal.yandex.ua" />
 	<target host="m.legal.yandex.ua" />
@@ -178,8 +181,8 @@
 
 	<!--	Not secured by server:
 					-->
-	<securecookie host="^(\.|www\.|\.www\.)?yandex\.ua$" name="^yp$" />
-	<securecookie host="^\.yandex\.ua$" name="^(Cookie_check|L|Session_id|YX_SEARCHPREFS|fyandex|geo_sync|my|sessionid2|yabs-frequency|yandex_gid|yandex_login|yandex_mail|yandexmarket|yandexuid|ys)$" />
+	<!--securecookie host="^(\.|www\.|\.www\.)?yandex\.ua$" name="^yp$" /-->
+	<!--securecookie host="^\.yandex\.ua$" name="^(Cookie_check|L|Session_id|YX_SEARCHPREFS|fyandex|geo_sync|my|sessionid2|yabs-frequency|yandex_gid|yandex_login|yandex_mail|yandexmarket|yandexuid|ys)$" /-->
 	<!--securecookie host="^(auto|realty)\.yandex\.ua$" name="^from$" /-->
 	<!--securecookie host="^auto\.yandex\.ua$" name="^from_lifetime$" /-->
 	<!--securecookie host="^(auto|city|gorod|islands|rabota|realty|m\.rabota|slovari|m\.slovari|stat)\.yandex\.ua$" name="^uid$" /-->
@@ -192,7 +195,7 @@
 	<!--securecookie host="^translate\.yandex\.ua$" name="^(first_visit_src|stoken)$" /-->
 
 	<securecookie host="^\.yandex\.ua$" name="^(?:geo_sync|yabs-frequency)$" />
-	<securecookie host="^(?:(?:auto|city|gorod|mail|mobile|slovari|stat|translate|\.?www)\.)?yandex\.ua$" name=".+" />
+	<securecookie host="^(?:(?:auto|city|gorod|islands|mail|mobile|slovari|stat|translate|\.?www)\.)?yandex\.ua$" name=".+" />
 
 
 	<rule from="^http:"
