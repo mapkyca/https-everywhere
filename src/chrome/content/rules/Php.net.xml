@@ -1,5 +1,0 @@
-<ruleset name="Php.net">
-  <target host="php.net" />
-
-  <rule from="^http://php\.net/" to="https://php.net/" />
-</ruleset>
