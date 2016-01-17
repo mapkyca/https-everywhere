@@ -9,13 +9,6 @@
 		- Vine.co.xml
 
 
-	Nonfunctional domains:
-
-		- status.twitter.jp *
-
-	* Tumblr
-
-
 	CDN buckets:
 
 		- a1095.g.akamai.net/=/1095/134446/1d/platform.twitter.com/ | platform2.twitter.com.edgesuite.net
@@ -26,16 +19,25 @@
 		- twitter.github.com
 
 
-	Problematic subdomains:
+	Nonfunctional domains:
 
-		- status *
+		- status.twitter.com ¹
+		- status.twitter.jp *
 
-	* Mixed css
+	¹ 404
+	* Tumblr
 
 
-	Observed hosts:
+	Problematic hosts in *twitter.com:
 
-		- (www.)
+		- app.tweet *
+
+	* Mismatched
+
+
+	Observed hosts in *twitter.com:
+
+		- (www.)?
 		- 201[0-4]
 		- about
 		- ads
@@ -48,6 +50,7 @@
 		- blog
 		- business
 		- cards-dev
+		- cert
 		- dev
 		- engineering
 		- firefox
@@ -86,13 +89,6 @@
 		- .twitter.com
 		- mobile.twitter.com
 
-
-	Mixed content:
-
-		- iframe on status from assets.tumblr.com
-		- css on status from assets.tumblr.com
-		- Image on status from 38.media.tumblr.com
-
 -->
 <ruleset name="Twitter.com">
 
@@ -116,6 +112,7 @@
 		<test url="http://urls.api.twitter.com/" />
 		<test url="http://urls-real.api.twitter.com/" />
 		<test url="http://business.twitter.com/" />
+		<test url="http://cert.twitter.com/" />
 		<test url="http://dev.twitter.com/" />
 		<test url="http://engineering.twitter.com/" />
 		<test url="http://firefox.twitter.com/" />
@@ -143,31 +140,20 @@
 		<test url="http://userstream.twitter.com/" />
 		<test url="http://www.twitter.com/" />
 
-		<!--	Avoid broken MCB:
-						-->
-		<exclusion pattern="^http://status\.twitter\.com/(?!themes/)" />
-		<exclusion pattern="^http://app\.tweet\.twitter\.com/" />
-		<exclusion pattern="^http://images\.tweet\.twitter\.com/" />
+		<exclusion pattern="^http://(?:status|app\.tweet|images\.tweet)\.twitter\.com/" />
 
+			<test url="http://status.twitter.com/" />
 			<test url="http://app.tweet.twitter.com/" />
 			<test url="http://images.tweet.twitter.com/" />
-
-			<!--	+ve:
-					-->
-			<test url="http://status.twitter.com/archive" />
-
-			<!--	-ve:
-					-->
-			<test url="http://status.twitter.com/themes/5/rss.gif" />
 
 
 	<!--	Not secured by server:
 					-->
 	<!--securecookie host="^twitter\.com$" name="^external_referer$" /-->
-	<!--securecookie host="^\.twitter\.com$" name="^(guest_id|pid)$" /-->
-	<!--securecookie host="^mobile\.twitter\.com$" name="^(req_country|req_country_code|req_ip)$" /-->
+	<!--securecookie host="^\.twitter\.com$" name="^(?:guest_id|pid)$" /-->
+	<!--securecookie host="^mobile\.twitter\.com$" name="^(?:req_country|req_country_code|req_ip)$" /-->
 
-	<securecookie host="^(?:.*\.)?twitter\.com$" name=".+" />
+	<securecookie host="." name="." />
 
 
 	<rule from="^http:"

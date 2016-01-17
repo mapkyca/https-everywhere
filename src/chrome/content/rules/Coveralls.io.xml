@@ -1,7 +1,15 @@
-
 <!--
-Disabled by https-everywhere-checker because:
-Fetch error: http://blogs.coveralls.io/ => https://blogs.coveralls.io/: (6, 'Could not resolve host: blogs.coveralls.io')
+	CDN buckets:
+
+		- s3.amazonaws.com/assets.coveralls.io/
+
+
+	Nonfunctional hosts in *coveralls.io:
+
+		- support *
+
+	* Zendesk
+
 
 	Mixed content:
 
@@ -10,16 +18,19 @@ Fetch error: http://blogs.coveralls.io/ => https://blogs.coveralls.io/: (6, 'Cou
 	* Secured by us
 
 -->
-<ruleset name="Coveralls.io" default_off='failed ruleset test'>
+<ruleset name="Coveralls.io (partial)">
 
+	<!--	Direct rewrites:
+				-->
 	<target host="coveralls.io" />
-	<target host="blogs.coveralls.io" />
+	<target host="blog.coveralls.io" />
 	<target host="www.coveralls.io" />
 
 
 	<!--	Not secured by server:
 					-->
 	<!--securecookie host="^coveralls\.io$" name="^(_coveralls_session|request_method)$" /-->
+	<!--securecookie host="^\.coveralls\.io$" name="^(?:__cfduid|cf_clearance)$" /-->
 	<!--securecookie host="^www\.coveralls\.io$" name="^LSW_WEB$" /-->
 
 	<securecookie host="^(?:\.|www\.)?coveralls\.io$" name=".+" />

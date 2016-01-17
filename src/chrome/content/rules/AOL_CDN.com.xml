@@ -6,6 +6,10 @@
 
 	CDN buckets:
 
+		- www.aol.com.edgesuite.net
+
+			- portal.aolcdn.com
+
 		- myfeeds.aolcdn.com.edgesuite.net
 		- o.aolcdn-ds.com.edgesuite.net
 
@@ -32,7 +36,7 @@
 -->
 <ruleset name="AOL CDN.com">
 
-	<!--	Direct rewrotes:
+	<!--	Direct rewrites:
 				-->
 	<target host="s.aolcdn.com" />
 	<target host="sns-static.aolcdn.com" />

@@ -60,9 +60,11 @@
 			- daol ¹
 			- dev ¹
 			- discover ¹
+			- downloaded ²
 			- features ¹
 			- heroes ²
 			- hss-prod.hss
+			- ipad ²
 			- legal ¹
 			- m ²
 			- mobile ¹
@@ -75,11 +77,13 @@
 			- stg.t.on
 
 			- netscape ²
+			- oscars ¹
 			- privacy ¹
 			- realestate ¹
 			- search ¹
 			- share ¹
 			- startpage ¹
+			- thevoiceof ²
 			- toshiba ²
 			- weather ¹
 			- webmail ¹
@@ -149,6 +153,11 @@
 		- cdn.webmail
 
 
+	These altnames don't exist:
+
+		- holiday.aol.com
+
+
 	Insecure cookies are set for these domains and hosts:
 
 		- .aol.com
@@ -169,7 +178,7 @@
 -->
 <ruleset name="AOL.com (partial)">
 
-	<!--	Direct rewrotes:
+	<!--	Direct rewrites:
 				-->
 	<target host="account.aol.com" />
 	<target host="autos.aol.com" />
@@ -190,6 +199,7 @@
 	<target host="rpc.mail.aol.com" />
 	<target host="rpc1.mail.aol.com" />
 
+	<target host="membernotifications.aol.com" />
 	<target host="myaccount.aol.com" />
 	<target host="mybenefits.aol.com" />
 	<target host="new.aol.com" />
