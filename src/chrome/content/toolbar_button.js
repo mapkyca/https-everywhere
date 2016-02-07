@@ -146,11 +146,15 @@ httpsEverywhere.toolbarButton = {
         'https-everywhere',
         'chrome://https-everywhere/skin/https-everywhere-24.png',
         nBox.PRIORITY_WARNING_MEDIUM,
-      [],
-      function(action) {
-        // see https://developer.mozilla.org/en-US/docs/XUL/Method/appendNotification#Notification_box_events
-        gBrowser.selectedTab = gBrowser.addTab(faqURL);
-      });
+        [
+          { accessKey: 'F',
+            callback: function(ntf, btn) {
+                // see https://developer.mozilla.org/en-US/docs/XUL/Method/appendNotification#Notification_box_events
+                gBrowser.selectedTab = gBrowser.addTab(faqURL);
+            },
+            label: 'FAQ…',
+          }
+        ]);
     }
     gBrowser.removeEventListener("DOMContentLoaded", tb.handleShowHint, true);
   },
@@ -195,6 +199,11 @@ httpsEverywhere.toolbarButton = {
     var counter = 0;
     for (var x in alist.active) {
       if (!(x in alist.breaking)) {
+        ++counter;
+      }
+    }
+    for (var x in alist.moot) {
+      if (!(x in alist.active)) {
         ++counter;
       }
     }
