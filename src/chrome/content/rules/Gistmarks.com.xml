@@ -1,4 +1,11 @@
-<ruleset name="gistmarks.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://gistmarks.com/ => https://gistmarks.com/: (7, 'Failed to connect to gistmarks.com port 443: Connection refused')
+Fetch error: http://www.gistmarks.com/ => https://www.gistmarks.com/: (7, 'Failed to connect to www.gistmarks.com port 443: Connection refused')
+
+-->
+<ruleset name="gistmarks.com" default_off='failed ruleset test'>
 
 	<target host="gistmarks.com" />
 	<target host="www.gistmarks.com" />
@@ -11,7 +18,6 @@
 	<securecookie host="^(?:www\.)?gistmarks\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?gistmarks\.com/"
-		to="https://$1gistmarks.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

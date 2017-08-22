@@ -1,39 +1,30 @@
 <!--
-	Cert doesn't match !www.
+	Invalid certificate:
+		virusbtn.com
+		www.virusbtn.com (broken chain)
 
-
-	Insecure cookies are set for these hosts:
-
-		- www.virusbtn.com
+	Different content http/https:
+		abs.virusbulletin.com
+		conference.virusbulletin.com
 
 -->
 <ruleset name="Virus Bulletin">
 
-	<!--	Direct rewrites:
-				-->
-	<target host="www.virusbtn.com" />
-
-	<!--	Complications:
-				-->
+	<!-- Old domain automatically forwards to virusbulletin.com -->
 	<target host="virusbtn.com" />
+	<target host="www.virusbtn.com" />
+	<target host="spamtrial.virusbtn.com" />
 
+	<!-- New domain -->
+	<target host="virusbulletin.com" />
+	<target host="www.virusbulletin.com" />
+	<target host="extranet.virusbulletin.com" />
+	<target host="photos.virusbulletin.com" />
 
-	<!--	Not secured by server:
-					-->
-	<!--securecookie host="^www\.virusbtn\.com$" name="^vbtn_session$" /-->
+	<securecookie host=".+" name=".+" />
 
-	<securecookie host="^www\.virusbtn\.com$" name=".+" />
+	<rule from="^http://(www\.)?virusbtn\.com/" to="https://www.virusbulletin.com/" />
 
-
-	<!--	Redirect keeps path and args,
-		but not forward slash:
-					-->
-	<rule from="^http://virusbtn\.com/+"
-		to="https://www.virusbtn.com/" />
-
-		<test url="http://virusbtn.com//" />
-
-	<rule from="^http:"
-		to="https:" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

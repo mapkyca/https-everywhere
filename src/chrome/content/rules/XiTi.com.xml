@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://logs142.xiti.com/hit.xiti?s= => https://logs142.xiti.com/hit.xiti?s=: (6, 'Could not resolve host: logs142.xiti.com')
+
 	Nonfunctional domains:
 
 		- www.atinternet.com				(timeout)
@@ -40,12 +44,14 @@
 		- secured75
 
 
-	Insecure cookies are set for these domains:
+	Insecure cookies are set for these domains: ᶜ
 
 		- .xiti.com
 
+	ᶜ See https://owasp.org/index.php/SecureFlag
+
 -->
-<ruleset name="XiTi.com (partial)">
+<ruleset name="XiTi.com (partial)" default_off='failed ruleset test'>
 
 	<target host="*.xiti.com" />
 
@@ -92,6 +98,7 @@
 
 		<test url="http://logc247.xiti.com/hit.xiti?s=" />
 		<test url="http://logc279.xiti.com/hit.xiti?s=" />
+		<test url="http://logc286.xiti.com/hit.xiti?s=" />
 		<test url="http://logc400.xiti.com/hit.xiti?s=" />
 		<test url="http://logi9.xiti.com/hit.xiti?s=" />
 		<test url="http://logi118.xiti.com/hit.xiti?s=&amp;s2=&amp;p=&amp;di=&amp;an=&amp;ac=&amp;Rdt=" />

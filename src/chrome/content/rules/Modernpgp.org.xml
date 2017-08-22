@@ -1,7 +1,4 @@
-<!--
-Cloudflare SSL
--->
-<ruleset name="Modernpgp.org">
+<ruleset name="Modernpgp.org" default_off="mismatched">
     <target host="modernpgp.org" />
     <target host="www.modernpgp.org" />
 

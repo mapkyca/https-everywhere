@@ -1,7 +1,14 @@
-<ruleset name="Urban Villa.nl">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://urbanvilla.nl/ => https://urbanvilla.nl/: (60, 'SSL certificate problem: self signed certificate')
+Fetch error: http://www.urbanvilla.nl/ => https://www.urbanvilla.nl/: (60, 'SSL certificate problem: self signed certificate')
+
+-->
+<ruleset name="Urban Villa.nl" default_off='failed ruleset test'>
 
 	<target host="urbanvilla.nl" />
-	<target host="*.urbanvilla.nl" />
+	<target host="www.urbanvilla.nl" />
 
 
 	<!--	Not secured by server:
@@ -11,7 +18,6 @@
 	<securecookie host="^\.urbanvilla\.nl$" name=".+" />
 
 
-	<rule from="^http://(www\.)?urbanvilla\.nl/"
-		to="https://$1urbanvilla.nl/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

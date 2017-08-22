@@ -1,13 +1,19 @@
-<ruleset name="Pony.fm">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://s.pony.fm/ => https://s.pony.fm/: (51, "SSL: no alternative certificate subject name matches target host name 's.pony.fm'")
+
+-->
+<ruleset name="Pony.fm" default_off='failed ruleset test'>
 
 	<target host="pony.fm" />
-	<target host="*.pony.fm" />
+	<target host="s.pony.fm" />
+	<target host="www.pony.fm" />
 
 
 	<securecookie host="^\.pony\.fm$" name=".+" />
 
 
-	<rule from="^http://(s\.|www\.)?pony\.fm/"
-		to="https://$1pony.fm/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

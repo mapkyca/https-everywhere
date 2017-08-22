@@ -1,4 +1,12 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://c.atdmt.com/ => https://c.atdmt.com/: (51, "SSL: no alternative certificate subject name matches target host name 'c.atdmt.com'")
+Fetch error: http://c1.atdmt.com/ => https://c1.atdmt.com/: (51, "SSL: no alternative certificate subject name matches target host name 'c1.atdmt.com'")
+Fetch error: http://flex.atdmt.com/ => https://flex.atdmt.com/: (6, 'Could not resolve host: flex.atdmt.com')
+Fetch error: http://rad.atdmt.com/ => https://rad.atdmt.com/: (51, "SSL: no alternative certificate subject name matches target host name 'rad.atdmt.com'")
+Non-2xx HTTP code: http://h.atdmt.com/ (200) => https://h.bing.com/ (403)
+
 	For other Facebook coverage, see Facebook.xml.
 
 
@@ -23,19 +31,22 @@
 	² Server sends no certificate chain, see https://whatsmychaincert.com
 
 
-	Insecure cookies are set for these domains:
+	Insecure cookies are set for these domains: ᶜ
 
 		- .atdmt.com
+
+	ᶜ See https://owasp.org/index.php/SecureFlag
 
 
 	c.atdmt.com sets MUID wildcard cookie on
 	whichever domain it is loaded from.
 
 -->
-<ruleset name="Atdmt.com">
+<ruleset name="Atdmt.com" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
+	<target host="ad.atdmt.com" />
 	<target host="c.atdmt.com" />
 	<target host="c1.atdmt.com" />
 	<target host="clk.atdmt.com" />
@@ -45,6 +56,10 @@
 	<target host="sact.atdmt.com" />
 	<target host="switch.atdmt.com" />
 	<target host="view.atdmt.com" />
+
+		<!--	Sets cookie without Secure:
+							-->
+		<!--test url="http://ad.atdmt.com/m/img;m=;cache=?revenue=&amp;order_id=&amp;qty=&amp;currency_code=&amp;country=&amp;region=&amp;product=" /-->
 
 	<!--	Complications:
 				-->
@@ -61,7 +76,7 @@
 					-->
 	<!--securecookie host="^\.atdmt\.com$" name="^(?:AA002|ATN|MUID)$" /-->
 
-	<securecookie host="" name="." />
+	<securecookie host="." name="." />
 
 
 	<rule from="^http://cdn\.atdmt\.com/"

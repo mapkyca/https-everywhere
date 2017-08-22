@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://resources.4tulemar.com/ => https://resources.4tulemar.com/: (6, 'Could not resolve host: resources.4tulemar.com')
+
 	Mixed content:
 
 		Scripts from:
@@ -21,16 +25,16 @@
 	platform should be removed with Ffx 24.
 
 -->
-<ruleset name="4Tulemar" platform="mixedcontent">
+<ruleset name="4Tulemar" platform="mixedcontent" default_off='failed ruleset test'>
 
 	<target host="4tulemar.com" />
-	<target host="*.4tulemar.com" />
+	<target host="resources.4tulemar.com" />
+	<target host="www.4tulemar.com" />
 
 
 	<securecookie host=".*\.4tulemar\.com$" name=".+" />
 
 
-	<rule from="^http://(resources\.|www\.)?4tulemar\.com/"
-		to="https://$14tulemar.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

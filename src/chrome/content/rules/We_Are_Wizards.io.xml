@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://www.wearewizards.io/ => https://www.wearewizards.io/: (51, "SSL: no alternative certificate subject name matches target host name 'www.wearewizards.io'")
+
 	Fully covered subdomains:
 
 		- (www.)?
@@ -10,13 +14,13 @@
 		- www.blog.wearewizards.io
 
 -->
-<ruleset name="We Are Wizards.io">
+<ruleset name="We Are Wizards.io" default_off='failed ruleset test'>
 
 	<target host="wearewizards.io" />
-	<target host="*.wearewizards.io" />
+	<target host="blog.wearewizards.io" />
+	<target host="www.wearewizards.io" />
 
 
-	<rule from="^http://(blog\.|www\.)?wearewizards\.io/"
-		to="https://$1wearewizards.io/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

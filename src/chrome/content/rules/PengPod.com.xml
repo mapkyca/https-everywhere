@@ -2,16 +2,15 @@
 	(www.)?: Refused
 
 -->
-<ruleset name="PengPod.com" default_off="connection refused">
+<ruleset name="PengPod.com" default_off="refused">
 
 	<target host="pengpod.com" />
-	<target host="*.pengpod.com" />
+	<target host="www.pengpod.com" />
 
 
 	<securecookie host="^(?:.*\.)?pengpod\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?pengpod\.com/"
-		to="https://$1pengpod.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

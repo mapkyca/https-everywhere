@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://www.annsummers.com/webapp/wcs/stores/servlet/OrderItemDisplay => https://www.annsummers.com/webapp/wcs/stores/servlet/OrderItemDisplay: Too many redirects while fetching 'https://www.annsummers.com/webapp/wcs/stores/servlet/OrderItemDisplay'
+
 	Other Ann Summers rulesets:
 
 		- Ann_Summers_Jobs.xml
@@ -11,11 +15,16 @@
 
 		- careers	(works; mismatched, CN: *.gridserver.com)
 
--->
-<ruleset name="Ann Summers.com (partial)">
 
-	<!--	Direct rewrites:
-				-->
+	Insecure cookies are set for these hosts: ᶜ
+
+		- www.annsummers.com
+
+	ᶜ See https://owasp.org/index.php/SecureFlag
+
+-->
+<ruleset name="Ann Summers.com (partial)" default_off='failed ruleset test'>
+
 	<target host="annsummers.com" />
 	<target host="www.annsummers.com" />
 
@@ -29,7 +38,7 @@
 		<!--
 			In sum:
 				-->
-		<exclusion pattern="^http://www\.annsummers\.com/+(?:$|\?|c/|page/|store)" />
+		<exclusion pattern="^http://(?:www\.)?annsummers\.com/+(?:$|\?|c/|page/|store)" />
 
 			<!--	Not sensitive info, no sirree:
 								-->
@@ -51,6 +60,10 @@
 			<test url="http://www.annsummers.com/wcsstore/SharedStoreFront/Custom/css/site.css" />
 			<test url="http://www.annsummers.com/webapp/wcs/stores/servlet/OrderItemDisplay" />
 
+
+	<!--	Not secured by server:
+					-->
+	<!--securecookie host="^www\.annsummers\.com$" name="^(?:cqcid|(?:dwac|dwanonymous|personalization)_[\da-f]{32}|dwsid|sid)$" /-->
 
 	<!--securecookie host="^(?:www)?\.annsummers\.com$" name=".+" /-->
 

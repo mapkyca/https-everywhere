@@ -1,25 +1,31 @@
 <!--
-	^yeah.net: Refused
+	403:
+		yxplus.yeah.net
 
+	Complications:
+		^mail.yeah.net
+			- Redirect to http:
+				/$
+			- MCB:
+				- mail.yeah.net/index.htm
+			- HTTPS:
+				/favicon.ico
+
+	Invalid certificate: Too much to list them all.
+		^
+		www.yeah.net
+		ming.yeah.net
+		wap.yeah.net
 -->
-<ruleset name="Yeah.net" default_off="mismatched">
+<ruleset name="Yeah.net (partial)">
 
-	<!--	Direct rewrites:
-				-->
-	<target host="www.yeah.net" />
+	<target host="passport.yeah.net" />
 
-	<!--	Complications:
-				-->
-	<target host="yeah.net" />
+	<!--	Complications:	-->
+	<target host="mail.yeah.net" />
+		<exclusion pattern="^http://mail\.yeah\.net/(?!favicon\.ico)" />
+			<test url="http://mail.yeah.net/favicon.ico" />
+			<test url="http://mail.yeah.net/index.htm" />
 
-
-	<securecookie host="^\w" name="." />
-
-
-	<rule from="^http://yeah\.net/"
-		to="https://www.yeah.net/" />
-
-	<rule from="^http:"
-		to="https:" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

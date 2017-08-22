@@ -1,7 +1,14 @@
-<ruleset name="evanced.info">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://evanced.info/ => https://evanced.info/: (51, "SSL: no alternative certificate subject name matches target host name 'evanced.info'")
+
+-->
+<ruleset name="evanced.info" default_off='failed ruleset test'>
 
 	<target host="evanced.info" />
-	<target host="*.evanced.info" />
+	<target host="ca.evanced.info" />
+	<target host="www.evanced.info" />
 
 
 	<!--	Not secured by server:
@@ -11,7 +18,6 @@
 	<securecookie host="^(?:ca\.)?evanced\.info$" name=".+" />
 
 
-	<rule from="^http://(ca\.|www\.)evanced\.info/"
-		to="https://$1evanced.info/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

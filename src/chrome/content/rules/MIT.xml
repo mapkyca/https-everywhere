@@ -1,4 +1,12 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://eecs-search.eecs.mit.edu/ => https://eecs-search.eecs.mit.edu/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://mitsloan.mit.edu/ => https://mitsloan.mit.edu/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://reap.mit.edu/ => https://reap.mit.edu/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://sdm-admissions.mit.edu/ => https://sdm-admissions.mit.edu/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://webpub.mit.edu/ => https://webpub.mit.edu/: (6, 'Could not resolve host: webpub.mit.edu')
+
 	Massachusetts Institute of Technology
 
 	For rules causing false/broken MCB, see MIT.edu-falsemixed.xml.
@@ -8,6 +16,8 @@
 	Other MIT rulesets:
 
 		- MIT_Press_Journals.org.xml
+		- TechnologyReview.xml
+		- technologyreview.in.xml
 		- Touchstone_Network.xml
 
 
@@ -27,8 +37,8 @@
 		- arts ²
 		- artscal ³
 		- cesf ²
-		- civic ²
 		- classics ⁴
+		- cmsw ⁷
 		- connect ³
 
 		- bigdata.csail ⁵
@@ -115,6 +125,7 @@
 		- itinfo ⁶
 		- libguides	(LibGuides.com/mismatched)
 		- media		(Cert only matches *.media)
+		- tmg-trackr.media ² ᵐ **
 		- pdos.csail
 		- mlkscholars ⁴
 		- president	(Mixed iframe)
@@ -125,9 +136,10 @@
 		- techtime ⁸
 		- tgcat ¹ ²
 		- webmail ᶜ
-		- wwww *
+		- www *
 
 	* Redirects to https://web
+	** Some paths 404
 	¹ Self-signed
 	² Expired
 	³ Handshake fails
@@ -236,6 +248,7 @@
 
 		- css, on:
 
+			- hacks from $self
 			- tll from fast.fonts.com *
 			- libraries, mitstory from fonts.googleapis.com *
 			- reap from netdna.bootstrapcdn.com *
@@ -243,6 +256,10 @@
 
 		- Images, on:
 
+			- civic from cmsw.mit.edu
+			- civic from hacks.mit.edu
+			- civic from tech.mit.edu
+			- hacks from $self
 			- idm from $self *
 			- lgosdm from sdm *
 			- llwebprod2.ll, www.ll from www.ll *
@@ -262,6 +279,7 @@
 		- Ads/bugs, on:
 
 			- executive from pixel.fetchback.com *
+			- hacks from stuff.mit.edu
 			- mit-amps from counter ³
 			- scripts from www.kaltura.com *
 
@@ -270,7 +288,7 @@
 	³ Rule disabled by default <= expired & self-signed
 
 -->
-<ruleset name="MIT.edu (partial)">
+<ruleset name="MIT.edu (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
@@ -283,6 +301,7 @@
 	<target host="ca.mit.edu" />
 	<target host="calendars.mit.edu" />
 	<target host="chemefacsrch.mit.edu" />
+	<target host="civic.mit.edu" />
 	<target host="connect.mit.edu" />
 
 	<target host="calendar.csail.mit.edu" />
@@ -411,6 +430,14 @@
 					-->
 			<test url="http://calendars.mit.edu/Ewf/VersionedStaticFiles/Backgrounds-v2/Darker.svg" />
 			<test url="http://calendars.mit.edu/Pages/SignUp/Page.aspx" />
+
+		<!--	404:
+				-->
+		<!--test url="http://tmg-trackr.media.mit.edu/publishedmedia/Papers/604-HydroMorph%20Shape%20Changing%20Water/Published/PDF" /-->
+
+		<!--	Mixed images:
+					-->
+		<!--test url="http://civic.mit.edu/blog/erhardt/forbidden-research-liveblog-hacking-culture-at-mit" /-->
 
 
 	<!--	Not secured by server:

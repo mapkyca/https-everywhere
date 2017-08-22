@@ -8,6 +8,7 @@
 		- Habrastorage.org.xml
 		- Hsto.org.xml
 		- Hstor.org.xml
+		- megamozg.ru.xml
 		- Toster.ru.xml
 
 
@@ -27,7 +28,6 @@
 	<securecookie host="^id\.tmtm\.ru$" name=".+" />
 
 
-	<rule from="^http://id\.tmtm\.ru/"
-		to="https://id.tmtm.ru/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

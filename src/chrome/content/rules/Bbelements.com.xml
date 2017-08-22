@@ -1,12 +1,16 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://go.pol.bbelements.com/ => https://go.pol.bbelements.com/: (6, 'Could not resolve host: go.pol.bbelements.com')
+
 	(www.)?bbelements.com: Refused
 
 
-	Problematic subdomains:
+	Problematic hosts in *bbelements.com:
 
 		- go.arbopl ¹
 		- go.cz		(mismatched, CN: go.eu.bbelements.com)
-		- go.idmnet ³
+		- go.evolutionmedia ²
 		- go.pl ²
 
 	¹ Mismatched, CN: go.goldbachpoland.bbelements.com
@@ -22,12 +26,13 @@
 		- . . .
 
 -->
-<ruleset name="bbelements.com (partial)">
+<ruleset name="bbelements.com (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
 	<target host="go.eu.bbelements.com" />
 	<target host="go.goldbachpoland.bbelements.com" />
+	<target host="go.idmnet.bbelements.com" />
 	<target host="go.pol.bbelements.com" />
 
 	<!--	Complications:
@@ -41,7 +46,7 @@
 					-->
 	<!--securecookie host="^\.go\.\w+\.bbelements\.com$" name="^(?:bm2|bm2uu|bmsaw1)$" /-->
 
-	<securecookie host="^\.go\.\w+\.bbelements\.com$" name=".+" />
+	<securecookie host="^\.go\." name="." />
 
 
 	<rule from="^http://go\.arbopl\.bbelements\.com/"

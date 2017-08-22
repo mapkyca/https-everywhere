@@ -1,14 +1,11 @@
 <!--
-	Other AOL rulesets:
-
-		- AOL.xml
-		- AOL-Advertising.xml
+	For rules that are on by default, see AOL.xml.
 
 
 	ToDo: find Akamai buckets.
 
 -->
-<ruleset name="AOL (mismatches)" default_off="mismatch">
+<ruleset name="AOL (mismatches)" default_off="mismatched">
 
 	<!--	Akamai	-->
 	<!--	cert: misc.blogsmith.aol.com	-->

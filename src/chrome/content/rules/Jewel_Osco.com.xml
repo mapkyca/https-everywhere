@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://jewelosco.com/ => https://jewelosco.com/: (51, "SSL: no alternative certificate subject name matches target host name 'jewelosco.com'")
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://jewelosco.com/ => https://jewelosco.com/: (51, "SSL: no alternative certificate subject name matches target host name 'jewelosco.com'")
 	^: cert only matches www
@@ -23,7 +27,6 @@ Fetch error: http://jewelosco.com/ => https://jewelosco.com/: (51, "SSL: no alte
 	<target host="www.jewelosco.com" />
 
 
-	<rule from="^http://(www\.)?jewelosco\.com/"
-		to="https://$1jewelosco.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

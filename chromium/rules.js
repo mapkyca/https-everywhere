@@ -1,6 +1,10 @@
 "use strict";
 // Stubs so this runs under nodejs. They get overwritten later by util.js
-var DBUG = 1;
+var VERB=1;
+var DBUG=2;
+var INFO=3;
+var NOTE=4;
+var WARN=5;
 function log(){}
 
 // To reduce memory usage for the numerous rules/cookies with trivial rules
@@ -85,8 +89,8 @@ RuleSet.prototype = {
     var returl = null;
     // If we're covered by an exclusion, go home
     if (this.exclusions !== null) {
-      for (var i = 0; i < this.exclusions.length; ++i) {
-        if (this.exclusions[i].pattern_c.test(urispec)) {
+      for (let exclusion of this.exclusions) {
+        if (exclusion.pattern_c.test(urispec)) {
           log(DBUG, "excluded uri " + urispec);
           return null;
         }
@@ -94,14 +98,72 @@ RuleSet.prototype = {
     }
 
     // Okay, now find the first rule that triggers
-    for(var i = 0; i < this.rules.length; ++i) {
-      returl = urispec.replace(this.rules[i].from_c,
-                               this.rules[i].to);
+    for (let rule of this.rules) {
+      returl = urispec.replace(rule.from_c,
+                               rule.to);
       if (returl != urispec) {
         return returl;
       }
     }
     return null;
+  },
+
+  /**
+   * Deep equivalence comparison
+   * @param ruleset The ruleset to compare with
+   * @returns true or false, depending on whether it's deeply equivalent
+   */
+  isEquivalentTo: function(ruleset) {
+    if(this.name != ruleset.name ||
+       this.note != ruleset.note ||
+       this.state != ruleset.state ||
+       this.default_state != ruleset.default_state) {
+      return false;
+    }
+
+    try {
+      var this_exclusions_length = this.exclusions.length;
+    } catch(e) {
+      var this_exclusions_length = 0;
+    }
+
+    try {
+      var ruleset_exclusions_length = ruleset.exclusions.length;
+    } catch(e) {
+      var ruleset_exclusions_length = 0;
+    }
+
+    try {
+      var this_rules_length = this.rules.length;
+    } catch(e) {
+      var this_rules_length = 0;
+    }
+
+    try {
+      var ruleset_rules_length = ruleset.rules.length;
+    } catch(e) {
+      var ruleset_rules_length = 0;
+    }
+
+    if(this_exclusions_length != ruleset_exclusions_length ||
+       this_rules_length != ruleset_rules_length) {
+      return false;
+    }
+    if(this_exclusions_length > 0) {
+      for(let x = 0; x < this.exclusions.length; x++){
+        if(this.exclusions[x].pattern_c != ruleset.exclusions[x].pattern_c) {
+          return false;
+        }
+      }
+    }
+    if(this_rules_length > 0) {
+      for(let x = 0; x < this.rules.length; x++){
+        if(this.rules[x].to != ruleset.rules[x].to) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
 };
@@ -123,9 +185,6 @@ function RuleSets(ruleActiveStates) {
 
   // A hash of rule name -> active status (true/false).
   this.ruleActiveStates = ruleActiveStates;
-
-  // A regex to match platform-specific features
-  this.localPlatformRegexp = new RegExp("chromium");
 }
 
 
@@ -135,9 +194,9 @@ RuleSets.prototype = {
    */
   addFromXml: function(ruleXml) {
     var sets = ruleXml.getElementsByTagName("ruleset");
-    for (var i = 0; i < sets.length; ++i) {
+    for (let s of sets) {
       try {
-        this.parseOneRuleset(sets[i]);
+        this.parseOneRuleset(s);
       } catch (e) {
         log(WARN, 'Error processing ruleset:' + e);
       }
@@ -168,6 +227,24 @@ RuleSets.prototype = {
   },
 
   /**
+   * Remove a user rule
+   * @param params
+   * @returns {boolean}
+   */
+  removeUserRule: function(ruleset) {
+    log(INFO, 'removing user rule for ' + JSON.stringify(ruleset));
+    this.ruleCache.delete(ruleset.name);
+    this.targets[ruleset.name] = this.targets[ruleset.name].filter(r =>
+      !(r.isEquivalentTo(ruleset))
+    );
+    if (this.targets[ruleset.name].length == 0) {
+      delete this.targets[ruleset.name];
+    }
+    log(INFO, 'done removing rule');
+    return true;
+  },
+
+  /**
    * Does the loading of a ruleset.
    * @param ruletag The whole <ruleset> tag to parse
    */
@@ -184,8 +261,9 @@ RuleSets.prototype = {
     // off-by-default. In practice, this excludes "mixedcontent" & "cacert" rules.
     var platform = ruletag.getAttribute("platform");
     if (platform) {
-      if (platform.search(this.localPlatformRegexp) == -1) {
-        default_state = false;
+      default_state = false;
+      if (platform == "mixedcontent" && enableMixedRulesets) {
+        default_state = true;
       }
       note += "Platform(s): " + platform + "\n";
     }
@@ -200,33 +278,33 @@ RuleSets.prototype = {
     }
 
     var rules = ruletag.getElementsByTagName("rule");
-    for(var j = 0; j < rules.length; j++) {
-      rule_set.rules.push(new Rule(rules[j].getAttribute("from"),
-                                    rules[j].getAttribute("to")));
+    for (let rule of rules) {
+      rule_set.rules.push(new Rule(rule.getAttribute("from"),
+                                    rule.getAttribute("to")));
     }
 
     var exclusions = ruletag.getElementsByTagName("exclusion");
     if (exclusions.length > 0) {
       rule_set.exclusions = [];
-      for (var j = 0; j < exclusions.length; j++) {
+      for (let exclusion of exclusions) {
         rule_set.exclusions.push(
-            new Exclusion(exclusions[j].getAttribute("pattern")));
+          new Exclusion(exclusion.getAttribute("pattern")));
       }
     }
 
     var cookierules = ruletag.getElementsByTagName("securecookie");
     if (cookierules.length > 0) {
       rule_set.cookierules = [];
-      for(var j = 0; j < cookierules.length; j++) {
+      for (let cookierule of cookierules) {
         rule_set.cookierules.push(
-            new CookieRule(cookierules[j].getAttribute("host"),
-                cookierules[j].getAttribute("name")));
+          new CookieRule(cookierule.getAttribute("host"),
+            cookierule.getAttribute("name")));
       }
     }
 
     var targets = ruletag.getElementsByTagName("target");
-    for(var j = 0; j < targets.length; j++) {
-       var host = targets[j].getAttribute("host");
+    for (let target of targets) {
+       var host = target.getAttribute("host");
        if (!(host in this.targets)) {
          this.targets[host] = [];
        }
@@ -255,10 +333,16 @@ RuleSets.prototype = {
       results = results.concat(this.targets[host]);
     }
 
+    // Ensure host is well-formed (RFC 1035)
+    if (host.indexOf("..") != -1 || host.length > 255) {
+      log(WARN,"Malformed host passed to potentiallyApplicableRulesets: " + host);
+      return null;
+    }
+
     // Replace each portion of the domain with a * in turn
     var segmented = host.split(".");
-    for (var i = 0; i < segmented.length; ++i) {
-      tmp = segmented[i];
+    for (let i=0; i < segmented.length; i++) {
+      let tmp = segmented[i];
       segmented[i] = "*";
       results = results.concat(this.targets[segmented.join(".")]);
       segmented[i] = tmp;
@@ -314,8 +398,8 @@ RuleSets.prototype = {
     var potentiallyApplicable = this.potentiallyApplicableRulesets(hostname);
     for (let ruleset of potentiallyApplicable) {
       if (ruleset.cookierules !== null && ruleset.active) {
-        for (var j = 0; j < ruleset.cookierules.length; j++) {
-          var cr = ruleset.cookierules[j];
+        for (let cookierules of ruleset.cookierules) {
+          var cr = cookierules;
           if (cr.host_c.test(cookie.domain) && cr.name_c.test(cookie.name)) {
             return ruleset;
           }

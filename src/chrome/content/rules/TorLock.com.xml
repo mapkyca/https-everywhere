@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://cdn.torlock.com/ => https://tlock-16e3.kxcdn.com/: (51, "SSL: no alternative certificate subject name matches target host name 'tlock-16e3.kxcdn.com'")
+
 	CDN buckets:
 
 		- tlock-16e3.kxcdn.com
@@ -19,13 +23,12 @@
 	Mixed content:
 
 		- Images from cdn.torlock.com *
-		- Bug from sstatic1.histats.com ²
+		- Bug from sstatic1.histats.com *
 
 	* Secured by us
-	² Unsecurable <= refused
 
 -->
-<ruleset name="TorLock.com">
+<ruleset name="TorLock.com" default_off='failed ruleset test'>
 
 	<target host="torlock.com" />
 	<target host="www.torlock.com" />

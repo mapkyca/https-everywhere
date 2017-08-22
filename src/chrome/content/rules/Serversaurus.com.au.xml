@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://tasha.serversaurus.com.au/ => https://tasha.serversaurus.com.au/: (28, 'Connection timed out after 20000 milliseconds')
+
 	Nonfunctional subdomains:
 
 		- blog *
@@ -11,10 +15,11 @@
 		- www.tasha.serversaurus.com.au
 
 -->
-<ruleset name="Serversaurus.com.au (partial)">
+<ruleset name="Serversaurus.com.au (partial)" default_off='failed ruleset test'>
 
 	<target host="serversaurus.com.au" />
-	<target host="*.serversaurus.com.au" />
+	<target host="tasha.serversaurus.com.au" />
+	<target host="www.serversaurus.com.au" />
 
 
 	<!--	Not secured by server:
@@ -24,7 +29,6 @@
 	<securecookie host="^(?:www\.)?serversaurus\.com\.au$" name=".+" />
 
 
-	<rule from="^http://(tasha\.|www\.)?serversaurus\.com\.au/"
-		to="https://$1serversaurus.com.au/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://tehtri-security.com/ => https://tehtri-security.com/: (6, 'Could not resolve host: tehtri-security.com')
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://tehtri-security.com/ => https://tehtri-security.com/: (6, 'Could not resolve host: tehtri-security.com')
 	Mixed content:
@@ -20,7 +24,6 @@ Fetch error: http://tehtri-security.com/ => https://tehtri-security.com/: (6, 'C
 	<target host="www.tehtri-security.com" />
 
 
-	<rule from="^http://(www\.)?tehtri-security\.com/"
-		to="https://$1tehtri-security.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

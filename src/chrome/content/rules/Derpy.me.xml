@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://piwik.derpy.me/ => https://piwik.derpy.me/: (6, 'Could not resolve host: piwik.derpy.me')
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://piwik.derpy.me/ => https://piwik.derpy.me/: (60, 'SSL certificate problem: self signed certificate in certificate chain')
 	www doesn't exist.
@@ -28,7 +32,6 @@ Fetch error: http://piwik.derpy.me/ => https://piwik.derpy.me/: (60, 'SSL certif
 	<securecookie host="^derpy\.me$" name=".+" />
 
 
-	<rule from="^http://(piwik\.)?derpy\.me/"
-		to="https://$1derpy.me/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

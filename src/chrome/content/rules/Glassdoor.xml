@@ -1,45 +1,68 @@
 <!--
-	Problematic domains:
 
-		- glassdoor.ca *
-		- ads.glassdoor.com	(cloudfront)
-		- glassdoor.com.au *
-		- glassdoor.co.in *
-		- glassdoor.co.uk *
+	Other Glassdoor rulesets:
 
-	* Mismatched, CN: *.glassdoor.com
+		- glassdoor.ca.xml
+		- glassdoor.co.in.xml
+		- glassdoor.co.uk.xml
+		- glassdoor.com.au.xml
 
 
-	Partially covered subdomains:
+	CDN buckets:
 
-		- (www.)	(some pages redirect to http)
+		- d3uryx0fdgatve.cloudfront.net
+
+
+	Nonfunctional hosts in *glassdoor.com:
+
+		- help ʰ
+		- blog-content ʰ
+		- jobs ¹
+		- resources ᵃ ²
+
+	¹ 521
+	² 403
+	ᵃ Marketo / shows another domain
+	ʰ Redirects to http
+
+
+	Insecure cookies are set for these domains and hosts: ᶜ
+
+		- glassdoor.com
+		- .glassdoor.com
+		- www.glassdoor.com
+
+	ᶜ See https://owasp.org/index.php/SecureFlag
 
 -->
-<ruleset name="Glassdoor (partial)">
+<ruleset name="Glassdoor.com (partial)">
 
+	<!--	Direct rewrites:
+				-->
 	<target host="glassdoor.com" />
-	<target host="*.glassdoor.com" />
-		<exclusion pattern="^http://(?:www\.)?glassdoor\.c(?:a|om|om\.au|o\.in|o\.uk)/(?!images/|profile/)" />
-	<target host="glassdoor.com.au" />
-	<target host="*.glassdoor.com.au" />
-	<target host="glassdoor.co.*" />
-	<target host="*.glassdoor.co.in" />
-	<target host="*.glassdoor.co.uk" />
+	<target host="ads.glassdoor.com" />
+	<target host="b2b-assets.glassdoor.com" />
+	<target host="static.glassdoor.com" />
+	<target host="static1.glassdoor.com" />
+	<target host="static2.glassdoor.com" />
+	<target host="static3.glassdoor.com" />
+	<target host="static4.glassdoor.com" />
+	<target host="static5.glassdoor.com" />
+	<target host="media.glassdoor.com" />
+	<target host="www.glassdoor.com" />
 
+	<!--    Not secured by server:
+					-->
+	<!--securecookie host="^glassdoor\.com$" name="^ARPNTS$" /-->
+	<!--securecookie host="^\.glassdoor\.com$" name="^(?:__cfduid|cf_clearance)$" /-->
+	<!--securecookie host="^www\.glassdoor\.com$" name="^(?:_uac|ARPNTS|gdId)$" /-->
 
-	<securecookie host="^static\.glassdoor\.com$" name=".+" />
+	<securecookie host=".+" name=".+" />
 
+	<!--	Redirect drops forward slash and args:
+							-->
 
-	<rule from="^http://(media\.|static\.|www\.)?glassdoor\.com/"
-		to="https://$1glassdoor.com/" />
-
-	<rule from="^http://ads\.glassdoor\.com/"
-		to="https://d3uryx0fdgatve.cloudfront.net/" />
-
-	<rule from="^http://glassdoor\.c(a|om\.au|o\.in|o\.uk)/"
-		to="https://www.glassdoor.c$1/" />
-
-	<rule from="^http://(static|www)\.glassdoor\.c(a|om\.au|o\.in|o\.uk)/"
-		to="https://$1.glassdoor.c$2/" />
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>

@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://schuilenburg.org/ => https://schuilenburg.org/: (28, 'Connection timed out after 20000 milliseconds')
+Fetch error: http://www.schuilenburg.org/ => https://www.schuilenburg.org/: (28, 'Connection timed out after 20000 milliseconds')
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://schuilenburg.org/ => https://schuilenburg.org/: (60, 'SSL certificate problem: unable to get local issuer certificate')
 Fetch error: http://www.schuilenburg.org/ => https://www.schuilenburg.org/: (60, 'SSL certificate problem: unable to get local issuer certificate')
@@ -16,7 +21,6 @@ Fetch error: http://www.schuilenburg.org/ => https://www.schuilenburg.org/: (60,
 	<securecookie host="^(?:www\.)?schuilenburg\.org$" name=".+" />
 
 
-	<rule from="^http://(www\.)?schuilenburg\.org/"
-		to="https://$1schuilenburg.org/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

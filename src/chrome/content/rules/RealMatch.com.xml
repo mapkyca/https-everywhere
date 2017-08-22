@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://realmatch.com/ => https://realmatch.com/: (51, "SSL: no alternative certificate subject name matches target host name 'realmatch.com'")
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://realmatch.com/ => https://realmatch.com/: (51, "SSL: no alternative certificate subject name matches target host name 'realmatch.com'")
 	Nonfunctional subdomains:
@@ -9,14 +13,13 @@ Fetch error: http://realmatch.com/ => https://realmatch.com/: (51, "SSL: no alte
 <ruleset name="RealMatch.com (partial)" default_off='failed ruleset test'>
 
 	<target host="realmatch.com" />
-	<target host="*.realmatch.com" />
+	<target host="www.realmatch.com" />
 
 
 	<securecookie host="^\.realmatch\.com$" name="^__utm\w$" />
 	<securecookie host="^www\.realmatch\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?realmatch\.com/"
-		to="https://$1realmatch.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

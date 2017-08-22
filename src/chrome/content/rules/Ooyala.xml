@@ -34,11 +34,14 @@
 <ruleset name="Ooyala.com (partial)" platform="mixedcontent">
 
 	<target host="ak-c.ooyala.com" />
+	<target host="api.ooyala.com" />
 	<target host="backlot.ooyala.com" />
 	<target host="cdn-api.ooyala.com" />
 	<target host="extras.ooyala.com" />
 	<target host="info.ooyala.com" />
 	<target host="l.ooyala.com" />
+	<target host="opf.ooyala.com" />
+	<target host="player.ooyala.com" />
 	<target host="www.ooyala.com" />
 
 	<!--	Complications:
@@ -51,11 +54,9 @@
 							-->
 		<exclusion pattern="crossdomain\.xml$" />
 	<test url="http://www.ooyala.com/crossdomain.xml" />
+	<test url="http://api.ooyala.com/docs/v2/" />
 
 	<securecookie host="^(?:.*\.)?ooyala\.com$" name=".+" />
-
-	<rule from="^http://ooyala\.com/"
-		to="https://www.ooyala.com/" />
 
 	<rule from="^http://(?:ak\.)?c\.ooyala\.com/"
 		to="https://ak-c.ooyala.com/" />

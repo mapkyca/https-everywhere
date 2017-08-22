@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://vpnincome.com/ => https://vpnincome.com/: (28, 'Connection timed out after 20001 milliseconds')
+Fetch error: http://www.vpnincome.com/ => https://www.vpnincome.com/: (28, 'Connection timed out after 20001 milliseconds')
+
 	Fully covered domains:
 
 		- (www.)in-disguise.com
@@ -6,12 +11,13 @@
 		- (www.)wpnincome.com
 
 -->
-<ruleset name="in-Disguise.com">
+<ruleset name="in-Disguise.com" default_off='failed ruleset test'>
 
 	<target host="in-disguise.com" />
-	<target host="*.in-disguise.com" />
+	<target host="my.in-disguise.com" />
+	<target host="www.in-disguise.com" />
 	<target host="vpnincome.com" />
-	<target host="*.vpnincome.com" />
+	<target host="www.vpnincome.com" />
 
 
 	<!--securecookie host="^(my)?\.in-disguise\.com$" name=".+" /-->
@@ -19,12 +25,10 @@
 	<securecookie host="^(?:my)?\.(?:in-disguise|vpn-income)\.com$" name=".+" />
 
 
-	<rule from="^http://(my\.|www\.)?in-disguise\.com/"
-		to="https://$1in-disguise.com/" />
+	<rule from="^http:" to="https:" />
 
 	<!--	Simply redirects to in-disguise.com:
 							-->
-	<rule from="^http://(www\.)?vpnincome\.com/"
-		to="https://$1vpnincome.com/" />
+	
 
 </ruleset>

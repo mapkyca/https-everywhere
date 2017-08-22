@@ -1,27 +1,19 @@
+
 <!--
-	(www.): refused
+Disabled by https-everywhere-checker because:
+Fetch error: http://system.casalemedia.com/ => https://system.casalemedia.com/: (60, 'SSL certificate problem: certificate has expired')
+
+	(www.)?casalemedia.com: Refused
 
 
 	Problematic hosts in *casalemedia.com:
 
 		- ip *
 
-	* Akamai
+	* Akamai / mismatched
 
 
-	Fully covered subdomains:
-
-		- as-sec
-		- dsum-sec
-		- ip		(→ as-sec)
-		- js-sec
-		- r
-		- r-sec
-		- ssum-sec
-		- system
-
-
-	These altnames don't exist:
+	These altnames do not exist:
 
 		- r-ssl.casalemedia.com
 		- san.casalemedia.com
@@ -32,7 +24,7 @@
 		- .casalemedia.com
 
 -->
-<ruleset name="Casale Media.com (partial)">
+<ruleset name="Casale Media.com (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
@@ -53,7 +45,7 @@
 					-->
 	<!--securecookie host="^\.casalemedia\.com$" name="^(CMID|CMPS)" /-->
 
-	<securecookie host=".*\.casalemedia\.com$" name=".+" />
+	<securecookie host="." name="." />
 
 
 	<rule from="^http://ip\.casalemedia\.com/"

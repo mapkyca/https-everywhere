@@ -1,5 +1,19 @@
 
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://api-yaru.yandex.net/ => https://api-yaru.yandex.net/: (51, "SSL: no alternative certificate subject name matches target host name 'api-yaru.yandex.net'")
+Fetch error: http://browser.yandex.net/ => https://browser.yandex.net/: (6, 'Could not resolve host: browser.yandex.net')
+Fetch error: http://www.browser.yandex.net/ => https://browser.yandex.net/: (6, 'Could not resolve host: browser.yandex.net')
+Fetch error: http://a.captcha.yandex.net/ => https://a.captcha.yandex.net/: (6, 'Could not resolve host: a.captcha.yandex.net')
+Fetch error: http://tv-front.content.yandex.net/ => https://tv-front.content.yandex.net/: (51, "SSL: no alternative certificate subject name matches target host name 'tv-front.content.yandex.net'")
+Fetch error: http://hotels-proxy.yandex.net/ => https://hotels-proxy.yandex.net/: (6, 'Could not resolve host: hotels-proxy.yandex.net')
+Fetch error: http://review-api-external.http.yandex.net/ => https://review-api-external.http.yandex.net/: (6, 'Could not resolve host: review-api-external.http.yandex.net')
+Fetch error: http://mdata.yandex.net/ => https://mdata.yandex.net/: (28, 'Connection timed out after 20001 milliseconds')
+Fetch error: http://xss.yandex.net/ => https://xss.yandex.net/: (7, 'Failed to connect to xss.yandex.net port 443: Connection timed out')
+
+-->
+
+<!--
 	For other Yandex coverage, see Yandex.xml.
 
 
@@ -21,7 +35,6 @@
 		- img.encyc *
 		- vec0[1-4].maps ⁴
 		- static.video ⁵
-		- st.kp 6
 
 	¹ 404
 	² Mismatched
@@ -30,7 +43,6 @@
 	* Mismatched, CN: yastatic.net
 	⁴ Unspecified effect[?]
 	⁵ Apparently breaks video
-	6 Breaks charts on kinopoisk
 
 
 	Fully covered subdomains:
@@ -84,6 +96,7 @@
 			- img
 			- img[1-7]-fotki
 			- imgl
+			- st.kp
 			- audio.lingvo
 			- webattach.mail
 			- mailstatic
@@ -141,7 +154,7 @@
 	* Secured by us
 
 -->
-<ruleset name="Yandex.net (partial)">
+<ruleset name="Yandex.net (partial)" default_off='failed ruleset test'>
 
 	<target host="yandex.net" />
 	<target host="*.yandex.net" />
@@ -182,9 +195,11 @@
 		<!--
 			Needed for kinopoisk charts to work:
 								-->
-		<exclusion pattern="^http://st\.kp\.yandex\.net/" />
+		<exclusion pattern="^http://st\.kp\.yandex\.net/crossdomain\.xml" />
+		<exclusion pattern="^http://st\.kp\.yandex\.net/shab/chart_settings/" />
 
-			<test url="http://st.kp.yandex.net/" />
+			<test url="http://st.kp.yandex.net/crossdomain.xml" />
+			<test url="http://st.kp.yandex.net/shab/chart_settings/votes_graph_settings.xml" />
 
 		<!--
 			Miscellaneous:
@@ -232,6 +247,7 @@
 		<test url="http://img.yandex.net/" />
 		<test url="http://img1-fotki.yandex.net/" />
 		<test url="http://imgl.yandex.net/" />
+		<test url="http://st.kp.yandex.net/" />
 		<test url="http://audio.lingvo.yandex.net/" />
 		<test url="http://webattach.mail.yandex.net/" />
 		<test url="http://mailstatic.yandex.net/" />
@@ -288,16 +304,4 @@
 						-->
 	<rule from="^http://([^.]+)\.([^.]+)\.yandex\.net/"
 		to="https://$1.$2.yandex.net/" />
-
-
-	<!--	Timeout
-
-		Example: https://market.yandex.ru/search.xml?text=draytek&hid=91083&srnum=233
-		List: https://mail1.eff.org/pipermail/https-everywhere-rules/2012-April/001094.html
-				-->
-	<rule from="^https://cs-ellpic\.yandex\.net/"
-		to="http://cs-ellpic.yandex.net/" downgrade="1" />
-
-		<test url="https://cs-ellpic.yandex.net/" />
-
 </ruleset>

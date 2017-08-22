@@ -1,10 +1,15 @@
-<ruleset name="Two Sigma.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://twosigma.com/ => https://twosigma.com/: (6, 'Could not resolve host: twosigma.com')
+
+-->
+<ruleset name="Two Sigma.com" default_off='failed ruleset test'>
 
 	<target host="twosigma.com" />
 	<target host="www.twosigma.com" />
 
 
-	<rule from="^http://(www\.)?twosigma\.com/"
-		to="https://$1twosigma.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

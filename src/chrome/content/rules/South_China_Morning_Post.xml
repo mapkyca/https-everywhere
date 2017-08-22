@@ -1,19 +1,13 @@
 <!--
-	Problematic subdomains:
-
-		- ^	(cert only matches *.scmp.com)
-
-
-	Some pages redirect to http
-
+	Redirect to http:
+		^scmp.com
+		www.scmp.com
 -->
 <ruleset name="South China Morning Post (partial)">
+	<target host="cdn1.i-scmp.com" />
+	<target host="cdn2.i-scmp.com" />
+	<target host="cdn3.i-scmp.com" />
+	<target host="cdn4.i-scmp.com" />
 
-	<target host="scmp.com" />
-	<target host="www.scmp.com" />
-
-
-	<rule from="^http://(?:www\.)?scmp\.com/(esi/messages\.php|misc/|modules/|sites/)"
-		to="https://www.scmp.com/$1" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

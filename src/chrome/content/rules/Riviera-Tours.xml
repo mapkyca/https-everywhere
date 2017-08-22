@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://rivieratours.com/ => https://rivieratours.com/: (51, "SSL: no alternative certificate subject name matches target host name 'rivieratours.com'")
+Fetch error: http://www.rivieratours.com/ => https://www.rivieratours.com/: (51, "SSL: no alternative certificate subject name matches target host name 'www.rivieratours.com'")
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://rivieratours.com/ => https://rivieratours.com/: (60, 'SSL certificate problem: unable to get local issuer certificate')
 Fetch error: http://www.rivieratours.com/ => https://www.rivieratours.com/: (60, 'SSL certificate problem: unable to get local issuer certificate')
@@ -10,7 +15,6 @@ Fetch error: http://www.rivieratours.com/ => https://www.rivieratours.com/: (60,
 
 	<securecookie host="^(?:.*\.)?rivieratours\.com$" name=".*"/>
 
-	<rule from="^http://(www\.)?rivieratours\.com/"
-		to="https://$1rivieratours.com/"/>
+	<rule from="^http:" to="https:" />
 
 </ruleset>

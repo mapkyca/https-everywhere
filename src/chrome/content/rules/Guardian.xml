@@ -1,29 +1,29 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://id.guardian.co.uk/ => https://id.guardian.co.uk/: (6, 'Could not resolve host: id.guardian.co.uk')
+Fetch error: http://witness.guardian.co.uk/ => https://witness.guardian.co.uk/: (6, 'Could not resolve host: witness.guardian.co.uk')
+
 	For other Guardian rulesets, see Guardian.xml.
 
 
 	CDN buckets:
 
+		- oase00824.247realmedia.com	← oas
 		- guardian.co.uk.112.2o7.net
 		- m.guardian.co.uk.global.prod.fastly.net
 		- syndication.guardian.co.uk.global.prod.fastly.net
 		- syndweb.guardian.co.uk.global.prod.fastly.net
 		- www.guardian.co.uk.global.prod.fastly.net
-
-		- ghs.googlehosted.com
-
-			- discussion.guardian.co.uk
-
-		- guardian.co.uk.d1.sc.omtrdc.net
-
-			- hits.guardian.co.uk
+		- ghs.googlehosted.com	← discussion.guardian.co.uk
+		- guardian.co.uk.d1.sc.omtrdc.net	← hits.guardian.co.uk
 
 
 	Nonfunctional hosts in *guardian.co.uk:
 
 		- discussion *
 
-	* Interrupted
+	* Handshake fails
 
 
 	Problematic hosts in *guardian.co.uk:
@@ -33,6 +33,7 @@
 		- hits ²
 		- image ²
 		- m ²
+		- oas ²
 		- register ²
 		- soulmates ²
 		- syndication ³
@@ -54,12 +55,11 @@
 		- .guardian.co.uk
 
 -->
-<ruleset name="Guardian.co.uk (partial)">
+<ruleset name="Guardian.co.uk (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
 	<target host="id.guardian.co.uk" />
-	<target host="oas.guardian.co.uk" />
 	<target host="witness.guardian.co.uk" />
 
 	<!--	Complications:
@@ -67,6 +67,7 @@
 	<target host="download.guardian.co.uk" />
 	<target host="hits.guardian.co.uk" />
 	<target host="image.guardian.co.uk" />
+	<target host="oas.guardian.co.uk" />
 	<target host="register.guardian.co.uk" />
 	<target host="soulmates.guardian.co.uk" />
 
@@ -75,8 +76,8 @@
 					-->
 	<!--securecookie host="^\.guardian\.co\.uk$" name="^OAX$" /-->
 
-	<securecookie host="^\.guardian\.co\.uk$" name="^(?:NXCLICK2|OAX|s_.+s)$" />
-	<securecookie host="^(?:oas|\.witness)\.guardian\.co\.uk$" name=".+" />
+	<securecookie host="^\." name="^(?:NXCLICK2|OAX|s_.+s)$" />
+	<securecookie host="^(?:\w|\.witness\.)" name="." />
 
 
 	<rule from="^http://(?:download|image)\.guardian\.co\.uk/"
@@ -84,6 +85,9 @@
 
 	<rule from="^http://hits\.guardian\.co\.uk/"
 		to="https://guardian.d1.sc.omtrdc.net/" />
+
+	<rule from="^http://oas\.guardian\.co\.uk/"
+		to="https://oase00824.247realmedia.com/" />
 
 	<rule from="^http://(register|soulmates)\.guardian\.co\.uk/"
 		to="https://$1.theguardian.com/" />

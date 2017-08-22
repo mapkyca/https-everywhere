@@ -1,10 +1,15 @@
-<ruleset name="Anarplex.net">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://www.anarplex.net/ => https://www.anarplex.net/: (51, "SSL: no alternative certificate subject name matches target host name 'www.anarplex.net'")
+
+-->
+<ruleset name="Anarplex.net" default_off='failed ruleset test'>
 
 	<target host="anarplex.net" />
 	<target host="www.anarplex.net" />
 
 
-	<rule from="^http://(www\.)?anarplex\.net/"
-		to="https://$1anarplex.net/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

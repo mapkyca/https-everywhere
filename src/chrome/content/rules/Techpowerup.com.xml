@@ -1,6 +1,13 @@
-<ruleset name="Techpowerup.com">
-  <target host="techpowerup.com" />
-  <target host="www.techpowerup.com" />
+<!--
+	Other TechPowerUp rulesets:
+		- tpucdn.com.xml
+-->
 
-  <rule from="^http://(?:www\.)?techpowerup\.com/" to="https://www.techpowerup.com/" />
+<ruleset name="Techpowerup.com">
+	<target host="techpowerup.com" />
+	<target host="www.techpowerup.com" />
+
+	<securecookie host=".+" name=".+" />
+
+	<rule from="^http:" to="https:" />
 </ruleset>

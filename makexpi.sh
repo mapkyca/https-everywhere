@@ -16,8 +16,7 @@ APP_NAME=https-everywhere
 #  ./makexpi.sh 0.2.3.development.2
 
 cd "`dirname $0`"
-RULESETS_UNVALIDATED="$PWD/pkg/rulesets.unvalidated.sqlite"
-RULESETS_SQLITE="$PWD/src/defaults/rulesets.sqlite"
+RULESETS_JSON=pkg/rulesets.json
 ANDROID_APP_ID=org.mozilla.firefox
 VERSION=`echo $1 | cut -d "-" -f 2`
 
@@ -55,13 +54,16 @@ if [ -n "$1" ] && [ "$2" != "--no-recurse" ] ; then
   exit 0
 fi
 
-# Only generate the sqlite database if any rulesets have changed. Tried
+# Clean up obsolete ruleset databases, just in case they still exist.
+rm -f src/chrome/content/rules/default.rulesets src/defaults/rulesets.sqlite
+
+# Only generate the ruleset database if any rulesets have changed. Tried
 # implementing this with make, but make is very slow with 15k+ input files.
 needs_update() {
-  find src/chrome/content/rules/ -newer $RULESETS_UNVALIDATED |\
+  find src/chrome/content/rules/ -newer $RULESETS_JSON |\
     grep -q .
 }
-if [ ! -f "$RULESETS_UNVALIDATED" ] || needs_update ; then
+if [ ! -f "$RULESETS_JSON" ] || needs_update ; then
   # This is an optimization to get the OS reading the rulesets into RAM ASAP;
   # it's useful on machines with slow disk seek times; doing several of these
   # at once allows the IO subsystem to seek more efficiently.
@@ -69,8 +71,8 @@ if [ ! -f "$RULESETS_UNVALIDATED" ] || needs_update ; then
     # Those cover everything but it wouldn't matter if they didn't
     nohup cat src/chrome/content/rules/"$firstchar"*.xml >/dev/null 2>/dev/null &
   done
-  echo "Generating sqlite DB"
-  python2.7 ./utils/make-sqlite.py
+  echo "Generating ruleset DB"
+  python2.7 ./utils/make-json.py
 fi
 
 # =============== BEGIN VALIDATION ================
@@ -81,11 +83,7 @@ die() {
   exit 1
 }
 
-# If the unvalidated rulesets have changed, validate and copy to the validated
-# rulesets file.
-if [ "$RULESETS_UNVALIDATED" -nt "$RULESETS_SQLITE" ] ; then
-  bash utils/validate.sh
-fi
+bash utils/validate.sh
 
 # The name/version of the XPI we're building comes from src/install.rdf
 XPI_NAME="pkg/$APP_NAME-`grep em:version src/install.rdf | sed -e 's/[<>]/	/g' | cut -f3`"
@@ -101,8 +99,30 @@ fi
 
 # Prepare packages suitable for uploading to EFF and AMO, respectively.
 [ -d pkg ] || mkdir pkg
-rsync -a --delete --delete-excluded --exclude /chrome/content/rules src/ pkg/xpi-eff
-cp -a translations/* pkg/xpi-eff/chrome/locale/
+rsync -aL --delete --delete-excluded --exclude /chrome/content/rules src/ pkg/xpi-eff
+
+# START: The next lines are for embedded WebExtensions, and can be deleted after the full transition to WebExtensions
+[ -d pkg/xpi-eff/webextension ] || mkdir pkg/xpi-eff/webextension
+rsync -aL --delete chromium/ pkg/xpi-eff/webextension/
+
+mkdir pkg/xpi-eff/webextension/_locales/
+python2.7 utils/chromium-translations.py translations/ pkg/xpi-eff/webextension/_locales/
+python2.7 utils/chromium-translations.py src/chrome/locale/ pkg/xpi-eff/webextension/_locales/
+
+cd pkg/xpi-eff/webextension
+do_not_ship="*.py *.xml icon.jpg"
+rm -f $do_not_ship
+cd ../../..
+
+rm -rf pkg/xpi-eff/chrome/content/rulesets.json
+rm -rf pkg/xpi-eff/chrome/locale
+
+mkdir pkg/xpi-eff/webextension/rules/
+. ./utils/merge-rulesets.sh || exit 1
+
+cp src/$RULESETS pkg/xpi-eff/webextension/rules/default.rulesets
+# END
+
 rsync -a --delete pkg/xpi-eff/ pkg/xpi-amo
 # The AMO version of the package cannot contain the updateKey or updateURL tags.
 # Also, it has a different id than the eff-hosted version, because Firefox now
@@ -128,7 +148,7 @@ rm -f "${XPI_NAME}-amo.xpi"
 python2.7 utils/create_xpi.py -n "${XPI_NAME}-eff.xpi" -x ".build_exclusions" "pkg/xpi-eff"
 python2.7 utils/create_xpi.py -n "${XPI_NAME}-amo.xpi" -x ".build_exclusions" "pkg/xpi-amo"
 
-echo >&2 "Total included rules: `sqlite3 $RULESETS_SQLITE 'select count(*) from rulesets'`"
+echo >&2 "Total included rules: `find src/chrome/content/rules -name "*.xml" | wc -l`"
 echo >&2 "Rules disabled by default: `find src/chrome/content/rules -name "*.xml" | xargs grep -F default_off | wc -l`"
 echo >&2 "Created ${XPI_NAME}-eff.xpi and ${XPI_NAME}-amo.xpi"
 

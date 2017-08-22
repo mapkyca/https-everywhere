@@ -1,37 +1,27 @@
 <!--
-	Problematic hosts in *cragslist.org:
+	Other Craigslist rulesets:
+		- Craigslist.ca.xml
+		- Craigslist.co.uk.xml
 
-		- ^ ¹
-		- www ²
-
-	¹ Mismatched
-	² Blocks Tor users
-
+	Mismatched:
+		blog.craigslist.org
 -->
-<ruleset name="Craigslist.org (partial)">
-  <target host="craigslist.org" />
-  <target host="*.craigslist.org" />
 
-		<exclusion pattern="^http://blog\.craigslist\.org/" />
-
-			<test url="http://blog.craigslist.org/" />
-
-		<!--	Redirect to http:
-						-->
-		<exclusion pattern="^http://www\.craigslist\.org/$" />
-
-			<test url="http://www.craigslist.org/" />
-
+<ruleset name="Craigslist.org">
+	<target host="craigslist.org" />
+	<target host="*.craigslist.org" />
 		<test url="http://losangeles.craigslist.org/" />
 		<test url="http://sfbay.craigslist.org/" />
+		<test url="http://amsterdam.craigslist.org/" />
+		<test url="http://moscow.craigslist.org/" />
 
+	<exclusion pattern="^http://blog\.craigslist\.org/" />
+		<test url="http://blog.craigslist.org/" />
 
-	<!--	Is this what the server always does?
+	<securecookie host=".+" name=".+" />
 
-	<rule from="^http://(?:www\.)?craiglist\.org/$"
-		to="https://geo.craiglist.org/" /-->
+	<rule from="^http://craigslist\.org/" to="https://craigslist.org/" />
 
-  <rule from="^http://craigslist\.org/" to="https://www.craigslist.org/" />
-  <!-- As of 8/2013, 4th level craigslist.org domains do not support SSL. --> 
-  <rule from="^http://([^/:@.]+)\.craigslist\.org/" to="https://$1.craigslist.org/" />
+	<!-- As of 3/2017, 4th level craigslist.org domains do not support SSL. -->
+	<rule from="^http://([\w-]+)\.craigslist\.org/" to="https://$1.craigslist.org/" />
 </ruleset>

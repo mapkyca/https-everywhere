@@ -1,31 +1,20 @@
+
 <!--
-	Nonfunctional subdomains:
+Disabled by https-everywhere-checker because:
+Fetch error: http://opencsw.org/ => https://opencsw.org/: (51, "SSL: no alternative certificate subject name matches target host name 'opencsw.org'")
+
+	Nonfunctional hosts in *opencsw.org:
 
 		- wiki *
 
 	* Redirects to http
 
-
-	Fully covered hosts in *opencsw.org:
-
-		- (www.)?
-		- lists
-
-
-	These altnames don't exist:
-
-		- www.lists.opencsw.org
-
 -->
-<ruleset name="OpenCSW.org (partial)">
+<ruleset name="OpenCSW.org (partial)" default_off='failed ruleset test'>
 
-	<!--	Direct rewrites:
-				-->
 	<target host="opencsw.org" />
 	<target host="lists.opencsw.org" />
 	<target host="www.opencsw.org" />
-
-		<!--exclusion pattern="^http://wiki\.opencsw\.org/" /-->
 
 
 	<rule from="^http:"

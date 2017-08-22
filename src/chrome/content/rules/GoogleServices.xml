@@ -1,7 +1,4 @@
 <!--
-	Rules that are simple to write go in here, for everything else
-	See GoogleServices.xml
-
 	Other Google rulesets:
 		- 2mdn.net.xml
 		- Admeld.xml
@@ -18,11 +15,15 @@
 		- Google.com_Subdomains.xml
 		- Google.com_Subdomains_Complex.html
 		- Google.org.xml
+		- Google.tld_Subdomains.xml
 		- GoogleAPIs.xml
 		- Google_App_Engine.xml
 		- GoogleImages.xml
+		- GoogleMelange.com.xml
 		- GoogleServices_Complex.xml (Simple rules that normally would reside here are in this ruleset)
 		- GoogleShopping.xml
+		- googletagmanager.com.xml
+		- googletagservices.com.xml
 		- Ingress.xml
 		- Made_with_Code.com.xml
 		- Meebo.xml
@@ -38,9 +39,6 @@
 	<target host="pagead2.googlesyndication.com" />
 	<target host="tpc.googlesyndication.com" />
 
-	<target host="googletagmanager.com" />
-	<target host="www.googletagmanager.com" />
-
 	<!-- Gmail -->
 	<target host="gmail.com" />
 		<target host="www.gmail.com" />
@@ -51,8 +49,6 @@
 	<securecookie host="^googlemail\.com$" name=".+" />
 	<securecookie host="^www\.googlemail\.com$" name=".+" />
 
-	<!-- !www doesn't exist -->
-	<target host="www.googletagservices.com" />
 
 	<rule from="^http:"
 			to="https:" />

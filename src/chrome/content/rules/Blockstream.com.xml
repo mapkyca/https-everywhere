@@ -1,31 +1,13 @@
+
 <!--
-	For rules causing false/broken MCB, see Blockstream.com-falsemixed.xml.
-
-
-	Mixed content:
-
-		- css from www *
-		- css from fonts.googleapis.com *
-
-		- Images from www *
-		- Images from \d.gravatar.com *
-
-		- favicon from www *
-
-	* Secured by us
+Disabled by https-everywhere-checker because:
+Fetch error: http://lists.blockstream.com/ => https://lists.blockstream.com/: (60, 'SSL certificate problem: certificate has expired')
 
 -->
-<ruleset name="Blockstream.com (partial)">
-
+<ruleset name="Blockstream.com" default_off='failed ruleset test'>
 	<target host="blockstream.com" />
 	<target host="www.blockstream.com" />
-		<!--
-			Avoid false/broken MCB:
-						-->
-		<exclusion pattern="^http://(?:www\.)?blockstream\.com/+(?!favicon\.ico|wp-content/|wp-includes/)" />
+	<target host="lists.blockstream.com" />
 
-
-	<rule from="^http://(www\.)?blockstream\.com/"
-		to="https://$1blockstream.com/" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

@@ -1,5 +1,4 @@
 <!--
-	For other U.S. government coverage, see US-government.xml.
 
 
 	Nonfunctional subdomains:
@@ -13,7 +12,6 @@
 	<target host="www.ashlandfiber.net" />
 
 
-	<rule from="^http://(www\.)?ashlandfiber\.net/"
-		to="https://$1ashlandfiber.net/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

@@ -1,37 +1,51 @@
 <!--
 	For other Baidu coverage, see Baidu.xml.
 
-
-	Nonfunctional domains:
-
-		- cdn.iknow.bdimg.com *
-
+	Nonfunctional hosts in *bdimg.com:
+		- himg *
+		- [abd].hiphotos ᵈ
+		- cdn.iknow *
+		- inkowpc *
+		- static.muzhi *
+		- newpc2.nuomi ᵈ
+		- sjws ᵃ
+	ᵃ Shows another domain
 	* Times out
+	ᵈ Dropped
 
-
-	Problematic domains:
-
-		- apps.bdimg.com *
-		- apps[123].bdimg.com *
-
-	* Times out
-
-
-	Fully covered domains:
-
-		- apps.bdimg.com	(→ openapi.baidu.com)
-		- apps\d.bdimg.com	(→ openapi.baidu.com)
-
+	Problematic hosts in *bdimg.com:
+		- iknow0[13].bosstatic ʷ
+		- s0.nuomi ᵐ
+	ᵐ Mismatched
+	ʷ Configured for weak ciphers only
 -->
+
 <ruleset name="Bdimg.com (partial)">
+	<target host="apps.bdimg.com" />
+	<target host="apps1.bdimg.com" />
+	<target host="apps2.bdimg.com" />
+	<target host="apps3.bdimg.com" />
+	<target host="bkssl.bdimg.com" />
+	<target host="himg.bdimg.com" />
+		<test url="http://himg.bdimg.com/sys/portrait/item/e999e992b1c2b7e58588e7949f7b16.jpg" />
+	<target host="su.bdimg.com" />
+	<target host="wkstatic.bdimg.com" />
 
-	<target host="*.bdimg.com" />
+	<target host="baike.bdimg.com" />
+		<test url="http://baike.bdimg.com/cms/static/cooperation/qrcode.pdf" />
+		<test url="http://baike.bdimg.com/static/usercenter/images/growuptask/task2/flash/mall.swf" />
+		<test url="http://baike.bdimg.com/static/wiki-common/widget/lib/jsmart/PHPJS_3347e0a.js" />
+		<test url="http://baike.bdimg.com/static/wiki-home/pkg/wiki-home_9a31777.css" />
+		<test url="http://baike.bdimg.com/static/wiki-lemma/widget/lemma_content/mainContent/lemmaReference/img/view_reference_19e8a75.gif" />
 
-		<test url="http://apps.bdimg.com/ms/oauth" />
-		<test url="http://apps.bdimg.com/yunzhongce" />
+	<!--	CORS. Test: http://baike.baidu.com/item/https	-->
+	<exclusion pattern="^http://baike\.bdimg\.com/static/wiki-(common|lemma)/\S+\.(ttf|woff|woff2)" />
+		<test url="http://baike.bdimg.com/static/wiki-common/css/resource/font/css_402d3eb.ttf" />
+		<test url="http://baike.bdimg.com/static/wiki-common/css/resource/font/css_9b9f4b4.woff" />
+		<test url="http://baike.bdimg.com/static/wiki-common/css/resource/font/css_0c105cf.woff2" />
+		<test url="http://baike.bdimg.com/static/wiki-lemma/layout/resource/font/layout_69f88c9.ttf" />
+		<test url="http://baike.bdimg.com/static/wiki-lemma/layout/resource/font/layout_1c21c38.woff" />
+		<test url="http://baike.bdimg.com/static/wiki-lemma/layout/resource/font/layout_4eabdfa.woff2" />
 
-
-	<rule from="^http://apps\d?\.bdimg\.com/"
-		to="https://openapi.baidu.com/" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

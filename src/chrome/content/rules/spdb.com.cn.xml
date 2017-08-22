@@ -1,9 +1,19 @@
-<ruleset name="spdb.com.cn">
 
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://eservice.spdb.com.cn/ => https://eservice.spdb.com.cn/eservice/welcome.do: (60, 'SSL certificate problem: unable to get local issuer certificate')
+
+-->
+<ruleset name="spdb.com.cn" default_off='failed ruleset test'>
+
+	<target host="download.spdb.com.cn" />
 	<target host="ebank.spdb.com.cn" />
 	<target host="wap.spdb.com.cn" />
 	
-	<rule from="^http:"
-		to="https:" />
+	<target host="eservice.spdb.com.cn" />
+	<!-- ^http://eservice\.spdb\.com\.cn/$ returns HTTP 403 with meta refresh redirect -->
+		<rule from="^http://eservice\.spdb\.com\.cn/$" to="https://eservice.spdb.com.cn/eservice/welcome.do" />
+	
+	<rule from="^http:" to="https:" />
 
 </ruleset>

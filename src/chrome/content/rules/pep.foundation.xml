@@ -1,0 +1,19 @@
+<!--
+	For related rulesets, see PEP-project.org.xml
+
+	www.pep.foundation.com: mismatched
+
+-->
+<ruleset name="pep.Foundation" default_off="missing certificate chain">
+
+	<target host="pep.foundation"/>
+	<target host="www.pep.foundation"/>
+
+
+	<rule from="^http://www\.pep\.foundation/"
+		to="https://pep.foundation/" />
+
+	<rule from="^http:"
+		to="https:" />
+
+</ruleset>

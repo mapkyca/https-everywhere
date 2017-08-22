@@ -1,7 +1,14 @@
-<ruleset name="Veber.co.uk">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://blog.veber.co.uk/ => https://blog.veber.co.uk/: (60, 'SSL certificate problem: certificate has expired')
+
+-->
+<ruleset name="Veber.co.uk" default_off='failed ruleset test'>
 
 	<target host="veber.co.uk" />
-	<target host="*.veber.co.uk" />
+	<target host="blog.veber.co.uk" />
+	<target host="www.veber.co.uk" />
 
 
 	<!--	Not secured by server:
@@ -11,7 +18,6 @@
 	<securecookie host="^(?:www\.)?veber\.co\.uk$" name=".+" />
 
 
-	<rule from="^http://(blog\.|www\.)?veber\.co\.uk/"
-		to="https://$1veber.co.uk/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

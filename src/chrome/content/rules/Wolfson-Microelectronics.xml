@@ -7,7 +7,7 @@
 	¹ Refused
 
 -->
-<ruleset name="Wolfson Microelectronics (partial)" default_off="connection refused">
+<ruleset name="Wolfson Microelectronics (partial)" default_off="refused">
 
 	<target host="wolfsonmicro.com" />
 	<target host="www.wolfsonmicro.com" />
@@ -16,7 +16,6 @@
 	<securecookie host="^www\.wolfsonmicro\.com$" name=".*" />
 
 
-	<rule from="^http://(www\.)?wolfsonmicro\.com/"
-		to="https://$1wolfsonmicro.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

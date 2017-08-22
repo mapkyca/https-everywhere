@@ -1,6 +1,13 @@
-<ruleset name="PageKite.net">
-  <target host="*.pagekite.net" />
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://g1-bre.pagekite.net/ => https://g1-bre.pagekite.net/: (6, 'Could not resolve host: g1-bre.pagekite.net')
+
+-->
+<ruleset name="PageKite.net" default_off='failed ruleset test'>
   <target host="pagekite.net" />
+	<target host="g1-bre.pagekite.net" />
+	<target host="www.pagekite.net" />
 
 
 	<!--	Not secured by server:
@@ -10,6 +17,6 @@
 	<securecookie host="^pagekite\.net$" name=".+" />
 
 
-  <rule from="^http://(g1-bre\.|www\.)?pagekite\.net/" to="https://$1pagekite.net/"/>
+  <rule from="^http:" to="https:" />
 </ruleset>
 

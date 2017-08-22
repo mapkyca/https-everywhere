@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://pastevault.com/ => https://pastevault.com/: (35, 'error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure')
+Fetch error: http://www.pastevault.com/ => https://www.pastevault.com/: (7, 'Failed to connect to www.pastevault.com port 443: Connection refused')
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://pastevault.com/ => https://pastevault.com/: (7, 'Failed to connect to pastevault.com port 443: Connection refused')
 -->
@@ -13,7 +18,6 @@ Fetch error: http://pastevault.com/ => https://pastevault.com/: (7, 'Failed to c
 	<!--securecookie host="^(www\.)?pastevault\.com$" name="^laravel_session$" /-->
 
 
-	<rule from="^http://(www\.)?pastevault\.com/"
-		to="https://$1pastevault.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://engagesciences.com/ => https://engagesciences.com/: (7, 'Failed to connect to engagesciences.com port 443: Connection timed out')
+Fetch error: http://www.engagesciences.com/ => https://www.engagesciences.com/: (7, 'Failed to connect to www.engagesciences.com port 443: Connection timed out')
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://engagesciences.com/ => https://engagesciences.com/: (7, 'Failed to connect to engagesciences.com port 443: Connection refused')
 	Nonfunctional domains:
@@ -9,13 +14,13 @@ Fetch error: http://engagesciences.com/ => https://engagesciences.com/: (7, 'Fai
 <ruleset name="EngageSciences (partial)" default_off='failed ruleset test'>
 
 	<target host="engagesciences.com" />
-	<target host="*.engagesciences.com" />
+	<target host="app.engagesciences.com" />
+	<target host="www.engagesciences.com" />
 
 
 	<securecookie host="^(?:app\.|www\.)?engagesciences\.com$" name=".+" />
 
 
-	<rule from="^http://(app\.|www\.)?engagesciences\.com/"
-		to="https://$1engagesciences.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

@@ -1,6 +1,13 @@
 
 <!--
 Disabled by https-everywhere-checker because:
+Non-2xx HTTP code: http://leetway.com/ (200) => https://leetway.com/ (521)
+Non-2xx HTTP code: http://www.leetway.com/ (200) => https://www.leetway.com/ (521)
+
+-->
+
+<!--
+Disabled by https-everywhere-checker because:
 Fetch error: http://leetway.com/ => https://leetway.com/: (28, 'Operation timed out after 15001 milliseconds with 0 bytes received')
 
 	Mixed content:
@@ -30,13 +37,12 @@ Fetch error: http://leetway.com/ => https://leetway.com/: (28, 'Operation timed 
 <ruleset name="Leetway.com (false MCB)" platform="mixedcontent" default_off='failed ruleset test'>
 
 	<target host="leetway.com" />
-	<target host="*.leetway.com" />
+	<target host="www.leetway.com" />
 
 
 	<securecookie host="^\.leetway\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?leetway\.com/"
-		to="https://$1leetway.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

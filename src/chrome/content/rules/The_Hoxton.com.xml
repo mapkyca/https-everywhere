@@ -1,4 +1,10 @@
-<ruleset name="The Hoxton.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://www.thehoxton.com/ => https://www.thehoxton.com/: (51, "SSL: no alternative certificate subject name matches target host name 'www.thehoxton.com'")
+
+-->
+<ruleset name="The Hoxton.com" default_off='failed ruleset test'>
 
 	<target host="thehoxton.com" />
 	<target host="www.thehoxton.com" />
@@ -11,7 +17,6 @@
 	<securecookie host="^thehoxton\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?thehoxton\.com/"
-		to="https://$1thehoxton.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

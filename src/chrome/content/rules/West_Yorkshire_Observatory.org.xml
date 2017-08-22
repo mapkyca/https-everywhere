@@ -1,10 +1,17 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://westyorkshireobservatory.org/ => https://westyorkshireobservatory.org/: (60, 'SSL certificate problem: certificate has expired')
+Fetch error: http://www.westyorkshireobservatory.org/ => https://westyorkshireobservatory.org/: (60, 'SSL certificate problem: certificate has expired')
+
 	www.westyorkshireobservatory.org: Mismatched
 
 
-	Insecure cookies are set for these hosts:
+	Insecure cookies are set for these hosts: ᶜ
 
 		- westyorkshireobservatory.org
+
+	ᶜ See https://owasp.org/index.php/SecureFlag
 
 
 	Mixed content:
@@ -14,13 +21,14 @@
 			- observatory.bradford.gov.uk ᵐ
 			- observatory.calderdale.gov.uk ᵐ
 			- observatory.kirklees.gov.uk ᵐ
-			- observatory.leeds.gov.uk
+			- observatory.leeds.gov.uk ˢ
 			- observatory.wakefield.gov.uk
 
 	ᵐ Not secured by us <= mismatched
+	ˢ Secured by us, see https://www.paulirish.com/2010/the-protocol-relative-url/
 
 -->
-<ruleset name="West Yorkshire Observatory.org">
+<ruleset name="West Yorkshire Observatory.org" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->

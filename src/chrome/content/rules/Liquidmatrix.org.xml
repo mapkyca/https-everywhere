@@ -1,7 +1,4 @@
-
 <!--
-Disabled by https-everywhere-checker because:
-Fetch error: http://liquidmatrix.org/ => https://liquidmatrix.org/: (60, 'SSL certificate problem: certificate has expired')
 
 	Mixed content:
 
@@ -16,16 +13,15 @@ Fetch error: http://liquidmatrix.org/ => https://liquidmatrix.org/: (60, 'SSL ce
 	* Secured by us
 
 -->
-<ruleset name="Liquidmatrix.org" default_off='failed ruleset test'>
+<ruleset name="Liquidmatrix.org">
 
 	<target host="liquidmatrix.org" />
-	<target host="*.liquidmatrix.org" />
+	<target host="www.liquidmatrix.org" />
 
 
 	<securecookie host="^\.liquidmatrix\.org$" name=".+" />
 
 
-	<rule from="^http://(www\.)?liquidmatrix\.org/"
-		to="https://$1liquidmatrix.org/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

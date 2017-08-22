@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://roccat.org/ => https://roccat.org/: Too many redirects while fetching 'https://roccat.org/'
+Fetch error: http://www.roccat.org/ => https://www.roccat.org/: Too many redirects while fetching 'https://www.roccat.org/'
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://roccat.org/ => https://roccat.org/: Redirect for 'https://www.roccat.org/' missing Location
 Fetch error: http://www.roccat.org/ => https://www.roccat.org/: Redirect for 'https://www.roccat.org/' missing Location
@@ -19,5 +24,5 @@ Fetch error: http://www.roccat.org/ => https://www.roccat.org/: Redirect for 'ht
 	<securecookie host="^www\.roccat\.org$" name=".+" />
 
 
-  <rule from="^http://(www\.)?roccat\.org/" to="https://$1roccat.org/" />
+  <rule from="^http:" to="https:" />
 </ruleset>

@@ -1,21 +1,28 @@
+<!--
+	Insecure cookies are set for these hosts: ᶜ
+
+		- www.jellynote.com
+
+	ᶜ See https://owasp.org/index.php/SecureFlag
+
+-->
 <ruleset name="Jellynote.com">
 
 	<target host="jellynote.com" />
 	<target host="www.jellynote.com" />
 
+		<!--	Sets cookies without Secure:
+							-->
+		<!--test url="http://www.jellynote.com/en/premium/presentation" /-->
 
-	<!--	Secured by server:
+
+	<!--	Not secured by server:
 					-->
-	<!--securecookie host="^www\.jellynote\.com$" name="^country$" /-->
-	<!--
-		Not secured by server:
-					-->
-	<!--securecookie host="^www\.jellynote\.com$" name="^(csrftoken|mms|token)$" /-->
+	<!--securecookie host="^www\.jellynote\.com$" name="^(csrftoken|mms|pgroup|token)$" /-->
 
-	<securecookie host="^www\.jellynote\.com$" name=".+" />
+	<securecookie host="^\w" name="." />
 
 
-	<rule from="^http://(www\.)?jellynote\.com/"
-		to="https://$1jellynote.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

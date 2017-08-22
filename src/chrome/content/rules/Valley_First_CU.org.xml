@@ -1,7 +1,14 @@
-<ruleset name="Valley First CU.org">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://hb.valleyfirstcu.org/ => https://hb.valleyfirstcu.org/: (28, 'Connection timed out after 20004 milliseconds')
+
+-->
+<ruleset name="Valley First CU.org" default_off='failed ruleset test'>
 
 	<target host="valleyfirstcu.org" />
-	<target host="*.valleyfirstcu.org" />
+	<target host="hb.valleyfirstcu.org" />
+	<target host="www.valleyfirstcu.org" />
 
 
 	<!--	Not secured by server:
@@ -11,7 +18,6 @@
 	<securecookie host="^(?:www\.)?valleyfirstcu\.org$" name=".+" />
 
 
-	<rule from="^http://(hb\.|www\.)?valleyfirstcu\.org/"
-		to="https://$1valleyfirstcu.org/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

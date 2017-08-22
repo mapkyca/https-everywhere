@@ -1,33 +1,15 @@
 <!--
-	CDN buckets:
-
-		- s3-us-west-2.amazonaws.com/s.cdpn.io/
-
-
-	Nonfunctional subdomains:
-
-		- blog	(shows default Media Temple page)
-
-
-	Some pages redirect to http.
-
+	Non-functional hosts
+		SSL peer certificate was not OK:
+			 - assets.codepen.io
 -->
-<ruleset name="CodePen.io (partial)">
-
+<ruleset name="CodePen.io">
 	<target host="codepen.io" />
-	<target host="*.codepen.io" />
-		<!--
-			Redirect to http:
-						-->
-		<!--exclusion pattern="^http://(www\.)?codepen\.io/+($|\?)" /-->
-		<exclusion pattern="^http://(?:assets|s)\.codepen\.io/+(?:$|\?)" />
-		<!--
-			Exceptions:
-					-->
-		<exclusion pattern="^http://(?:www\.)?codepen\.io/+(?!favicon\.ico|(?:login|signup)(?:$|[?/]))" />
+	<target host="www.codepen.io" />
+	<target host="blog.codepen.io" />
+	<target host="s.codepen.io" />
 
+	<securecookie host=".+" name=".+" />
 
-	<rule from="^http://((?:assets|s|www)\.)?codepen\.io/"
-		to="https://$1codepen.io/" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

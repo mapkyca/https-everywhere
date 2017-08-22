@@ -2,6 +2,13 @@
 <!--
 Disabled by https-everywhere-checker because:
 Fetch error: http://hotelwifi.com/ => https://hotelwifi.com/: (60, 'SSL certificate problem: certificate has expired')
+Fetch error: http://www.hotelwifi.com/ => https://www.hotelwifi.com/: (60, 'SSL certificate problem: certificate has expired')
+
+-->
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://hotelwifi.com/ => https://hotelwifi.com/: (60, 'SSL certificate problem: certificate has expired')
 
 	Nonfunctional subdomains:
 
@@ -14,7 +21,8 @@ Fetch error: http://hotelwifi.com/ => https://hotelwifi.com/: (60, 'SSL certific
 <ruleset name="Hotel Wifi.com (partial)" default_off='failed ruleset test'>
 
 	<target host="hotelwifi.com" />
-	<target host="*.hotelwifi.com" />
+	<target host="hiesorrentovalley.hotelwifi.com" />
+	<target host="www.hotelwifi.com" />
 
 
 	<!--	Not secured by server:
@@ -24,7 +32,6 @@ Fetch error: http://hotelwifi.com/ => https://hotelwifi.com/: (60, 'SSL certific
 	<securecookie host="^hiesorrentovalley\.hotelwifi\.com$" name=".+" />
 
 
-	<rule from="^http://(hiesorrentovalley\.|www\.)?hotelwifi\.com/"
-		to="https://$1hotelwifi.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

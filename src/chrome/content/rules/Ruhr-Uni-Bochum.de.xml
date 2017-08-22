@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://www.rz.ruhr-uni-bochum.de/ => https://www.rz.ruhr-uni-bochum.de/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+
 	Ruhr-Universitaet Bochum
 
 	For rules causing false/broken MCB, see Ruhr-Uni-Bochum.de-falsemixed.xml.
@@ -43,11 +47,11 @@
 			- www from aktuell.rub.de ²
 			- www from aktuell.ruhr-uni-bochum.de ²
 
-	¹ Secured by us
+	¹ Secured by us, see https://www.paulirish.com/2010/the-protocol-relative-url/
 	² Not secured by us <= mismatched
 
 -->
-<ruleset name="Ruhr-Uni-Bochum.de (partial)">
+<ruleset name="Ruhr-Uni-Bochum.de (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
@@ -55,10 +59,13 @@
 	<target host="lists.ruhr-uni-bochum.de" />
 	<!--target host="www.lps.ruhr-uni-bochum.de" /-->
 	<target host="lists1.mail.ruhr-uni-bochum.de" />
+	<target host="res.mobsec.ruhr-uni-bochum.de" />
 	<target host="helpdesk.rz.ruhr-uni-bochum.de" />
 	<target host="linux.rz.ruhr-uni-bochum.de" />
 	<target host="www.rz.ruhr-uni-bochum.de" />
 	<target host="www.ruhr-uni-bochum.de" />
+	<target host="fn2.flexnow.ruhr-uni-bochum.de" />
+	<target host="www.flexnow.ruhr-uni-bochum.de" />
 
 	<!--	Complications:
 				-->
@@ -66,7 +73,7 @@
 
 		<!-- 	Avoid false/broken MCB:
 						-->
-		<exclusion pattern="^http://www\.cits\.ruhr-uni-bochum\.de/+(?!imperia/md/(?:content|images)/)" />
+		<exclusion pattern="^http://www\.cits\.ruhr-uni-bochum\.de/(?!/*(?:imperia/md/(?:content|images)/))" />
 
 			<!--	+ve:
 					-->

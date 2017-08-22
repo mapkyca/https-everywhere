@@ -1,58 +1,31 @@
 <!--
-	CDN buckets:
+	Non-functional hosts
+		Timeout was reached:
+			 - get.buzzfeed.com
+			 - insights.buzzfeed.com
 
-		- buzzfeed-static.s3.amazonaws.com
-
-		- wac.09fc.edgecastcdn.net/??09FC/
-
-			- s3-ec.buzzfed.com
-			- ct.buzzfeed.com
-
-		- s.buzzfeed.com.edgesuite.net
-
-			- pglb.buzzfed.com
-			- s.buzzfed.com
-			- s3-ak.buzzfed.com
-			- s3-ak.buzzfeed.com
-
-
-	Nonfunctional domains:
-
-		- pglb.buzzfed.com	(503, akamai)
-		- ct.buzzfeed.com	(404, CN: gp1.wac.edgecastcdn.net)
-
-
-	Problematic domains:
-
-		- s.buzzfed.com *
-		- s3-ak.buzzfed.com *
-		- s3-ec.buzzfed.com	(404, edgecast)
-		- s3-ak.buzzfeed.com *
-
-	* 503, akamai
-
-
-	Fully covered domains:
-
-		- s.buzzfed.com *
-
-	* → buzzfeed-static.s3.amazonaws.com
-
+		SSL peer certificate was not OK:
+			 - buzzfed.com
 -->
-<ruleset name="BuzzFeed (broken)" default_off="Redirect loops">
-
-	<target host="*.buzzfed.com" />
+<ruleset name="BuzzFeed (partial)">
+	<!-- *buzzfeed.com -->
 	<target host="buzzfeed.com" />
-	<target host="*.buzzfeed.com" />
+	<target host="www.buzzfeed.com" />
+	<target host="abeagle.buzzfeed.com" />
+	<target host="blog.buzzfeed.com" />
+	<target host="documents.buzzfeed.com" />
+	<target host="img.buzzfeed.com" />
+	<target host="s.buzzfeed.com" />
+	<target host="s3-ak.buzzfeed.com" />
+	<target host="shop.buzzfeed.com" />
+	<target host="webappstatic.buzzfeed.com" />
 
+	<!-- *buzzfed.com -->
+	<target host="buzzfed.com" />
+	<target host="s3-ak.buzzfed.com" />
 
-	<securecookie host="^www\.buzzfeed\.com$" name=".+" />
+	<rule from="^http://buzzfed\.com/" 
+			to="https://www.buzzfeed.com/" />
 
-
-	<rule from="^http://(www\.)?buzzfeed\.com/"
-		to="https://$1buzzfeed.com/" />
-
-	<rule from="^http://s(?:3-ak|3-ec)?\.buzzfee?d\.com/"
-		to="https://buzzfeed-static.s3.amazonaws.com/" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

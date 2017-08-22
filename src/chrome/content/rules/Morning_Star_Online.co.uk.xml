@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://shop.morningstaronline.co.uk/ => https://shop.morningstaronline.co.uk/: (60, 'SSL certificate problem: certificate has expired')
+
 	Mixed content:
 
 		- css on (www.) from fonts.googleapis.com *
@@ -6,10 +10,11 @@
 	* Secured by us
 
 -->
-<ruleset name="Morning Star Online.co.uk">
+<ruleset name="Morning Star Online.co.uk" default_off='failed ruleset test'>
 
 	<target host="morningstaronline.co.uk" />
-	<target host="*.morningstaronline.co.uk" />
+	<target host="shop.morningstaronline.co.uk" />
+	<target host="www.morningstaronline.co.uk" />
 
 
 	<!--	Not secured by server:
@@ -20,7 +25,6 @@
 	<securecookie host="^(?:\.|www\.)?morningstaronline\.co\.uk$" name=".+" />
 
 
-	<rule from="^http://(shop\.|www\.)?morningstaronline\.co\.uk/"
-		to="https://$1morningstaronline.co.uk/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

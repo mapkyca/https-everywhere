@@ -1,7 +1,31 @@
-<ruleset name="LUGoNS.org">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://forum.lugons.org/ => https://forum.lugons.org/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://gallery.lugons.org/ => https://gallery.lugons.org/: (51, "SSL: no alternative certificate subject name matches target host name 'gallery.lugons.org'")
+Fetch error: http://gentoo-handbook.lugons.org/ => https://gentoo-handbook.lugons.org/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://hacker.lugons.org/ => https://hacker.lugons.org/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://lab.lugons.org/ => https://lab.lugons.org/: (51, "SSL: no alternative certificate subject name matches target host name 'lab.lugons.org'")
+Fetch error: http://planet.lugons.org/ => https://planet.lugons.org/: (51, "SSL: no alternative certificate subject name matches target host name 'planet.lugons.org'")
+Fetch error: http://wiki.lugons.org/ => https://wiki.lugons.org/: (51, "SSL: no alternative certificate subject name matches target host name 'wiki.lugons.org'")
+
+-->
+<ruleset name="LUGoNS.org" default_off='failed ruleset test'>
 
 	<target host="lugons.org" />
-	<target host="*.lugons.org" />
+	<target host="events.lugons.org" />
+	<target host="forum.lugons.org" />
+	<target host="gallery.lugons.org" />
+	<target host="gentoo-handbook.lugons.org" />
+	<target host="hacker.lugons.org" />
+	<target host="lab.lugons.org" />
+	<target host="libre.lugons.org" />
+	<target host="milobit.lugons.org" />
+	<target host="paste.lugons.org" />
+	<target host="planet.lugons.org" />
+	<target host="tor.lugons.org" />
+	<target host="wiki.lugons.org" />
+	<target host="www.lugons.org" />
 
 
 	<!--	Not secured by server:
@@ -11,13 +35,10 @@
 	<!--securecookie host="^paste\.lugons\.org$" name="^lodgeit_session$" /-->
 	<!--securecookie host="^lugons\.org$" name=".+" /-->
 
-	<securecookie host="^(?:(?:events|paste|www)\.)?lugons\.org$" name=".+" />
+	<securecookie host="^\w" name="." />
 
 
-	<!--	www redirects to ^ over http,
-		so copy that behavior:
-					-->
-	<rule from="^http://(?:((?:events|forum|gallery|gentoo-handbook|hacker|lab|libre|milobit|paste|planet|tor|wiki)\.)|www\.)?lugons\.org/"
-		to="https://$1lugons.org/" />
+	<rule from="^http:"
+		to="https:" />
 
 </ruleset>

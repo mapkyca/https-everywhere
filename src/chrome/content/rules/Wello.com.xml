@@ -1,7 +1,14 @@
-<ruleset name="Wello.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://wello.com/ => https://wello.com/: (7, 'Failed to connect to wello.com port 443: Connection refused')
+Fetch error: http://www.wello.com/ => https://www.wello.com/: (7, 'Failed to connect to www.wello.com port 443: Connection refused')
+
+-->
+<ruleset name="Wello.com" default_off='failed ruleset test'>
 
 	<target host="wello.com" />
-	<target host="*.wello.com" />
+	<target host="www.wello.com" />
 
 
 	<!--	Not secured by server:
@@ -11,7 +18,6 @@
 	<securecookie host="^(?:www)?\.wello\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?wello\.com/"
-		to="https://$1wello.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

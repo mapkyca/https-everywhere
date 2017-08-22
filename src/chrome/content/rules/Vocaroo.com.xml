@@ -1,14 +1,9 @@
-<!--
-	CN: *.cloudcontrolled.com
-
--->
-<ruleset name="Vocaroo.com" default_off="mismatched">
+<ruleset name="Vocaroo.com" default_off="refused">
 
 	<target host="vocaroo.com" />
 	<target host="www.vocaroo.com" />
 
 
-	<rule from="^http://(www\.)?vocaroo\.com/"
-		to="https://$1vocaroo.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

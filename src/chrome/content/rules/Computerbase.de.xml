@@ -1,5 +1,0 @@
-<ruleset name="Computerbase.de (partial)">
-<target host="*.computerbase.de"/>
-
-<rule from="^http://pics\.computerbase\.de/" to="https://pics.computerbase.de/"/>
-</ruleset>

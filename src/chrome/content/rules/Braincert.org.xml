@@ -1,13 +1,18 @@
-<ruleset name="braincert.org">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://braincert.org/ => https://braincert.org/: (51, "SSL: no alternative certificate subject name matches target host name 'braincert.org'")
+
+-->
+<ruleset name="braincert.org" default_off='failed ruleset test'>
 
 	<target host="braincert.org" />
-	<target host="*.braincert.org" />
+	<target host="www.braincert.org" />
 
 
 	<securecookie host="^\.braincert\.org$" name=".+" />
 
 
-	<rule from="^http://(www\.)?braincert\.org/"
-		to="https://$1braincert.org/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

@@ -14,12 +14,22 @@
 		- https://panopticlick.eff.org
 
 
-	Insecure cookies are set for these domains:
+	Insecure cookies are set for these domains and hosts: ᶜ
 
 		- .ninthdecimal.com
+		- www.ninthdecimal.com
+
+	ᶜ See https://owasp.org/index.php/SecureFlag
+
+
+	Mixed content:
+
+		- Images on www from $self ˢ
+
+	ˢ Secured by us, see https://www.paulirish.com/2010/the-protocol-relative-url/
 
 -->
-<ruleset name="NinthDecimal.com" default_off="needs clearnet testing">
+<ruleset name="NinthDecimal.com">
 
 	<target host="ninthdecimal.com" />
 	<target host="lciapi.ninthdecimal.com" />
@@ -27,14 +37,16 @@
 
 		<!--	Sets cookie without Secure:
 							-->
-		<test url="http://lciapi.ninthdecimal.com/v1/lci/imp/adv-sgnl/c-1?typ=&amp;chn=&amp;brand=" />
+		<!--test url="http://lciapi.ninthdecimal.com/v1/lci/imp/adv-sgnl/c-1?typ=&amp;chn=&amp;brand=" /-->
 
 
 	<!--	Not secured by server:
 					-->
 	<!--securecookie host="^\.ninthdecimal\.com$" name="^(?:__cfduid|cf_clearance|ndat)$" /-->
+	<!--securecookie host="^www\.ninthdecimal\.com$" name="^PHPSESSID$" /-->
 
 	<securecookie host="^\." name="^(?:__cfduid|cf_clearance|ndat)$" />
+	<securecookie host="^\w" name="." />
 
 
 	<rule from="^http:"

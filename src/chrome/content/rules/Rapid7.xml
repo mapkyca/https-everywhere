@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://browsercan.rapid7.com/ => https://browsercan.rapid7.com/: (6, 'Could not resolve host: browsercan.rapid7.com')
+
 	Other Rapid7 rulesets:
 
 		- Metasploit.xml
@@ -14,10 +18,13 @@
 		- www.community.rapid7.com
 
 -->
-<ruleset name="Rapid7 (partial)" platform="mixedcontent">
+<ruleset name="Rapid7 (partial)" platform="mixedcontent" default_off='failed ruleset test'>
 
 	<target host="rapid7.com" />
-	<target host="*.rapid7.com" />
+	<target host="browsercan.rapid7.com" />
+	<target host="community.rapid7.com" />
+	<target host="insight.rapid7.com" />
+	<target host="www.rapid7.com" />
 
 
 	<!--	Not secured by server:
@@ -27,7 +34,6 @@
 	<securecookie host="^(?:community|insight|www)\.rapid7\.com$" name=".+" />
 
 
-	<rule from="^http://(browsercan\.|community\.|insight\.|www\.)?rapid7\.com/"
-		to="https://$1rapid7.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

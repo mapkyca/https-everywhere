@@ -1,7 +1,10 @@
-<!--
-	Other Kantar rulesets:
 
-		- BMW-China-Custom-Login.xml
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://insightondemand.tnsglobal.com/ => https://insightondemand.tnsglobal.com/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+Fetch error: http://tnsselfrecruitment.tnsglobal.com/ => https://tnsselfrecruitment.tnsglobal.com/: (51, "SSL: no alternative certificate subject name matches target host name 'tnsselfrecruitment.tnsglobal.com'")
+
+	Other Kantar rulesets:
 		- Digitab-Portals.xml
 		- Kantar-Latam-Portal.xml
 		- Kantar-Worldpanel.xml
@@ -10,15 +13,41 @@
 		- TNS-Sifo.xml
 		- Worldpanelinfo.xml
 
--->
-<ruleset name="TNS Global" default_off="self-signed">
+	Invalid cert:
+		blogs.tnsglobal.com
+		go.tnsglobal.com
+		tnscourierchallenge.tnsglobal.com
+		www2.tnsglobal.com
 
+	Refused:
+		connectedlife.tnsglobal.com
+		connectedlifequiz.tnsglobal.com
+		timeline.tnsglobal.com
+-->
+
+<ruleset name="TNS-Global" default_off='failed ruleset test'>
 	<target host="tnsglobal.com" />
 	<target host="www.tnsglobal.com" />
+	<target host="GMmeocsi.tnsglobal.com" />
+	<target host="TNSpostalplatformGMS.tnsglobal.com" />
+	<target host="gmmeocsi.tnsglobal.com" />
+	<target host="heinekenonequity.tnsglobal.com" />
+	<target host="www.idp.tnsglobal.com" />
+	<target host="insightondemand.tnsglobal.com" />
+	<target host="mailus.tnsglobal.com" />
+	<target host="post.tnsglobal.com" />
+	<target host="rap.tnsglobal.com" />
+	<target host="rap8.tnsglobal.com" />
+	<target host="reports.tnsglobal.com" />
+	<target host="surveys.tnsglobal.com" />
+	<target host="tnspostalplatformau.tnsglobal.com" />
+	<target host="tnspostalplatformrmd-uat.tnsglobal.com" />
+	<target host="tnspostalplatformswex.tnsglobal.com" />
+	<target host="tnspostalplatformwebapi-uat.tnsglobal.com" />
+	<target host="tnsselfrecruitment.tnsglobal.com" />
+	<target host="tracker.tnsglobal.com" />
+	<target host="volvogrouprex.tnsglobal.com" />
+	<target host="webedit.tnsglobal.com" />
 
-
-	<!--	Cert only matches www.	-->
-	<rule from="^http://(?:www\.)?tnsglobal\.com/"
-		to="https://www.tnsglobal.com/" />
-
+	<rule from="^http:" to="https:" />
 </ruleset>

@@ -1,4 +1,10 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://toyfoundry.net/ => https://toyfoundry.net/: (6, 'Could not resolve host: toyfoundry.net')
+Fetch error: http://cdn.toyfoundry.net/ => https://cdn.toyfoundry.net/: (6, 'Could not resolve host: cdn.toyfoundry.net')
+Fetch error: http://www.toyfoundry.net/ => https://www.toyfoundry.net/: (6, 'Could not resolve host: www.toyfoundry.net')
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://toyfoundry.net/ => https://toyfoundry.net/: (7, 'Failed to connect to toyfoundry.net port 443: Connection refused')
 	Nonfunctional domains:
@@ -9,13 +15,13 @@ Fetch error: http://toyfoundry.net/ => https://toyfoundry.net/: (7, 'Failed to c
 <ruleset name="ToyFoundry (partial)" default_off='failed ruleset test'>
 
 	<target host="toyfoundry.net" />
-	<target host="*.toyfoundry.net" />
+	<target host="cdn.toyfoundry.net" />
+	<target host="www.toyfoundry.net" />
 
 
 	<securecookie host="^(?:www\.)?toyfoundry\.net$" name=".+" />
 
 
-	<rule from="^http://(cdn\.|www\.)?toyfoundry\.net/"
-		to="https://$1toyfoundry.net/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

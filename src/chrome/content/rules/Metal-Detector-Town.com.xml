@@ -1,4 +1,8 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://old.metal-detector-town.com/ => https://old.metal-detector-town.com/: (60, 'SSL certificate problem: self signed certificate')
+
 	Mixed content:
 
 		- Images, on www from:
@@ -11,16 +15,16 @@
 	* Secured by us
 
 -->
-<ruleset name="Metal-Detector-Town.com">
+<ruleset name="Metal-Detector-Town.com" default_off='failed ruleset test'>
 
 	<target host="metal-detector-town.com" />
-	<target host="*.metal-detector-town.com" />
+	<target host="old.metal-detector-town.com" />
+	<target host="www.metal-detector-town.com" />
 
 
 	<securecookie host="^\.(?:www\.)?metal-detector-town\.com$" name=".+" />
 
 
-	<rule from="^http://(old\.|www\.)?metal-detector-town\.com/"
-		to="https://$1metal-detector-town.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

@@ -1,22 +1,24 @@
-
 <!--
-Disabled by https-everywhere-checker because:
-Fetch error: http://discourse.syncthing.net/ => https://discourse.syncthing.net/: (51, "SSL: no alternative certificate subject name matches target host name 'discourse.syncthing.net'")
+	Login required:
+		build2.syncthing.net
+        
+	Redirect to http:
+		relays.syncthing.net
 
-	Fully covered hosts in *syncthing.net:
-
-		- (www.)?
-		- discourse
+	Invalid certificate:
+		web.syncthing.net
 
 -->
-<ruleset name="Syncthing.net" default_off='failed ruleset test'>
+<ruleset name="Syncthing.net">
 
-	<!--	Direct rewrites:
-				-->
 	<target host="syncthing.net" />
-	<target host="discourse.syncthing.net" />
 	<target host="www.syncthing.net" />
-
+	<target host="apt.syncthing.net" />
+	<target host="archive.syncthing.net" />
+	<target host="build.syncthing.net" />
+	<target host="data.syncthing.net" />
+	<target host="docs.syncthing.net" />
+	<target host="forum.syncthing.net" />
 
 	<rule from="^http:"
 		to="https:" />

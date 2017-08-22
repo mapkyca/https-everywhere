@@ -1,4 +1,10 @@
-<ruleset name="Sapphire Forum.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://sapphireforum.com/ => https://sapphireforum.com/: (28, 'Connection timed out after 20001 milliseconds')
+
+-->
+<ruleset name="Sapphire Forum.com" default_off='failed ruleset test'>
 
 	<target host="sapphireforum.com" />
 	<target host="www.sapphireforum.com" />
@@ -7,7 +13,6 @@
 	<securecookie host="^www\.sapphireforum\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?sapphireforum\.com/"
-		to="https://$1sapphireforum.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

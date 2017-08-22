@@ -1,7 +1,14 @@
-<ruleset name="Delicious Green Coffee.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://deliciousgreencoffee.com/ => https://deliciousgreencoffee.com/: (6, 'Could not resolve host: deliciousgreencoffee.com')
+Fetch error: http://www.deliciousgreencoffee.com/ => https://www.deliciousgreencoffee.com/: (6, 'Could not resolve host: www.deliciousgreencoffee.com')
+
+-->
+<ruleset name="Delicious Green Coffee.com" default_off='failed ruleset test'>
 
 	<target host="deliciousgreencoffee.com" />
-	<target host="*.deliciousgreencoffee.com" />
+	<target host="www.deliciousgreencoffee.com" />
 
 
 	<!--	Not secured by server:
@@ -9,7 +16,6 @@
 	<securecookie host="^(?:w*\.)?deliciousgreencoffee\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?deliciousgreencoffee\.com/"
-		to="https://$1deliciousgreencoffee.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

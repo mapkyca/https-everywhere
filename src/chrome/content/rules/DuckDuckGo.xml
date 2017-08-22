@@ -1,38 +1,77 @@
 <!--
-	Problematic domains:
+	Other DuckDuckGo related rulesets:
+		+ duckduckhack.com.xml
 
-		- www.dukgo.com		(mismatched, CN: dukgo.com)
+	Non-functional hosts
+		Couldn't connect to server:
+			 - blink.duckduckgo.com
 
+		Timeout was reached:
+			 - flash.duckduckgo.com
+			 - im.duckduckgo.com
+			 - tmbg.duckduckgo.com
+			 - va-sso1.duckduckgo.com
 
-	Fully covered domains:
+		SSL peer certificate was not OK:
+			 - www.duck.co
+			 - ideas.duckduckgo.com
+			 - mail.duckduckgo.com
+			 - va-ddgc-staging-web1.duckduckgo.com
 
-		- (www.)dukgo.com	(www → ^)
+		Peer certificate cannot be authenticated with given CA certificates:
+			 - blog.duckduckgo.com
+			 - help.duckduckgo.com
+			 - meme.duckduckgo.com
+			 - settings.duckduckgo.com
+			 - shop.duckduckgo.com
+			 - wiki.duckduckgo.com
+			 - www.ddg.gg
 
+		5xx server error:
+			 - favicons.duckduckgo.com
+			 - icons.duckduckgo.com
 -->
 <ruleset name="DuckDuckGo">
-  <target host="duckduckgo.com" />
-  <target host="*.duckduckgo.com" />
-  <target host="ddg.gg" />
-  <target host="duck.co" />
-  <target host="i.duck.co" />
+	<target host="duck.co" />
+	<target host="www.duck.co" />
+
+	<target host="duckduckgo.com" />
+	<target host="www.duckduckgo.com" />
+	<target host="ac.duckduckgo.com" />
+	<target host="api.duckduckgo.com" />
+	<target host="beta.duckduckgo.com" />
+	<target host="bttf.duckduckgo.com" />
+	<target host="chrome.duckduckgo.com" />
+	<target host="dub.duckduckgo.com" />
+	<target host="ff.duckduckgo.com" />
+	<target host="i.duckduckgo.com" />
+	<target host="images.duckduckgo.com" />
+	<target host="karma.duckduckgo.com" />
+	<target host="moollaza.duckduckgo.com" />
+	<target host="news.duckduckgo.com" />
+	<target host="next.duckduckgo.com" />
+	<target host="r.duckduckgo.com" />
+	<target host="refresh.duckduckgo.com" />
+	<target host="reports.duckduckgo.com" />
+	<target host="safe.duckduckgo.com" />
+	<target host="staging.duckduckgo.com" />
+	<target host="start.duckduckgo.com" />
+	<target host="va-l1.duckduckgo.com" />
+	<target host="watrcoolr.duckduckgo.com" />
+
 	<target host="dukgo.com" />
-	<target host="www.dukgo.com" />
 
-  <exclusion pattern="^http://(?:help|meme)\.duckduckgo\.com/" />
+	<target host="ddg.gg" />
+	<target host="www.ddg.gg" />
 
-	<securecookie host="^duck\.co$" name=".*"/>
+	<securecookie host=".+" name=".+" />
 
-  <rule from="^http://duckduckgo\.com/" to="https://duckduckgo.com/"/>
-  <rule from="^http://([^/:@\.]+)\.duckduckgo\.com/" to="https://$1.duckduckgo.com/"/>
-	<!-- TODO: What does ddg.gg/foo do? Runs query foo, redirects to homepage, or error? -->
-    <rule from="^http://ddg\.gg/$" to="https://duckduckgo.com/" />
-	
-    <rule from="^http://duck\.co/" to="https://duck.co/" />
+	<rule from="^http://www\.duck\.co/"
+			to="https://duck.co/" />
 
-	<rule from="^http://i\.duck\.co/"
-		to="https://duckduckgo.com/"/>
+	<rule from="^http://www\.ddg\.gg/"
+			to="https://ddg.gg/" />
 
-	<rule from="^http://(?:www\.)?dukgo\.com/"
-		to="https://dukgo.com/" />
-
+	<rule from="^http:" 
+			to="https:" />
 </ruleset>

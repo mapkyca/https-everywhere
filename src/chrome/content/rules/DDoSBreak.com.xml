@@ -1,4 +1,11 @@
-<ruleset name="DDoSBreak.com">
+
+<!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://ddosbreak.com/ => https://ddosbreak.com/: (28, 'Operation timed out after 30001 milliseconds with 0 bytes received')
+Fetch error: http://www.ddosbreak.com/ => https://www.ddosbreak.com/: (28, 'Operation timed out after 30001 milliseconds with 0 bytes received')
+
+-->
+<ruleset name="DDoSBreak.com" default_off='failed ruleset test'>
 
 	<target host="ddosbreak.com" />
 	<target host="www.ddosbreak.com" />
@@ -7,7 +14,6 @@
 	<securecookie host="^(?:www\.)?ddosbreak\.com$" name=".+" />
 
 
-	<rule from="^http://(www\.)?ddosbreak\.com/"
-		to="https://$1ddosbreak.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

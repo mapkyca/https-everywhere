@@ -1,13 +1,16 @@
 <!--
+
 	Other CloudFlare rulesets:
 
 		- Cdnjs.xml
 		- CloudFlare_Challenge.com.xml
+		- Cloudflarestatus.com.xml
 
 
 	Nonfunctional subdomains:
 
-		- appdev	(502)
+		- developers (redirects to appdev)
+		- appdev	(domain doesn't exist)
 		- js
 
 
@@ -27,7 +30,6 @@
 	<target host="cdn-static.cloudflare.com" />
 	<target host="cn.cloudflare.com" />
 	<target host="de.cloudflare.com" />
-	<target host="developers.cloudflare.com" />
 	<target host="es.cloudflare.com" />
 	<target host="fr.cloudflare.com" />
 	<target host="hu.cloudflare.com" />
@@ -47,11 +49,7 @@
 	<target host="zh.cloudflare.com" />
 
 
-	<!--	Not secured by server:
-					-->
-	<!--securecookie host="^support\.cloudflare\.com$" name="^(_help_center_session|_zendesk_shared_session)$" /-->
-
-	<securecookie host="^(?:.*\.)?cloudflare\.com$" name=".+" />
+	<securecookie host=".+" name=".+" />
 
 
 	<rule from="^http:"

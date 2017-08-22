@@ -10,7 +10,7 @@ Fetch error: http://www.themesandco.com/ => https://www.themesandco.com/: (51, "
 	* Self-signed
 
 -->
-<ruleset name="Themes and Co.com" default_off='failed ruleset test'>
+<ruleset name="Themes and Co.com">
 
 	<target host="themesandco.com" />
 	<target host="www.themesandco.com" />
@@ -24,7 +24,6 @@ Fetch error: http://www.themesandco.com/ => https://www.themesandco.com/: (51, "
 		<exclusion pattern="http://themesandco\.com/(?!wp-content/|wp-includes/)" />
 
 
-	<rule from="^http://(www\.)?themesandco\.com/"
-		to="https://$1themesandco.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

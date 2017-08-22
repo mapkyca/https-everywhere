@@ -33,10 +33,11 @@ if [ "$1" == "--justrun" ]; then
 	fi
 	$BROWSER \
 		--user-data-dir="$PROFILE_DIRECTORY" \
-		--load-extension=pkg/crx/
+		--load-extension=pkg/crx/ \
+		"$@"
 else
 	./makecrx.sh
 	echo "running tests"
 	CRX_NAME="`ls -tr pkg/*.crx | tail -1`"
-	$XVFB_RUN python2.7 test/chromium/script.py $CRX_NAME
+	$XVFB_RUN python2.7 test/script.py Chrome $CRX_NAME
 fi

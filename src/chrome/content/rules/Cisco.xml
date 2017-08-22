@@ -1,11 +1,11 @@
 <!--
+
 	Other Cisco rulesets:
 
 		- Cisco.mobi.xml
 		- Cisco_Connect_Cloud.com.xml
 		- Cisco_Learning_System.com.xml
 		- Cisco_Live.com.xml
-		- Linksys_Smart_WiFi.com.xml
 		- Sourcefire.com.xml
 		- Static-Cisco.com.xml
 
@@ -17,14 +17,16 @@
 
 	Nonfunctional hosts in *cisco.com:
 
+		- ausmbmarketplace ᵈ
 		- bam-prd1
+		- csc-stage ᵈ
 		- gblogs ⁴
 		- homecommunity
 		- investor ʳ
 		- mkto ᴹ
 		- newsroom ᵈ
 
-	ᴹ Marketo
+	ᴹ Marketo / shows another domain
 	⁴ 404
 	ᵈ Dropped
 	ʳ Refused
@@ -34,20 +36,19 @@
 
 		- csc-test2 ᵉ ᵐ ᵘ
 		- csc-test[3-5] ᵐ
-		- eir-stage ²
+		- eir-stage ˢ
 		- home ᵈ
 		- homesupport ᵈ
+		- solucionespyme ᵐ
 		- sso-marketplace ᵉ
 		- video ᵐ ˣ
 
-	ᵈ Dropped
+	ᵈ Dropped, preemptable redirect
 	ᵉ Expired
 	ᵐ Mismatched
-	ˣ Mixed css
+	ˢ Self-signed, CN: eir-stage
 	ᵘ Untrusted root
-	² Self-signed, CN: eir-stage
-	³ Mismatched, CN: homesupport.cisco.com
-	⁴ Expired 2014-03-07
+	ˣ Mixed css, see https://www.paulirish.com/2010/the-protocol-relative-url/
 
 
 	Partially covered hosts in *cisco.com:
@@ -63,7 +64,7 @@
 		- cloudsso3.cisco.com
 
 
-	Insecure cookies are set for these domains and hosts:
+	Insecure cookies are set for these domains and hosts: ᶜ
 
 		- .cisco.com
 		- blogs.cisco.com
@@ -76,54 +77,43 @@
 		- tools.cisco.com
 		- www.cisco.com
 
+	ᶜ See https://owasp.org/index.php/SecureFlag
+
 
 	Mixed content:
 
-		- css on video from www.cisco.com *
+		- css on video from www.cisco.com ˢ
 
 		- Images, on:
 
 			- armadaworkplace from cdn.ciscosmb.psdops.com ᵐ
-			- cisco-images, software from www.cisco.com *
-			- csr, eir, solutionpartnerdashboard, www, www1, www2, www3 from $self *
+			- cisco-images, software from www.cisco.com ˢ
+			- csr, eir, solutionpartnerdashboard, www, www1, www2, www3 from $self ˢ
 
-	* Secured by us
+	ˢ Secured by us, see https://www.paulirish.com/2010/the-protocol-relative-url/
 	ᵐ Not secured by us <= mismatched
 
 -->
-<ruleset name="Cisco.com (partial)">
+<ruleset name="Cisco.com (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
 	<target host="cisco.com" />
 	<target host="apps.cisco.com" />
-	<target host="armadaworkplace.cisco.com" />
-	<target host="ausmbmarketplace.cisco.com" />
-	<target host="beli.cisco.com" />
 	<target host="blogs.cisco.com" />
-	<target host="chinasmbmarketplace.cisco.com" />
 	<target host="cisco-images.cisco.com" />
-	<target host="ciscobusinesslink.cisco.com" />
 	<target host="cloudsso.cisco.com" />
 	<target host="cloudsso1.cisco.com" />
 	<target host="cloudsso2.cisco.com" />
-	<target host="cms-smbmarketplace.cisco.com" />
 	<target host="communities.cisco.com" />
-	<target host="csc-stage.cisco.com" />
 	<target host="csc-test1.cisco.com" />
 	<target host="developer.cisco.com" />
 	<target host="eir.cisco.com" />
-	<target host="indiasmbmarketplace.cisco.com" />
 	<target host="jobs.cisco.com" />
 	<target host="learningnetwork.cisco.com" />
 	<target host="learningnetworkstore.cisco.com" />
 	<target host="marketplace.cisco.com" />
-	<target host="marketplaceondemand.cisco.com" />
-	<target host="ondemand.cisco.com" />
-	<target host="smbmarketplace.cisco.com" />
 	<target host="software.cisco.com" />
-	<target host="solucoespme.cisco.com" />
-	<target host="solucionespyme.cisco.com" />
 	<target host="solutionpartner.cisco.com" />
 	<target host="solutionpartnerdashboard.cisco.com" />
 	<!--target host="sso-marketplace.cisco.com" /-->
@@ -153,7 +143,7 @@
 		<!--
 			Exceptions:
 					-->
-		<exclusion pattern="^http://csr\.cisco\.com/+(?!$|\?|cdnorigin/|content/|favicon\.ico)" />
+		<exclusion pattern="^http://csr\.cisco\.com/(?!/*(?:$|\?|cdnorigin/|content/|favicon\.ico))" />
 
 			<!--	+ve:
 					-->
@@ -201,8 +191,7 @@
 	<!--securecookie host="^sso-marketplace\.cisco\.com$" name="^PF$" /-->
 	<!--securecookie host="^(?:learningnetworkstore|tools|www)\.cisco\.com$" name="^JSESSIONID$" /-->
 
-	<securecookie host="^\." name="^(?:_gat?$|s_v)" />
-	<securecookie host="^[bhjlst]" name="." />
+	<securecookie host=".+" name=".+" />
 
 
 	<rule from="^http://home(?:support)?\.cisco\.com/+"

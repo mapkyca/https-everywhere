@@ -10,8 +10,6 @@
 -->
 <ruleset name="Google Services">
 	<target host="*.ggpht.com" />
-	<target host="goo.gl" />
-	<target host="www.goo.gl" />
 		<exclusion pattern="^http://cbks0\.google\.com/(?:$|\?)" />
 			<test url="http://cbks0.google.com/" />
 			<test url="http://cbks0.google.com/?" />
@@ -23,8 +21,6 @@
 			<test url="http://gg.google.com/foo?bar" />
 	<target host="googlecode.com" />
 	<target host="*.googlecode.com" />
-	<target host="googlesource.com" />
-	<target host="*.googlesource.com" />
 	<target host="*.googlesyndication.com" />
 	<target host="*.googleusercontent.com" />
 		<target host="*.corp.googleusercontent.com" />
@@ -69,10 +65,4 @@
 		<test url="http://foo.googlecode.com/" />
 		<test url="http://bar.googlecode.com/" />
 		<test url="http://www.googlecode.com/" />
-
-	<rule from="^http://([\w-]+\.)?googlesource\.com/"
-		to="https://$1googlesource.com/" />
-		<test url="http://foo.googlesource.com/" />
-		<test url="http://bar.googlesource.com/" />
-		<test url="http://www.googlesource.com/" />
 </ruleset>

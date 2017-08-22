@@ -1,4 +1,9 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://markeedragon.com/ => https://markeedragon.com/: (51, "SSL: no alternative certificate subject name matches target host name 'markeedragon.com'")
+Fetch error: http://www.markeedragon.com/ => https://www.markeedragon.com/: (51, "SSL: no alternative certificate subject name matches target host name 'www.markeedragon.com'")
+
 Disabled by https-everywhere-checker because:
 Fetch error: http://markeedragon.com/ => https://markeedragon.com/: (51, "SSL: no alternative certificate subject name matches target host name 'markeedragon.com'")
 Fetch error: http://www.markeedragon.com/ => https://www.markeedragon.com/: (51, "SSL: no alternative certificate subject name matches target host name 'www.markeedragon.com'")
@@ -9,7 +14,6 @@ Fetch error: http://www.markeedragon.com/ => https://www.markeedragon.com/: (51,
 	<target host="www.markeedragon.com" />
 
 
-	<rule from="^http://(www\.)?markeedragon\.com/"
-		to="https://$1markeedragon.com/" />
+	<rule from="^http:" to="https:" />
 
 </ruleset>

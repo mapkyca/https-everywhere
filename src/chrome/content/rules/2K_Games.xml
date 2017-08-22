@@ -1,34 +1,50 @@
+
 <!--
+Disabled by https-everywhere-checker because:
+Fetch error: http://autodiscover.2kgames.com/ => https://autodiscover.2kgames.com/: (56, 'SSL read: error:00000000:lib(0):func(0):reason(0), errno 104')
+Fetch error: http://remote.2kgames.com/ => https://remote.2kgames.com/: (60, 'SSL certificate problem: unable to get local issuer certificate')
+
 	For other 2K Games coverage, see 2K.com.xml.
 
+	Cert mismatch:
+		- 2kgnovsecfw1
+		- forums
+		- support
+		- wiki
 
-	Nonfunctional hosts in *2kgames.com:
-
-		- forums *
-
-	* 404
-
-
-	^2kgames.com: 404
+	Timeout:
+	- cha
+	- level9
+	- mx1
+	- mx2
+	- mxout1
+	- staging
 
 -->
-<ruleset name="2K Games.com (partial)">
+<ruleset name="2K Games.com (partial)" default_off='failed ruleset test'>
 
 	<!--	Direct rewrites:
 				-->
-	<target host="downloads.2kgames.com" />
-	<target host="www.2kgames.com" />
-
-	<!--	Complications:
-				-->
 	<target host="2kgames.com" />
+	<target host="www.2kgames.com" />
+	<target host="2kgbalsecfw1.2kgames.com" />
+	<target host="Lyncdiscover.2kgames.com" />
+	<target host="autodiscover.2kgames.com" />
+	<target host="cdn.2kgames.com" />
+	<target host="downloads.2kgames.com" />
+	<target host="lync.2kgames.com" />
+	<target host="lyncdiscover.2kgames.com" />
+	<target host="mail.2kgames.com" />
+	<target host="mindlink.2kgames.com" />
+	<target host="remote.2kgames.com" />
+	<target host="share.2kgames.com" />
+	<target host="sip.2kgames.com" />
+	<target host="xlocturbo.2kgames.com" />
 
+	<target host="xcom.com" />
+	<target host="www.xcom.com" />
 
 	<securecookie host=".+\.2kgames\.com" name=".+" />
-
-
-	<rule from="^http://2kgames\.com/"
-		to="https://www.2kgames.com/" />
 
 	<rule from="^http:"
 		to="https:" />
